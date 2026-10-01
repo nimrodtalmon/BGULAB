@@ -2,7 +2,7 @@
 round: 2
 date: 2026-10-01
 title: fewer tabs, folded pages, sign in once
-commits: [c5fd20f1916656d39de709885e1b72778fb3fa23, ed5ebc4c83c3ea648850305931ef05fbc6b7ed53, ee54938efcdd32f636c62969d065b970cf942c3a]
+commits: [c5fd20f1916656d39de709885e1b72778fb3fa23, ed5ebc4c83c3ea648850305931ef05fbc6b7ed53, ee54938efcdd32f636c62969d065b970cf942c3a, e2967c9d36b3f1f945bbbadc01e036cbfaba6362, 93997a1640c6d818a754fc0aacfa0379dd82e955]
 ---
 ## Public
 
@@ -14,6 +14,8 @@ Every page now shows its sections collapsed, so it fits on one screen
 until you open what you care about. Contact details moved to the footer.
 Lab members now sign in once and stay signed in for a year. Old addresses
 still work and redirect. Rule 2 was reworded to say where the log now is.
+Later the same day the Research page was trimmed, and the header was
+redone: it stays on top, and on phones the tabs fold into a menu button.
 
 ## Lab
 
@@ -22,6 +24,8 @@ still work and redirect. Rule 2 was reworded to say where the log now is.
 | — | Nimrod | admin change: merge into fewer tabs, collapsed sections, sign in once (name remembered), Lab page lab-only | done | site had too many pages and the members' view was confusing; Nimrod OK'd the edits to protected files (CLAUDE.md, app/gate.py, app/govern.py) | c5fd20f |
 | — | Nimrod | amend rules: rule 2 says the log is under Rounds on the Govern page | done | the Log page was merged into Govern; asked by Nimrod in the session | ed5ebc4 |
 | — | Nimrod | admin change: drop the Research tab | done | it duplicated the BGULAB brand link; Nimrod's call (CLAUDE.md map line updated with the log) | ee54938 |
+| — | Nimrod | admin change: trim the Research page (department line, bounded-attention sentence, two projects, two grant-submission lines) | done | Nimrod's call | e2967c9 |
+| — | Nimrod | admin change: header stays on top, pill tabs, menu button on phones | done | nicer and easier on phones; Nimrod asked | 93997a1 |
 
 Rule 2, old wording (round 0): "Requests are decided by Nimrod, with
 Claude, in a round before each lab meeting. Every decision and its reason
