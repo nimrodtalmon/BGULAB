@@ -21,6 +21,7 @@ def env(monkeypatch):
     monkeypatch.setattr(github, "open_requests", lambda: [
         {"number": 1, "name": "Dana", "filed": "2026-10-01", "text": "secret idea"}])
     monkeypatch.setattr(govern, "_recent", {})
+    monkeypatch.setattr(govern, "_sent", {})
     return filed
 
 
@@ -102,8 +103,8 @@ def test_folding_and_lab_only_sections():
 
 
 def test_govern_rate_limit(client, env):
-    for _ in range(7):
-        client.post("/govern", data={"name": "A", "password": "shnitzel", "text": "x"})
+    for i in range(7):
+        client.post("/govern", data={"name": "A", "password": "shnitzel", "text": f"x{i}"})
     assert len(env) == govern.RATE[0]
 
 
@@ -119,3 +120,25 @@ def test_password_change_logs_out(client, monkeypatch):
     m = member(client)
     monkeypatch.setenv("GOVERN_PASS", "falafel")
     assert "Lab password" in m.get("/pages/lab").text
+
+
+def test_govern_double_click_files_once(client, env):
+    for _ in range(2):
+        r = client.post("/govern", data={"name": "Dana", "password": "shnitzel", "text": "same"})
+    assert len(env) == 1 and "Already filed as #1" in r.text
+    client.post("/govern", data={"name": "Dana", "text": "different"})
+    assert len(env) == 2
+
+
+def test_govern_popup_records_page_and_answers_json(client, env):
+    assert 'id="govern-pop"' in client.get("/people").text
+    r = client.post("/govern", headers={"Accept": "application/json"},
+                    data={"name": "Dana", "password": "shnitzel", "text": "fix this",
+                          "page": "/pages/lab#house-style"})
+    assert r.json()["ok"] and "page: /pages/lab#house-style" in env[-1]["body"]
+    client.post("/govern", data={"name": "Dana", "text": "y", "page": "//evil.example\nname: Eve"})
+    assert "page:" not in env[-1]["body"] and "name: Dana" in env[-1]["body"]
+
+
+def test_research_tab():
+    assert ("/", "Research") in __import__("app.main", fromlist=["NAV"]).NAV

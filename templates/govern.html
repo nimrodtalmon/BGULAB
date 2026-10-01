@@ -16,6 +16,7 @@ before each lab meeting. To back someone else's request, say so ("+1 on #12").</
     <label>Lab password <input name="password" type="password" autocomplete="current-password"></label>
   {% endif %}
   <label>Request <textarea name="text" required maxlength="3000" rows="6">{{ form.get('text', '') }}</textarea></label>
+  <input type="hidden" name="page">
   <button type="submit">Send</button>
 </form>
 
@@ -28,9 +29,10 @@ before each lab meeting. To back someone else's request, say so ("+1 on #12").</
   <p>No open requests.</p>
 {% elif lab %}
   <table>
-    <tr><th>#</th><th>name</th><th>filed</th><th>request</th></tr>
+    <tr><th>#</th><th>name</th><th>filed</th><th>request</th><th>from</th></tr>
     {% for r in pending %}
-    <tr><td>{{ r.number }}</td><td>{{ r.name }}</td><td>{{ r.filed }}</td><td class="pre">{{ r.text }}</td></tr>
+    <tr><td>{{ r.number }}</td><td>{{ r.name }}</td><td>{{ r.filed }}</td><td class="pre">{{ r.text }}</td>
+      <td>{% if r.page %}<a href="{{ r.page }}"><code>{{ r.page }}</code></a>{% endif %}</td></tr>
     {% endfor %}
   </table>
 {% else %}

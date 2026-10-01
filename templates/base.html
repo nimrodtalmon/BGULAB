@@ -20,9 +20,27 @@
         <a class="auth" href="/login?next={{ request.url.path }}">Sign in</a>
       {% endif %}
     </nav>
-    <a class="govern{% if request.url.path == '/govern' %} here{% endif %}" href="/govern">Govern</a>
+    <a class="govern{% if request.url.path == '/govern' %} here{% endif %}" href="/govern" id="govern-open">Govern</a>
   </div>
 </header>
+<dialog id="govern-pop" class="pop" aria-labelledby="govern-pop-title">
+  <form method="post" action="/govern" class="govern-form">
+    <h2 id="govern-pop-title">Govern</h2>
+    <p class="muted">Ask for any change to this site or its rules. Decided before the next lab meeting.
+      Sent from <code class="from"></code>. <a href="/govern">More</a></p>
+    {% if lab %}
+      <p class="muted">Sending as {{ lab_name }}.</p>
+    {% else %}
+      <label>Your name <input name="name" required maxlength="60" autocomplete="name"></label>
+      <label>Lab password <input name="password" type="password" autocomplete="current-password"></label>
+    {% endif %}
+    <label>Request <textarea name="text" required maxlength="3000" rows="5"></textarea></label>
+    <input type="hidden" name="page">
+    <p class="result" role="status"></p>
+    <div class="actions"><button type="submit">Send</button>
+      <button type="button" class="link" value="close">Close</button></div>
+  </form>
+</dialog>
 <main>
 {% block main %}{% endblock %}
 </main>
@@ -42,6 +60,52 @@ function openTarget() {
 }
 window.addEventListener("hashchange", openTarget);
 openTarget();
+
+// Govern: where the reader is (page, and the section opened last).
+var lastOpen = "";
+document.addEventListener("toggle", function (e) {
+  if (e.target.tagName === "DETAILS" && e.target.open && e.target.id) lastOpen = "#" + e.target.id;
+}, true);
+function here() { return location.pathname + (lastOpen || location.hash); }
+
+// Every Govern form: one click sends once, and says where it was sent from.
+document.querySelectorAll("form.govern-form").forEach(function (f) {
+  f.addEventListener("submit", function () {
+    f.elements.page && (f.elements.page.value = here());
+    f.querySelector("button[type=submit]").disabled = true;
+  });
+});
+
+// The Govern button opens a popup; without JavaScript it is a plain link.
+var pop = document.getElementById("govern-pop");
+if (pop && pop.showModal) {
+  var form = pop.querySelector("form"), out = pop.querySelector(".result"),
+      send = form.querySelector("button[type=submit]");
+  document.getElementById("govern-open").addEventListener("click", function (e) {
+    e.preventDefault();
+    pop.querySelector(".from").textContent = here();
+    out.textContent = ""; out.className = "result"; send.disabled = false;
+    pop.showModal();
+    form.elements.text.focus();
+  });
+  pop.querySelector("[value=close]").addEventListener("click", function () { pop.close(); });
+  pop.addEventListener("click", function (e) { if (e.target === pop) pop.close(); });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    form.elements.page.value = here();
+    send.disabled = true;
+    fetch("/govern", {method: "POST", body: new FormData(form), headers: {Accept: "application/json"}})
+      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        out.textContent = r.message; out.className = "result " + (r.ok ? "ok" : "error");
+        if (r.ok) form.elements.text.value = ""; else send.disabled = false;
+      })
+      .catch(function () {
+        out.textContent = "Could not send. Nothing was saved; please try again.";
+        out.className = "result error"; send.disabled = false;
+      });
+  });
+}
 </script>
 </body>
 </html>

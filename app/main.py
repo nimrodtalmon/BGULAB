@@ -6,7 +6,7 @@ Stateless: nothing here is written to disk or kept beyond a short cache.
 import os
 
 from fastapi import FastAPI, Form, Request
-from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -141,14 +141,19 @@ def govern_form(request: Request):
 
 @app.post("/govern", response_class=HTMLResponse)
 def govern_submit(request: Request, name: str = Form(""), password: str = Form(""),
-                  text: str = Form("")):
+                  text: str = Form(""), page: str = Form("")):
     signed_in = lab_name(request)
     if signed_in:
         name = signed_in
     addr = request.headers.get("x-forwarded-for", request.client.host if request.client else "")
-    result = govern.submit(name, password, text, addr.split(",")[0].strip(), bool(signed_in))
-    resp = govern_page(request, result=result,
-                       form={} if result["ok"] else {"name": name, "text": text})
+    result = govern.submit(name, password, text, addr.split(",")[0].strip(), bool(signed_in),
+                           page)
+    if "application/json" in request.headers.get("accept", ""):  # the popup
+        resp = JSONResponse({"ok": result["ok"], "counted": result.get("counted", False),
+                             "message": result["message"]})
+    else:
+        resp = govern_page(request, result=result,
+                           form={} if result["ok"] else {"name": name, "text": text})
     if result.get("counted") and not signed_in:
         set_lab_cookie(request, resp, name)  # right password: stay signed in from now on
     return resp

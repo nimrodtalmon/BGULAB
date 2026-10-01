@@ -66,6 +66,7 @@ def open_requests() -> list[dict] | None:
                 "number": i["number"],
                 "name": _field(body, "name") or "?",
                 "filed": _field(body, "filed")[:10],
+                "page": _field(body, "page"),
                 "text": body.split("\n---\n")[0].strip(),
             }
         )

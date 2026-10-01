@@ -145,3 +145,16 @@ details.sub > summary { font-weight: 500; font-size: 16px; }
 .folds { margin-top: 2rem; }
 footer p { margin: .3rem 0; }
 blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); font-style: italic; }
+
+dialog.pop {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+  border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.25rem 1rem;
+  background: var(--bg); color: var(--fg); box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+}
+dialog.pop::backdrop { background: rgba(0, 0, 0, .35); }
+dialog.pop h2 { margin: 0; font-size: 20px; }
+dialog.pop p { margin: 0; font-size: 14px; }
+dialog.pop .result:empty { display: none; }
+.govern-form .actions { display: flex; align-items: center; gap: 1rem; }
+.govern-form button:disabled { opacity: .5; cursor: default; }
+.govern-form button.link { background: none; color: var(--muted); padding: 0; font-weight: 400; }
