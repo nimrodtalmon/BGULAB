@@ -58,7 +58,7 @@ tests/                    offline tests (GitHub faked)
 render.yaml               deploy blueprint
 ```
 
-Four tabs: Research (/), People, Lab, Govern. Every page shows its `##`
+Tabs: People, Lab, Govern; the BGULAB brand opens Research (/). Every page shows its `##`
 sections collapsed and its `###` sections nested inside them, so a page
 fits on one screen until the reader opens something.
 
