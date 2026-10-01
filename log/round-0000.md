@@ -15,9 +15,9 @@ three rules (see How), the Govern button for requests, and this Log.
 | # | name | request | decision | reason | commits |
 |---|------|---------|----------|--------|---------|
 | — | Nimrod | admin change: initial build | done | starting point, designed with Claude in chat | 54ab5d8 |
+| — | Nimrod | admin change: lab name is "Digital Cooperation Lab" | done | Nimrod asked Claude to pick; this is the name he uses for the lab | see commit list |
 
 Wrong-pass submissions: none.
 
-Notes: the lab name ("Digital Collaboration Lab") and the list of people
-were carried over as they were on the previous site; correcting either is
-a request away.
+Notes: the list of people was carried over from the previous site; members
+add or correct themselves with Govern.

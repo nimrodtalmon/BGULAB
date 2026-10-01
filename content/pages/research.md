@@ -3,7 +3,7 @@ title: Research
 ---
 # Research
 
-The Digital Collaboration Lab studies how humans and AI agents, in varying
+The Digital Cooperation Lab studies how humans and AI agents, in varying
 combinations, reach good collective decisions together. We draw on
 computational social choice, AI, game theory, and combinatorial optimization,
 with an emphasis on the blockchain/DAO ecosystem.

@@ -1,7 +1,7 @@
 ---
-title: Digital Collaboration Lab
+title: Digital Cooperation Lab
 ---
-# Digital Collaboration Lab
+# Digital Cooperation Lab
 
 We study how humans and AI agents, in varying combinations, reach good
 collective decisions together. We are part of the Department of Industrial

@@ -3,7 +3,7 @@ title: Contact
 ---
 # Contact
 
-The Digital Collaboration Lab is led by Nimrod Talmon at Ben-Gurion
+The Digital Cooperation Lab is led by Nimrod Talmon at Ben-Gurion
 University of the Negev.
 
 Email: `n i m r o d t a l m o n 7 7 @ g m a i l . c o m`
