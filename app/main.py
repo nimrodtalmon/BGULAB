@@ -17,7 +17,7 @@ app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/static", StaticFiles(directory=content.ROOT / "static"), name="static")
 templates = Jinja2Templates(directory=content.ROOT / "templates")
 
-NAV = [("/people", "People"), ("/pages/lab", "Lab")]  # the brand links to / (Research)
+NAV = [("/", "Research"), ("/people", "People"), ("/pages/lab", "Lab")]  # the brand also links to /
 
 # Old addresses, kept working after the round-2 merge.
 MOVED = {
