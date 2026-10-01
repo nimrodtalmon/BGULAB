@@ -17,7 +17,20 @@ The work is organized by who cooperates with whom:
 ## Humans with AI
 
 - Grassroots federation formation
-- AI-Agora
+
+### AI-Agora
+
+Each person has a personal AI agent that finds others, negotiates, and
+forms groups on their behalf. People keep the last word: a hard veto over
+what their agent agrees to.
+
+### Collective control of AI agents (lab only)
+
+How a group jointly steers an AI agent it shares: which decisions go to the
+group, through which channels (configuration, shared memory, runtime
+approvals), and how the members' inputs are aggregated. A joint FWF–ISF
+proposal with Martin Lackner (USTP) is in preparation; this site is a small
+test bed.
 
 ## AI reviewed by humans and AI
 
@@ -29,7 +42,10 @@ The work is organized by who cooperates with whom:
 - Delegation with voter commitment
 - Liquid democracy vs. lot
 
-Funded: EU PERYCLES.
+## Funding
+
+- [PERYCLES](https://perycles-project.eu/): Participatory Democracy that
+  Scales, EU Horizon Europe, 2025–2027.
 
 ## Publications
 
