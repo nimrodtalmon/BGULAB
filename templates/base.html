@@ -7,18 +7,20 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<header>
-  <a class="brand" href="/">BGULAB</a>
-  <nav>
-    {% for href, label in nav %}<a href="{{ href }}"{% if request.url.path == href %} class="here"{% endif %}>{{ label }}</a>{% endfor %}
-  </nav>
-  <div class="actions">
-    <a class="govern" href="/govern">Govern</a>
-    {% if lab %}
-      <form method="post" action="/logout"><span class="who">{{ lab_name }}</span> · <button class="link">sign out</button></form>
-    {% else %}
-      <a href="/login?next={{ request.url.path }}">Sign in</a>
-    {% endif %}
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="BGULAB: Research">BGU<b>LAB</b></a>
+    <input type="checkbox" id="menu" class="menu-toggle">
+    <label for="menu" class="burger" aria-label="Menu"><span></span></label>
+    <nav class="links">
+      {% for href, label in nav %}<a href="{{ href }}"{% if request.url.path == href %} class="here"{% endif %}>{{ label }}</a>{% endfor %}
+      {% if lab %}
+        <form class="auth" method="post" action="/logout"><span class="who">{{ lab_name }}</span> <button class="link">sign out</button></form>
+      {% else %}
+        <a class="auth" href="/login?next={{ request.url.path }}">Sign in</a>
+      {% endif %}
+    </nav>
+    <a class="govern{% if request.url.path == '/govern' %} here{% endif %}" href="/govern">Govern</a>
   </div>
 </header>
 <main>
