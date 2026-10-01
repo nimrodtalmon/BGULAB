@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>People</h1>
+<ul class="people">
+{% for p in people.present %}
+  <li><strong>{{ p.name }}</strong> — {{ p.role }}
+    {% for label, url in (p.links or {}).items() %} · <a href="{{ url }}">{{ label }}</a>{% endfor %}
+  </li>
+{% endfor %}
+</ul>
+{% if people.past %}
+<h2>Alumni</h2>
+<ul class="people">
+{% for p in people.past %}
+  <li>{{ p.name }} — {{ p.role }}{% if p.now %} (now: {{ p.now }}){% endif %}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

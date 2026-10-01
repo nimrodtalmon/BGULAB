@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>Govern</h1>
+<p>Ask for any change to this site: content, structure, features, or the
+<a href="/how#rules">rules</a> themselves. Requests are decided before each lab
+meeting and recorded on the <a href="/log">Log</a>. To support someone else's
+request, say so (e.g., "+1 on #12").</p>
+
+{% if result %}
+<p class="{{ 'ok' if result.ok else 'error' }}">{{ result.message }}</p>
+{% endif %}
+
+<form method="post" action="/govern" class="govern-form">
+  <label>Your name <input name="name" required maxlength="60" value="{{ (form or {}).get('name', '') }}"></label>
+  {% if member %}
+    <p class="muted">You're in the members' view, so no password is needed.</p>
+  {% else %}
+    <label>Lab password <input name="password" type="password" autocomplete="off"></label>
+  {% endif %}
+  <label>Request <textarea name="text" required maxlength="3000" rows="8">{{ (form or {}).get('text', '') }}</textarea></label>
+  <button type="submit">Send</button>
+</form>
+{% endblock %}

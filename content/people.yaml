@@ -1,0 +1,40 @@
+# People of the Digital Collaboration Lab (shown on /people).
+present:
+  - name: Nimrod Talmon
+    slug: nimrod-talmon
+    role: PI
+    links:
+      DBLP: https://dblp.org/pid/53/11268
+      Scholar: https://scholar.google.com/citations?user=dSfOjCQAAAAJ
+  - name: Eyal Briman
+    slug: eyal-briman
+    role: PhD student
+    links: {}
+  - name: Avital Finanser
+    slug: avital-finanser
+    role: MSc student
+    links: {}
+  - name: Nir Soffer
+    slug: nir-soffer
+    role: Member
+    links: {}
+
+past:
+  - name: Shiri Hefetz
+    role: PhD
+  - name: Ouri Poupku
+    role: Postdoc
+  - name: Krzysztof Sornat
+    role: Postdoc
+    now: Wroclaw
+  - name: Pallavi Jain
+    role: Postdoc
+    now: IIT Jodhpur
+  - name: Eyal Leizerovich
+    role: MSc
+  - name: Rutvik Page
+    role: RA
+  - name: Lior Ashkenazy
+    role: MSc
+  - name: Gil Leibiker
+    role: MSc

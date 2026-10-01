@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>How this site works</h1>
+<p>This page holds everything that decides how the site behaves: the rules the
+lab agreed on, the procedure Claude follows in each round, and the code.
+What actually happened is on <a href="/log">Log</a>.</p>
+
+<nav class="toc"><a href="#rules">Rules</a> · <a href="#procedure">Procedure</a> · <a href="#code">Code</a></nav>
+
+<section id="rules">
+<h2>Rules</h2>
+{{ rules | safe }}
+</section>
+
+<section id="procedure">
+<h2>Procedure</h2>
+<p class="muted">The file <code>CLAUDE.md</code>, as Claude reads it.</p>
+<div class="procedure">{{ procedure | safe }}</div>
+</section>
+
+<section id="code">
+<h2>Code</h2>
+{% if member %}
+<p class="muted">Every file in the deployed version ({{ commit }}).</p>
+<ul class="tree">
+{% for f in tree %}<li><a href="/how/code/{{ f }}"><code>{{ f }}</code></a></li>{% endfor %}
+</ul>
+{% else %}
+<p>The code is visible to members. <a href="/login?next=/how%23code">Enter the password</a>.</p>
+{% endif %}
+</section>
+{% endblock %}

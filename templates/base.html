@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} · BGULAB</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="/">BGULAB</a>
+  <nav>
+    {% for href, label in nav %}<a href="{{ href }}">{{ label }}</a>{% endfor %}
+  </nav>
+  <div class="actions">
+    <a class="govern" href="/govern">Govern</a>
+    {% if member %}
+      <form method="post" action="/logout"><button class="link">Leave members' view</button></form>
+    {% else %}
+      <a href="/login?next={{ request.url.path }}">Members</a>
+    {% endif %}
+  </div>
+</header>
+<main>
+{% block main %}{% endblock %}
+</main>
+<footer>
+  Deployed commit <code>{{ commit }}</code>
+  {% if latest_round is not none %} · latest change: <a href="/log#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}
+  · everything that decides how this site works is on <a href="/how">How</a>, everything that happened is on <a href="/log">Log</a>.
+</footer>
+</body>
+</html>

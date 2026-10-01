@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>Projects</h1>
+{% if projects %}
+<ul>
+{% for p in projects %}
+  <li><a href="/projects/{{ p.slug }}">{{ p.title }}</a>
+    {% if p.meta.members %} — {{ p.meta.members | join(", ") }}{% endif %}
+    {% if p.visibility == "members" %} <span class="tag">members only</span>{% endif %}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No projects here yet. To add one, use <a href="/govern">Govern</a>.</p>
+{% endif %}
+{% if hidden %}<p class="muted">{{ hidden }} more visible to members.</p>{% endif %}
+{% endblock %}

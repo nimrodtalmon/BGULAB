@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block main %}
+<article>
+{% if doc.visibility == "members" %}<p class="tag">members only</p>{% endif %}
+{{ doc.html | safe }}
+</article>
+{% endblock %}

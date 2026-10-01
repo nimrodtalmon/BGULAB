@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>Log</h1>
+<p>Every change to this site, round by round. Rules and procedure are on <a href="/how">How</a>.</p>
+
+<section id="pending">
+<h2>Pending</h2>
+{% if pending is none %}
+  <p class="muted">Pending requests cannot be loaded right now.</p>
+{% elif not pending %}
+  <p>No open requests. To make one, use <a href="/govern">Govern</a>.</p>
+{% elif member %}
+  <table>
+    <tr><th>#</th><th>name</th><th>filed</th><th>request</th></tr>
+    {% for r in pending %}
+    <tr><td>{{ r.number }}</td><td>{{ r.name }}</td><td>{{ r.filed }}</td><td class="pre">{{ r.text }}</td></tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>{{ pending | length }} open request{{ "s" if pending | length != 1 }}, to be decided in the next round.
+  Details are visible to members.</p>
+{% endif %}
+</section>
+
+<section>
+<h2>Rounds</h2>
+{% for r in rounds %}
+<article class="round" id="round-{{ r.number }}">
+  <h3>Round {{ r.number }}{% if r.title %}: {{ r.title }}{% endif %} <span class="muted">{{ r.date }}</span></h3>
+  {{ r.public_html | safe }}
+  {% if member %}
+    {% if r.members_html %}<div class="members-part">{{ r.members_html | safe }}</div>{% endif %}
+    {% if r.commits %}<p class="muted">Commits:
+      {% for c in r.commits %}<a href="/log/commit/{{ c }}"><code>{{ c[:7] }}</code></a> {% endfor %}</p>{% endif %}
+  {% endif %}
+</article>
+{% else %}
+<p>No rounds yet.</p>
+{% endfor %}
+{% if not member and rounds %}<p class="muted">Names, request texts and diffs are visible to members.</p>{% endif %}
+</section>
+{% endblock %}

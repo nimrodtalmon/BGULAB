@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>{{ title }}</h1>
+<p>This part is visible to lab members.</p>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" action="/login" class="govern-form">
+  <input type="hidden" name="next" value="{{ next }}">
+  <label>Lab password <input name="password" type="password" autocomplete="off" autofocus></label>
+  <button type="submit">Enter</button>
+</form>
+{% endblock %}

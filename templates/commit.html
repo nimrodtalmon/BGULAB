@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block main %}
+<p><a href="/log">← Log</a></p>
+<h1>Commit <code>{{ c.sha[:7] }}</code> <span class="muted">{{ c.date }}</span></h1>
+<pre class="pre">{{ c.message }}</pre>
+{% for f in c.files %}
+<h3><code>{{ f.name }}</code></h3>
+<pre class="code diff">{% for line in f.patch.splitlines() %}<span class="{{ 'add' if line.startswith('+') else 'del' if line.startswith('-') else '' }}">{{ line }}</span>
+{% endfor %}</pre>
+{% endfor %}
+{% endblock %}
