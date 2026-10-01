@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block main %}
 <h1>{{ title }}</h1>
-<p>This part is visible to lab members.</p>
+<p>For lab members. Sign in once; this browser remembers you for a year.</p>
 {% if error %}<p class="error">{{ error }}</p>{% endif %}
 <form method="post" action="/login" class="govern-form">
   <input type="hidden" name="next" value="{{ next }}">
-  <label>Lab password <input name="password" type="password" autocomplete="off" autofocus></label>
-  <button type="submit">Enter</button>
+  <label>Your name <input name="name" required maxlength="60" autocomplete="name" value="{{ name or '' }}" autofocus></label>
+  <label>Lab password <input name="password" type="password" autocomplete="current-password"></label>
+  <button type="submit">Sign in</button>
 </form>
 {% endblock %}

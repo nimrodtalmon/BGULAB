@@ -1,8 +1,8 @@
 # CLAUDE.md — BGULAB
 
 This file is the procedure for any Claude session in this repo. It is also
-rendered on the site at `/how`, so everything written here is visible to the
-lab.
+rendered on the site's Govern page (under "How this works"), so everything
+written here is visible to the lab.
 
 ## 1. What this is
 
@@ -10,7 +10,8 @@ The website and working tool of Nimrod Talmon's lab at BGU, and an experiment
 in collective control: the site changes only through requests from lab
 members, decided in rounds.
 
-- Members send requests with the **Govern** button (name, password, text).
+- Members send requests with the **Govern** button. They sign in once (name
+  and the lab password); the browser remembers them for a year.
 - Before each lab meeting, Nimrod runs a **round** with Claude: requests are
   decided under the current rules, implemented, and logged.
 - The rules themselves change the same way, by request.
@@ -18,9 +19,9 @@ members, decided in rounds.
 ## 2. Invariants (do not break)
 
 1. **Everything is visible on the site.** Whatever decides how the site
-   behaves (rules, this file, code) is on `/how`; whatever happened
-   (requests, decisions, reasons, commits) is on `/log`. Every page footer
-   shows the deployed commit and links to the round that produced it.
+   behaves (rules, this file, code) and whatever happened (requests,
+   decisions, reasons, commits) are on `/govern`. Every page footer shows
+   the deployed commit and links to the round that produced it.
 2. **Every change is logged.** Members change the site through requests
    decided in rounds. Nimrod may also change it directly in a session; such
    a change is logged as an *admin change* with a one-line reason, in the
@@ -28,26 +29,27 @@ members, decided in rounds.
 3. **The repo is the only state.** Content, rules and log are files here;
    requests are GitHub issues here. No database, nothing written to the
    server's disk.
-4. **The server is stateless and replaceable.** It renders the repo, gates
-   members' views, and turns Govern submissions into issues. Losing the host
+4. **The server is stateless and replaceable.** It renders the repo, signs
+   lab members in, and turns Govern submissions into issues. Losing the host
    loses nothing.
 5. **No LLM API key.** All LLM work happens in Claude sessions run by Nimrod.
-6. **Public views never show names, raw request text, or unpublished
-   research.** Those appear only in the members' view.
+6. **Visitors never see names, raw request text, or unpublished
+   research.** Those are shown only to signed-in lab members.
 
 ## 3. Map
 
 ```
-CLAUDE.md                 this file (rendered on /how)
-content/rules.md          the governance rules (top of /how)
+CLAUDE.md                 this file (on /govern, "How this works")
+content/rules.md          the governance rules (on /govern)
 content/pages/*.md        site pages (YAML frontmatter: title, visibility),
-                          served at /pages/<slug>; home.md is /
+                          served at /pages/<slug>; home.md is / (Research,
+                          with projects and publications), lab.md is Lab
 content/people.yaml       lab members, past and present
-content/projects/*.md     one page per project
+content/footer.md         contact line in every page footer
 log/round-NNNN.md         one file per round (see §7)
 app/                      FastAPI server
-  main.py                 routes
-  gate.py                 shared-password gate (signed cookie)
+  main.py                 routes (old addresses redirect)
+  gate.py                 sign-in: shared password, signed cookie with name
   govern.py               Govern form → GitHub issue
   github.py               issues and commits (read/write via GITHUB_TOKEN)
   content.py              reads pages, people, projects, rules, log, code
@@ -56,9 +58,14 @@ tests/                    offline tests (GitHub faked)
 render.yaml               deploy blueprint
 ```
 
-Two views of every page: **public** (anyone) and **members** (anyone who
-entered the password). Page visibility is set in frontmatter
-(`visibility: public | members`) and changes only by request.
+Four tabs: Research (/), People, Lab, Govern. Every page shows its `##`
+sections collapsed and its `###` sections nested inside them, so a page
+fits on one screen until the reader opens something.
+
+Visitors see the public site; signed-in lab members also see lab-only parts.
+A whole page is lab-only with `visibility: lab` in its frontmatter; a single
+section is lab-only when its heading ends with `(lab only)`. Visibility
+changes only by request.
 
 ## 4. Trust boundary
 
@@ -116,24 +123,28 @@ commits: [sha, ...]
 Plain summary of what changed and why. No names, no request text,
 no unpublished research.
 
-## Members
+## Lab
 | # | name | request | decision | reason | commits |
 Wrong-pass submissions: list (name as given, text).
 Notes: doubtful names, conflicts, open questions for the lab meeting.
 ```
 
-`/log` shows open requests ("Pending") on top, then rounds newest first.
-Diffs are fetched from GitHub by commit and shown in the members' view.
+`/govern` shows open requests ("Pending"), then rounds newest first.
+Diffs are fetched from GitHub by commit and shown to signed-in lab members.
+(Round files before round 2 say `## Members`; it means the same.)
 
 ## 8. Recipes
 
-- **Add a page:** `content/pages/<slug>.md` with `title` and `visibility`.
+- **Add a page:** `content/pages/<slug>.md` with `title` and `visibility`
+  (`public` or `lab`). Prefer a new section in an existing page.
 - **Add a person:** append to `content/people.yaml`.
-- **Add a project:** `content/projects/<slug>.md` with `title`, `members`,
-  `visibility`.
-- **Change visibility:** edit the frontmatter field.
-- **Publications:** `content/pages/publications.md` links to DBLP
-  (pid 53/11268) and Scholar; a generated list can be added by request.
+- **Add a project:** a bullet under its theme in `content/pages/home.md`;
+  once it has a description, a `###` section under the theme.
+- **Change visibility:** the frontmatter field (whole page) or a
+  `(lab only)` heading suffix (one section).
+- **Publications:** the Publications section of `content/pages/home.md`
+  links to DBLP (pid 53/11268) and Scholar; a generated list can be added by
+  request.
 
 ## 9. Deploy and secrets
 

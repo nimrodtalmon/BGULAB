@@ -1,6 +1,6 @@
 """The Govern button: name + password + text -> a GitHub issue.
 
-Right password (or a member cookie): label `govern`, counted in the next round.
+Right password (or signed in): label `govern`, counted in the next round.
 Wrong password: label `wrong-pass`, listed in the round, never acted on.
 The password itself is never stored.
 """
@@ -9,10 +9,9 @@ import time
 from datetime import datetime, timezone
 
 from app import github
-from app.gate import password_ok
+from app.gate import clean_name, password_ok
 
 MAX_TEXT = 3000
-MAX_NAME = 60
 RATE = (5, 600)  # at most 5 submissions per 10 minutes per address
 _recent: dict[str, list[float]] = {}
 
@@ -27,14 +26,14 @@ def _rate_ok(addr: str) -> bool:
     return True
 
 
-def submit(name: str, password: str, text: str, addr: str, member: bool) -> dict:
-    name = " ".join(name.split())[:MAX_NAME]
+def submit(name: str, password: str, text: str, addr: str, signed_in: bool) -> dict:
+    name = clean_name(name)
     text = text.strip()[:MAX_TEXT]
     if not name or not text:
         return {"ok": False, "message": "Please fill in your name and your request."}
     if not _rate_ok(addr):
         return {"ok": False, "message": "Too many submissions; try again in a few minutes."}
-    counted = member or password_ok(password)
+    counted = signed_in or password_ok(password)
     label = "govern" if counted else "wrong-pass"
     first_line = text.splitlines()[0]
     title = first_line[:70] + ("…" if len(first_line) > 70 else "")
@@ -45,7 +44,7 @@ def submit(name: str, password: str, text: str, addr: str, member: bool) -> dict
         return {"ok": False, "message": "Could not file the request (GitHub unreachable). "
                                         "Nothing was saved; please try again later."}
     if counted:
-        return {"ok": True, "number": number,
+        return {"ok": True, "counted": True, "number": number,
                 "message": f"Filed as request #{number}. It will be decided in the next round."}
-    return {"ok": True, "number": number,
+    return {"ok": True, "counted": False, "number": number,
             "message": f"Password not recognized. Recorded as #{number}, but it will not be counted."}

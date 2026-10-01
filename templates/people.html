@@ -9,11 +9,13 @@
 {% endfor %}
 </ul>
 {% if people.past %}
-<h2>Alumni</h2>
+<details id="alumni">
+<summary>Alumni ({{ people.past | length }})</summary>
 <ul class="people">
 {% for p in people.past %}
   <li>{{ p.name }} — {{ p.role }}{% if p.now %} (now: {{ p.now }}){% endif %}</li>
 {% endfor %}
 </ul>
+</details>
 {% endif %}
 {% endblock %}

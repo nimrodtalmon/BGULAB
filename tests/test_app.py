@@ -29,48 +29,76 @@ def client():
     return TestClient(app)
 
 
-def member(client):
-    r = client.post("/login", data={"password": "shnitzel", "next": "/"}, follow_redirects=False)
+def member(client, name="Dana"):
+    r = client.post("/login", data={"name": name, "password": "shnitzel", "next": "/"},
+                    follow_redirects=False)
     assert r.status_code == 303
     return client
 
 
 def test_public_pages_render(client):
-    for path in ["/", "/people", "/projects", "/pages/research", "/how", "/log", "/govern"]:
+    for path in ["/", "/people", "/govern"]:
         assert client.get(path).status_code == 200, path
 
 
+def test_old_addresses_redirect(client):
+    for old, new in [("/how", "/govern#how-this-works"), ("/log", "/govern#rounds"),
+                     ("/projects", "/"), ("/pages/research", "/"),
+                     ("/pages/onboarding", "/pages/lab")]:
+        r = client.get(old, follow_redirects=False)
+        assert r.status_code == 301 and r.headers["location"] == new, old
+
+
 def test_members_page_is_gated(client):
-    assert "Lab password" in client.get("/pages/onboarding").text
-    assert "Welcome to the lab" in member(client).get("/pages/onboarding").text
+    assert "Lab password" in client.get("/pages/lab").text
+    assert "Welcome to the lab" in member(client).get("/pages/lab").text
 
 
 def test_wrong_login(client):
-    assert client.post("/login", data={"password": "nope"}).status_code == 401
+    assert client.post("/login", data={"name": "A", "password": "nope"}).status_code == 401
+    assert client.post("/login", data={"name": "", "password": "shnitzel"}).status_code == 401
+
+
+def test_signed_in_shows_name(client):
+    assert "Sign in" in client.get("/").text
+    page = member(client, "Eyal").get("/").text
+    assert "Eyal" in page and "sign out" in page
 
 
 def test_log_hides_names_publicly(client):
-    public = client.get("/log").text
+    public = client.get("/govern").text
     assert "secret idea" not in public and "Dana" not in public
     assert "1 open request" in public
-    assert "secret idea" in member(client).get("/log").text
+    assert "secret idea" in member(client).get("/govern").text
 
 
 def test_round_split():
     r = content.round_(0)
-    assert r and "Wrong-pass" in r["members_html"] and "Wrong-pass" not in r["public_html"]
+    assert r and "Wrong-pass" in r["lab_html"] and "Wrong-pass" not in r["public_html"]
 
 
 def test_govern_right_and_wrong_password(client, env):
     client.post("/govern", data={"name": "Dana", "password": "shnitzel", "text": "add a page"})
-    client.post("/govern", data={"name": "Eve", "password": "bad", "text": "delete all"})
+    TestClient(app).post("/govern", data={"name": "Eve", "password": "bad", "text": "delete all"})
     assert [f["label"] for f in env] == ["govern", "wrong-pass"]
     assert all("shnitzel" not in f["body"] and "bad" not in f["body"] for f in env)
 
 
 def test_govern_as_member_needs_no_password(client, env):
-    member(client).post("/govern", data={"name": "Dana", "text": "x"})
-    assert env[-1]["label"] == "govern"
+    member(client, "Dana").post("/govern", data={"name": "Mallory", "text": "x"})
+    assert env[-1]["label"] == "govern" and "name: Dana" in env[-1]["body"]
+
+
+def test_govern_with_right_password_signs_in(client, env):
+    client.post("/govern", data={"name": "Dana", "password": "shnitzel", "text": "x"})
+    assert "Sending as Dana" in client.get("/govern").text
+
+
+def test_folding_and_lab_only_sections():
+    body = "# T\n\nintro\n\n## A\n\ntext\n\n### Sub\n\ns\n\n## B (lab only)\n\nhidden\n"
+    public, lab = content.fold(body, False), content.fold(body, True)
+    assert '<details id="a">' in public and '<details class="sub" id="sub">' in public
+    assert "hidden" not in public and "hidden" in lab and "lab only" in lab
 
 
 def test_govern_rate_limit(client, env):
@@ -90,4 +118,4 @@ def test_code_view_members_only_and_no_traversal(client):
 def test_password_change_logs_out(client, monkeypatch):
     m = member(client)
     monkeypatch.setenv("GOVERN_PASS", "falafel")
-    assert "Lab password" in m.get("/pages/onboarding").text
+    assert "Lab password" in m.get("/pages/lab").text

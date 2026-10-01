@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<p><a href="/log">← Log</a></p>
+<p><a href="/govern#rounds">← Rounds</a></p>
 <h1>Commit <code>{{ c.sha[:7] }}</code> <span class="muted">{{ c.date }}</span></h1>
 <pre class="pre">{{ c.message }}</pre>
 {% for f in c.files %}

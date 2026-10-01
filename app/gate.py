@@ -1,8 +1,9 @@
-"""Shared-password gate.
+"""Shared-password sign-in.
 
-One password (GOVERN_PASS) for the whole lab. Entering it sets a signed
-cookie; the cookie carries a fingerprint of the password, so changing the
-password logs everyone out. The password itself is never stored or logged.
+One password (GOVERN_PASS) for the whole lab. Signing in once (name +
+password) sets a signed cookie for a year; it carries the name (self-declared)
+and a fingerprint of the password, so changing the password signs everyone
+out. The password itself is never stored or logged.
 """
 
 import hashlib
@@ -12,8 +13,9 @@ import os
 from fastapi import Request
 from itsdangerous import BadSignature, URLSafeTimedSerializer
 
-COOKIE = "bgulab_member"
-MAX_AGE = 30 * 24 * 3600  # 30 days
+COOKIE = "bgulab_lab"
+MAX_AGE = 365 * 24 * 3600  # one year
+MAX_NAME = 60
 
 
 def _password() -> str:
@@ -26,7 +28,11 @@ def _fingerprint() -> str:
 
 def _serializer() -> URLSafeTimedSerializer:
     secret = os.environ.get("SESSION_SECRET", "") or "dev-only-secret"
-    return URLSafeTimedSerializer(secret, salt="member")
+    return URLSafeTimedSerializer(secret, salt="lab")
+
+
+def clean_name(name: str) -> str:
+    return " ".join(name.split())[:MAX_NAME]
 
 
 def password_ok(given: str) -> bool:
@@ -34,15 +40,19 @@ def password_ok(given: str) -> bool:
     return bool(expected) and hmac.compare_digest(given.strip().encode(), expected.encode())
 
 
-def member_cookie() -> str:
-    return _serializer().dumps(_fingerprint())
+def lab_cookie(name: str) -> str:
+    return _serializer().dumps({"f": _fingerprint(), "n": clean_name(name)})
 
 
-def is_member(request: Request) -> bool:
+def lab_name(request: Request) -> str | None:
+    """The signed-in member's name, or None if not signed in."""
     token = request.cookies.get(COOKIE)
     if not token or not _password():
-        return False
+        return None
     try:
-        return _serializer().loads(token, max_age=MAX_AGE) == _fingerprint()
+        data = _serializer().loads(token, max_age=MAX_AGE)
     except BadSignature:
-        return False
+        return None
+    if not isinstance(data, dict) or data.get("f") != _fingerprint():
+        return None
+    return data.get("n") or None

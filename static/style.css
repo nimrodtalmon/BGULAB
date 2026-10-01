@@ -60,8 +60,8 @@ th, td { border-bottom: 1px solid var(--line); padding: .4rem .5rem; text-align:
 section { margin-top: 2.5rem; }
 .procedure { border-left: 3px solid var(--line); padding-left: 1rem; }
 .tree { list-style: none; padding: 0; }
-.round { border-top: 1px solid var(--line); padding-top: .5rem; }
-.members-part { border-left: 3px solid var(--accent); padding-left: 1rem; }
+
+.lab-part { border-left: 3px solid var(--accent); padding-left: 1rem; }
 .diff span { display: block; }
 .diff .add { background: var(--add); }
 .diff .del { background: var(--del); }
@@ -76,3 +76,20 @@ section { margin-top: 2.5rem; }
   border: 0; border-radius: 4px; padding: .5rem 1.2rem; font: inherit; font-weight: 600; cursor: pointer;
 }
 .people li { margin-bottom: .3rem; }
+header nav a.here { text-decoration: underline; text-underline-offset: .3em; }
+.who { color: var(--muted); }
+details { border-top: 1px solid var(--line); padding: .4rem 0; }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+details > summary {
+  cursor: pointer; list-style: none; font: 600 17px/1.4 system-ui, sans-serif;
+  padding: .2rem 0;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before { content: "▸"; display: inline-block; width: 1.1em; color: var(--muted); }
+details[open] > summary::before { content: "▾"; }
+details > :not(summary) { margin-left: 1.1em; }
+details.sub { border: 0; padding: .1rem 0; }
+details.sub > summary { font-weight: 500; font-size: 16px; }
+.folds { margin-top: 2rem; }
+footer p { margin: .3rem 0; }
+blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); font-style: italic; }

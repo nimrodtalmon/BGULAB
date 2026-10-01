@@ -1,8 +1,9 @@
-"""Read the repo's content: pages, people, projects, rules, log, code.
+"""Read the repo's content: pages, people, rules, log, code.
 
 Everything the site shows comes from files in this repo. Nothing is written.
 """
 
+import html
 import re
 from pathlib import Path
 
@@ -14,6 +15,7 @@ CONTENT = ROOT / "content"
 LOG = ROOT / "log"
 
 SLUG = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+LAB_ONLY = re.compile(r"\s*\(lab only\)\s*$", re.I)
 CODE_SKIP_DIRS = {".git", "__pycache__", ".pytest_cache", ".ruff_cache", ".venv", "venv"}
 CODE_SKIP_FILES = re.compile(r"(\.pyc$|^\.env)")
 
@@ -33,42 +35,87 @@ def read_md(path: Path) -> tuple[dict, str]:
     return {}, raw
 
 
-def _doc(path: Path, slug: str) -> dict:
-    meta, body = read_md(path)
-    return {
-        "slug": slug,
-        "title": meta.get("title", slug),
-        "visibility": meta.get("visibility", "public"),
-        "meta": meta,
-        "html": render_md(body),
-    }
+def anchor(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+
+
+def _split(text: str, level: int) -> tuple[str, list[tuple[str, str]]]:
+    """Split Markdown at headings of one level, ignoring code fences.
+
+    Returns (text before the first heading, [(heading, text under it), ...]).
+    """
+    mark = "#" * level + " "
+    intro, parts, fence = [], [], False
+    for line in text.splitlines():
+        if line.startswith("```"):
+            fence = not fence
+        if not fence and line.startswith(mark):
+            parts.append([line[len(mark):].strip(), []])
+        elif parts:
+            parts[-1][1].append(line)
+        else:
+            intro.append(line)
+    return "\n".join(intro), [(h, "\n".join(b)) for h, b in parts]
+
+
+def _summary(title: str, lab: bool) -> str:
+    tag = ' <span class="tag">lab only</span>' if lab else ""
+    return f"<summary>{html.escape(title)}{tag}</summary>"
+
+
+def fold(body: str, lab: bool) -> str:
+    """Render a page with every `##` (and nested `###`) section collapsed.
+
+    A heading ending in "(lab only)" is shown only to signed-in lab members.
+    The top `#` heading becomes the page title and is dropped here.
+    """
+    body = re.sub(r"\A\s*# .*\n", "", body)
+    intro, sections = _split(body, 2)
+    out = [render_md(intro)]
+    for title, text in sections:
+        hidden = bool(LAB_ONLY.search(title))
+        if hidden and not lab:
+            continue
+        title = LAB_ONLY.sub("", title)
+        sub_intro, subs = _split(text, 3)
+        inner = [render_md(sub_intro)]
+        for sub_title, sub_text in subs:
+            sub_hidden = bool(LAB_ONLY.search(sub_title))
+            if sub_hidden and not lab:
+                continue
+            sub_title = LAB_ONLY.sub("", sub_title)
+            inner.append(f'<details class="sub" id="{anchor(sub_title)}">'
+                         f"{_summary(sub_title, sub_hidden)}{render_md(sub_text)}</details>")
+        out.append(f'<details id="{anchor(title)}">{_summary(title, hidden)}'
+                   f'{"".join(inner)}</details>')
+    return "\n".join(out)
 
 
 def page(slug: str) -> dict | None:
     if not SLUG.match(slug):
         return None
     path = CONTENT / "pages" / f"{slug}.md"
-    return _doc(path, slug) if path.is_file() else None
-
-
-def projects() -> list[dict]:
-    folder = CONTENT / "projects"
-    if not folder.is_dir():
-        return []
-    return [_doc(p, p.stem) for p in sorted(folder.glob("*.md"))]
-
-
-def project(slug: str) -> dict | None:
-    if not SLUG.match(slug):
+    if not path.is_file():
         return None
-    path = CONTENT / "projects" / f"{slug}.md"
-    return _doc(path, slug) if path.is_file() else None
+    meta, body = read_md(path)
+    visibility = meta.get("visibility", "public")
+    return {
+        "slug": slug,
+        "title": meta.get("title", slug),
+        "lab_only": visibility in ("lab", "members"),
+        "body": body,
+    }
 
 
 def people() -> dict:
     path = CONTENT / "people.yaml"
     data = yaml.safe_load(path.read_text(encoding="utf-8")) if path.is_file() else {}
     return {"present": data.get("present", []) or [], "past": data.get("past", []) or []}
+
+
+def footer_html() -> str:
+    path = CONTENT / "footer.md"
+    return render_md(read_md(path)[1]) if path.is_file() else ""
 
 
 def rules_html() -> str:
@@ -82,11 +129,11 @@ def claude_md_html() -> str:
 
 
 def _split_round(body: str) -> tuple[str, str]:
-    """Return (public part, members part) of a round file body."""
-    parts = re.split(r"^## Members\s*$", body, maxsplit=1, flags=re.M)
+    """Return (public part, lab part) of a round file body."""
+    parts = re.split(r"^## (?:Lab|Members)\s*$", body, maxsplit=1, flags=re.M)
     public = re.sub(r"^## Public\s*$", "", parts[0], count=1, flags=re.M).strip()
-    members = parts[1].strip() if len(parts) > 1 else ""
-    return public, members
+    lab = parts[1].strip() if len(parts) > 1 else ""
+    return public, lab
 
 
 def rounds() -> list[dict]:
@@ -95,7 +142,7 @@ def rounds() -> list[dict]:
     out = []
     for path in LOG.glob("round-*.md"):
         meta, body = read_md(path)
-        public, members = _split_round(body)
+        public, lab = _split_round(body)
         out.append(
             {
                 "number": int(meta.get("round", path.stem.split("-")[-1])),
@@ -103,7 +150,7 @@ def rounds() -> list[dict]:
                 "title": meta.get("title", ""),
                 "commits": meta.get("commits", []) or [],
                 "public_html": render_md(public),
-                "members_html": render_md(members),
+                "lab_html": render_md(lab),
             }
         )
     return sorted(out, key=lambda r: r["number"], reverse=True)
