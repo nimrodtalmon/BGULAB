@@ -50,7 +50,7 @@ app/                      FastAPI server
   gate.py                 shared-password gate (signed cookie)
   govern.py               Govern form → GitHub issue
   github.py               issues and commits (read/write via GITHUB_TOKEN)
-  pages.py                Markdown/YAML → HTML, public vs members view
+  content.py              reads pages, people, projects, rules, log, code
 templates/, static/       Jinja2 + one CSS file, no JS build
 tests/                    offline tests (GitHub faked)
 render.yaml               deploy blueprint
