@@ -42,6 +42,22 @@ test bed.
 - Delegation with voter commitment
 - Liquid democracy vs. lot
 
+## Work in progress (lab only)
+
+Where each project stands: stage, and where a paper is submitted or
+accepted. Each project's members keep their own line up to date, with
+Govern, before lab meetings.
+
+| project | where it stands | next |
+|---|---|---|
+| Grassroots federation formation | — | — |
+| AI-Agora | — | — |
+| Collective control of AI agents | — | — |
+| Token-based peer review | — | — |
+| Topic-based liquid democracy | — | — |
+| Delegation with voter commitment | — | — |
+| Liquid democracy vs. lot | — | — |
+
 ## Key terms
 
 For newcomers: the words used on this site, each with one place to start.
