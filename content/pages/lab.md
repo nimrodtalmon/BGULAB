@@ -39,7 +39,10 @@ For papers, talks, and code coming out of the lab:
 
 ## Reading list
 
-- Handbook of Computational Social Choice
-- Trends in Computational Social Choice
+- [Handbook of Computational Social Choice](https://www.cambridge.org/9781107060432)
+  (Brandt, Conitzer, Endriss, Lang, Procaccia, eds., 2016)
+- [Trends in Computational Social Choice](https://archive.illc.uva.nl/COST-IC1205/BookDocs/TrendsCOMSOC.pdf)
+  (Endriss, ed., 2017)
+- Key terms, with a first paper or system for each: [Research](/#key-terms)
 - On science communication
 - On how to present
