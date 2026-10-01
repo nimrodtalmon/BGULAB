@@ -2,7 +2,7 @@
 round: 0
 date: 2026-10-01
 title: the site is set up
-commits: []
+commits: [54ab5d8725c033b527b744cd594074f4e3a71b2f]
 ---
 ## Public
 
@@ -14,7 +14,7 @@ three rules (see How), the Govern button for requests, and this Log.
 
 | # | name | request | decision | reason | commits |
 |---|------|---------|----------|--------|---------|
-| — | Nimrod | admin change: initial build | done | starting point, designed with Claude in chat | see below |
+| — | Nimrod | admin change: initial build | done | starting point, designed with Claude in chat | 54ab5d8 |
 
 Wrong-pass submissions: none.
 
