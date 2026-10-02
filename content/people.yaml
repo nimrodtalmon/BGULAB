@@ -15,31 +15,29 @@ present:
     slug: berihu-michiale-haileselassie
     role: PhD student
     links: {}
-  - name: Avital Finanser
-    slug: avital-finanser
-    role: MSc student
-    links: {}
   - name: Nir Soffer
     slug: nir-soffer
     role: MSc student
     links: {}
 
 past:
-  - name: Shiri Hefetz
-    role: PhD
-  - name: Ouri Poupku
-    role: Postdoc
-  - name: Krzysztof Sornat
-    role: Postdoc
-    now: Wroclaw
   - name: Pallavi Jain
     role: Postdoc
     now: IIT Jodhpur
-  - name: Eyal Leizerovich
-    role: MSc
-  - name: Rutvik Page
-    role: RA
+  - name: Krzysztof Sornat
+    role: Postdoc
+    now: Wroclaw
+  - name: Ouri Poupku
+    role: Postdoc
+  - name: Shiri Hefetz
+    role: PhD
   - name: Lior Ashkenazy
     role: MSc
   - name: Gil Leibiker
     role: MSc
+  - name: Eyal Leizerovich
+    role: MSc
+  - name: Avital Finanser
+    role: MSc
+  - name: Rutvik Page
+    role: RA

@@ -114,6 +114,7 @@ ROLE_GROUPS = [
     ("Postdocs", ("postdoc",)),
     ("PhD students", ("phd student", "phd")),
     ("MSc students", ("msc student", "msc")),
+    ("RAs", ("ra",)),
 ]
 OTHER_GROUP = "Other"
 
