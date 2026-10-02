@@ -2,7 +2,7 @@
 round: 5
 date: 2026-10-02
 title: A sharper Research intro
-commits: [17cdf77c9fb83d756a00b1bcf8f305951ba70560]
+commits: [17cdf77c9fb83d756a00b1bcf8f305951ba70560, 39055ae1de7ab67a7d32760987350e3faaf47ca0]
 ---
 ## Public
 
@@ -18,6 +18,7 @@ code", covers governance executed by protocols, as in DAOs.
 | # | name | request | decision | reason | commits |
 |---|------|---------|----------|--------|---------|
 | — | Nimrod | admin change: Research intro rewrite; rename "Humans with AI" to "Humans and their AI agents"; add "Humans with code" (two projects, also in Work in progress) | done | sharper framing of the lab; Nimrod's call, worked out in chat | 17cdf77 |
+| — | Nimrod | admin change: People grouped by role, seniority within groups (file order = seniority); Nir Soffer listed as MSc student | done | clearer People page; Nimrod's call, worked out in chat | 39055ae |
 
 Wrong-pass submissions: none counted (no round run).
 
