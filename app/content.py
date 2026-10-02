@@ -107,10 +107,39 @@ def page(slug: str) -> dict | None:
     }
 
 
+# People are shown grouped by role, in this order. Within a group, the order
+# of people.yaml is kept: earliest first (new people are appended).
+ROLE_GROUPS = [
+    ("PI", ("pi",)),
+    ("Postdocs", ("postdoc",)),
+    ("PhD students", ("phd student", "phd")),
+    ("MSc students", ("msc student", "msc")),
+]
+OTHER_GROUP = "Other"
+
+
+def group_people(people: list) -> list:
+    """[(heading, [person, ...]), ...] in ROLE_GROUPS order; empty groups dropped."""
+    groups = {h: [] for h, _ in ROLE_GROUPS}
+    groups[OTHER_GROUP] = []
+    for p in people:
+        role = str(p.get("role", "")).strip().lower()
+        heading = next((h for h, roles in ROLE_GROUPS if role in roles), OTHER_GROUP)
+        groups[heading].append(p)
+    return [(h, ps) for h, ps in groups.items() if ps]
+
+
 def people() -> dict:
     path = CONTENT / "people.yaml"
     data = yaml.safe_load(path.read_text(encoding="utf-8")) if path.is_file() else {}
-    return {"present": data.get("present", []) or [], "past": data.get("past", []) or []}
+    present = data.get("present", []) or []
+    past = data.get("past", []) or []
+    return {
+        "present": present,
+        "past": past,
+        "present_groups": group_people(present),
+        "past_groups": group_people(past),
+    }
 
 
 def footer_html() -> str:

@@ -1,4 +1,5 @@
-# People of the Digital Cooperation Lab (shown on /people).
+# People of the Digital Cooperation Lab (shown on /people, grouped by role).
+# Within a role, list order is seniority: earliest first; append new people.
 present:
   - name: Nimrod Talmon
     slug: nimrod-talmon
@@ -20,7 +21,7 @@ present:
     links: {}
   - name: Nir Soffer
     slug: nir-soffer
-    role: Member
+    role: MSc student
     links: {}
 
 past:

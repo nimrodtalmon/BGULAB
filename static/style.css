@@ -130,6 +130,7 @@ section { margin-top: 2.5rem; }
   border: 0; border-radius: 4px; padding: .5rem 1.2rem; font: inherit; font-weight: 600; cursor: pointer;
 }
 .people li { margin-bottom: .3rem; }
+.people-group { margin: 1rem 0 .3rem; }
 details { border-top: 1px solid var(--line); padding: .4rem 0; }
 details:last-of-type { border-bottom: 1px solid var(--line); }
 details > summary {
