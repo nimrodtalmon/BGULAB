@@ -19,6 +19,18 @@ present:
     slug: nir-soffer
     role: MSc student
     links: {}
+  - name: Inbar Arbel
+    slug: inbar-arbel
+    role: MSc student
+    links: {}
+  - name: Inbar Gerera
+    slug: inbar-gerera
+    role: MSc student
+    links: {}
+  - name: Gefen Ben Shoshan
+    slug: gefen-ben-shoshan
+    role: MSc student
+    links: {}
 
 past:
   - name: Pallavi Jain
