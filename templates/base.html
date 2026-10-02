@@ -44,25 +44,41 @@
 <main>
 {% block main %}{% endblock %}
 </main>
-<footer>
-  {{ footer | safe }}
-  <p>Deployed commit <code>{{ commit }}</code>{% if latest_round is not none %},
-  from <a href="/govern#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}.
-  How this site works and what happened to it: <a href="/govern">Govern</a>.</p>
-</footer>
 <script>
+var lastOpen = "";
 // Open the collapsed sections that hold the linked-to part of the page.
 function openTarget() {
   var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (el && el.tagName === "DIALOG") { openProject(el); return; }
   var target = el;
   for (; el; el = el.parentElement) if (el.tagName === "DETAILS") el.open = true;
   if (target) target.scrollIntoView();
 }
-window.addEventListener("hashchange", openTarget);
-openTarget();
+
+// Research: each project opens in a popup; its address is the page + #project.
+function openProject(d) {
+  if (!d.showModal) { d.setAttribute("open", ""); return; }
+  if (!d.open) d.showModal();
+  lastOpen = "#" + d.id;
+  history.replaceState(null, "", "#" + d.id);
+}
+document.querySelectorAll("[data-pop]").forEach(function (a) {
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+    openProject(document.getElementById(a.dataset.pop));
+  });
+});
+document.querySelectorAll("dialog.project-pop").forEach(function (d) {
+  d.addEventListener("close", function () { history.replaceState(null, "", location.pathname); });
+  d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+  d.querySelector("[value=close]").addEventListener("click", function () { d.close(); });
+  d.querySelector("[data-govern]").addEventListener("click", function () {
+    d.close(); lastOpen = "#" + d.id;
+    document.getElementById("govern-open").click();
+  });
+});
 
 // Govern: where the reader is (page, and the section opened last).
-var lastOpen = "";
 document.addEventListener("toggle", function (e) {
   if (e.target.tagName === "DETAILS" && e.target.open && e.target.id) lastOpen = "#" + e.target.id;
 }, true);
@@ -106,6 +122,8 @@ if (pop && pop.showModal) {
       });
   });
 }
+window.addEventListener("hashchange", openTarget);
+openTarget();
 </script>
 </body>
 </html>

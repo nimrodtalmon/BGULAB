@@ -20,8 +20,8 @@ members, decided in rounds.
 
 1. **Everything is visible on the site.** Whatever decides how the site
    behaves (rules, this file, code) and whatever happened (requests,
-   decisions, reasons, commits) are on `/govern`. Every page footer shows
-   the deployed commit and links to the round that produced it.
+   decisions, reasons, commits) are on `/govern`, which also shows the
+   deployed commit and links to the round that produced it.
 2. **Every change is logged.** Members change the site through requests
    decided in rounds. Nimrod may also change it directly in a session; such
    a change is logged as an *admin change* with a one-line reason, in the
@@ -33,8 +33,9 @@ members, decided in rounds.
    lab members in, and turns Govern submissions into issues. Losing the host
    loses nothing.
 5. **No LLM API key.** All LLM work happens in Claude sessions run by Nimrod.
-6. **Visitors never see names, raw request text, or unpublished
-   research.** Those are shown only to signed-in lab members.
+6. **Visitors never see the names or raw text behind requests.** Those
+   are shown only to signed-in lab members. The Research page, including
+   current projects and their owners, is public.
 
 ## 3. Map
 
@@ -42,17 +43,19 @@ members, decided in rounds.
 CLAUDE.md                 this file (on /govern, "How this works")
 content/rules.md          the governance rules (on /govern)
 content/pages/*.md        site pages (YAML frontmatter: title, visibility),
-                          served at /pages/<slug>; home.md is / (Research,
-                          with projects and publications), lab.md is Lab
+                          served at /pages/<slug>; home.md is / (Research;
+                          its "[[projects]]" line becomes the project boxes),
+                          lab.md is Lab
+content/projects.yaml     current projects, one box per theme on Research
 content/people.yaml       lab members, past and present
-content/footer.md         contact line in every page footer
+content/footer.md         contact details (kept; not shown for now)
 log/round-NNNN.md         one file per round (see §7)
 app/                      FastAPI server
   main.py                 routes (old addresses redirect)
   gate.py                 sign-in: shared password, signed cookie with name
   govern.py               Govern form → GitHub issue
   github.py               issues and commits (read/write via GITHUB_TOKEN)
-  content.py              reads pages, people, projects, rules, log, code
+  content.py              reads pages, projects, people, rules, log, code
 templates/, static/       Jinja2 + one CSS file, no JS build
 tests/                    offline tests (GitHub faked)
 render.yaml               deploy blueprint
@@ -98,7 +101,7 @@ changes only by request.
 4. Implement approved requests, one commit per request:
    `round N: #12 <short summary>`.
 5. Write `log/round-NNNN.md` (§7). Run `pytest -q`.
-6. `git pull --rebase`, push. Check the deployed footer shows the new commit.
+6. `git pull --rebase`, push. Check the Govern page shows the new commit.
 7. Close every handled issue with its decision, reason, and round number.
    Close `wrong-pass` issues as "not counted".
 
@@ -138,13 +141,14 @@ Diffs are fetched from GitHub by commit and shown to signed-in lab members.
 - **Add a page:** `content/pages/<slug>.md` with `title` and `visibility`
   (`public` or `lab`). Prefer a new section in an existing page.
 - **Add a person:** append to `content/people.yaml`.
-- **Add a project:** a bullet under its theme in `content/pages/home.md`;
-  once it has a description, a `###` section under the theme.
+- **Add a project:** an entry under its theme in `content/projects.yaml`
+  (title, owners; about, status, next once known). It opens in a popup on
+  Research. When it is done (e.g., the paper is out), remove it: published
+  work is on DBLP and Scholar.
 - **Change visibility:** the frontmatter field (whole page) or a
   `(lab only)` heading suffix (one section).
-- **Publications:** the Publications section of `content/pages/home.md`
-  links to DBLP (pid 53/11268) and Scholar; a generated list can be added by
-  request.
+- **Publications:** the Research intro links to DBLP (pid 53/11268) and
+  Scholar; a generated list can be added by request.
 
 ## 9. Deploy and secrets
 

@@ -142,3 +142,17 @@ def test_govern_popup_records_page_and_answers_json(client, env):
 
 def test_research_tab():
     assert ("/", "Research") in __import__("app.main", fromlist=["NAV"]).NAV
+
+
+def test_research_shows_project_boxes_and_popups(client):
+    html = client.get("/").text
+    assert "[[projects]]" not in html
+    for t in content.projects():
+        assert t["title"] in html
+        for p in t["projects"]:
+            assert f'data-pop="{p["id"]}"' in html and f'<dialog class="pop project-pop" id="{p["id"]}"' in html
+
+
+def test_commit_shown_on_govern_not_in_footer(client):
+    assert "<footer>" not in client.get("/").text
+    assert "Deployed commit" in client.get("/govern").text

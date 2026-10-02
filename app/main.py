@@ -21,12 +21,16 @@ NAV = [("/", "Research"), ("/people", "People"), ("/pages/lab", "Lab")]  # the b
 
 # Old addresses, kept working after the round-2 merge.
 MOVED = {
-    "/pages/home": "/", "/pages/research": "/", "/pages/publications": "/#publications",
+    "/pages/home": "/", "/pages/research": "/", "/pages/publications": "/",
     "/projects": "/", "/pages/contact": "/people",
     "/pages/onboarding": "/pages/lab", "/pages/resources": "/pages/lab",
     "/pages/style-guide": "/pages/lab",
     "/how": "/govern#how-this-works", "/log": "/govern#rounds",
 }
+
+
+# A page line "[[projects]]" is replaced by the project boxes.
+PROJECTS_MARK = "<p>[[projects]]</p>"
 
 
 def deployed_commit() -> str:
@@ -43,7 +47,6 @@ def render(request: Request, template: str, status: int = 200, **ctx) -> HTMLRes
         nav=NAV,
         commit=deployed_commit(),
         latest_round=rounds[0]["number"] if rounds else None,
-        footer=content.footer_html(),
     )
     return templates.TemplateResponse(request, template, ctx, status_code=status)
 
@@ -65,8 +68,11 @@ def show_page(request: Request, slug: str) -> HTMLResponse:
     lab = lab_name(request) is not None
     if doc["lab_only"] and not lab:
         return sign_in_page(request, doc["title"])
-    return render(request, "page.html", doc=doc, title=doc["title"],
-                  body=content.fold(doc["body"], lab))
+    body = content.fold(doc["body"], lab)
+    if PROJECTS_MARK in body:
+        boxes = templates.get_template("projects.html").render(themes=content.projects())
+        body = body.replace(PROJECTS_MARK, boxes)
+    return render(request, "page.html", doc=doc, title=doc["title"], body=body)
 
 
 def set_lab_cookie(request: Request, resp, name: str):

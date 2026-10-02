@@ -89,11 +89,6 @@ button.link {
   font: inherit; cursor: pointer; text-decoration: underline;
 }
 main { max-width: 760px; margin: 2rem auto; padding: 0 16px; }
-footer {
-  max-width: 760px; margin: 3rem auto 2rem; padding: 1rem 16px 0;
-  border-top: 1px solid var(--line); color: var(--muted);
-  font: 13px/1.5 system-ui, sans-serif;
-}
 a { color: var(--accent); }
 h1, h2, h3 { line-height: 1.25; }
 code, pre { font: 14px/1.5 ui-monospace, Menlo, Consolas, monospace; }
@@ -144,7 +139,6 @@ details > :not(summary) { margin-left: 1.1em; }
 details.sub { border: 0; padding: .1rem 0; }
 details.sub > summary { font-weight: 500; font-size: 16px; }
 .folds { margin-top: 2rem; }
-footer p { margin: .3rem 0; }
 blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); font-style: italic; }
 
 dialog.pop {
@@ -159,3 +153,25 @@ dialog.pop .result:empty { display: none; }
 .govern-form .actions { display: flex; align-items: center; gap: 1rem; }
 .govern-form button:disabled { opacity: .5; cursor: default; }
 .govern-form button.link { background: none; color: var(--muted); padding: 0; font-weight: 400; }
+
+/* Research: one box per theme; each project opens in a popup. */
+.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+@media (max-width: 760px) { .themes { grid-template-columns: 1fr; } }
+.theme {
+  margin: 0; border: 1px solid var(--line); border-top: 3px solid var(--accent);
+  border-radius: 10px; padding: .9rem 1rem 1rem; background: var(--code-bg);
+  font-family: system-ui, sans-serif;
+}
+.theme h2 { margin: 0 0 .3rem; font-size: 17px; }
+.theme > p { margin: 0 0 .7rem; font-size: 13px; line-height: 1.4; }
+.theme ul { list-style: none; margin: 0; padding: 0; }
+.theme li { padding: .35rem 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.35; }
+.theme a.project { color: var(--fg); text-decoration: none; font-weight: 500; }
+.theme a.project:hover { color: var(--accent); text-decoration: underline; }
+.owners { display: block; color: var(--muted); font-size: 12.5px; }
+dialog.project-pop { font-family: system-ui, sans-serif; }
+dialog.project-pop h2 { margin: .1rem 0 .2rem; }
+dialog.project-pop p { margin: .5rem 0; line-height: 1.5; font-size: 15px; }
+dialog.project-pop > p.muted:first-child { margin: 0; font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; }
+dialog.project-pop .owners { font-size: 13.5px; margin-top: 0; }
+dialog.project-pop .actions { display: flex; gap: 1rem; margin-top: 1rem; font-size: 14px; }

@@ -1,4 +1,4 @@
-"""Read the repo's content: pages, people, rules, log, code.
+"""Read the repo's content: pages, projects, people, rules, log, code.
 
 Everything the site shows comes from files in this repo. Nothing is written.
 """
@@ -143,9 +143,24 @@ def people() -> dict:
     }
 
 
-def footer_html() -> str:
-    path = CONTENT / "footer.md"
-    return render_md(read_md(path)[1]) if path.is_file() else ""
+def projects() -> list[dict]:
+    """Themes with their current projects (content/projects.yaml), ready to render."""
+    path = CONTENT / "projects.yaml"
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    themes = []
+    for t in data.get("themes", []) or []:
+        items = []
+        for p in t.get("projects", []) or []:
+            items.append({
+                "title": p["title"],
+                "id": anchor(p["title"]),
+                "owners": [str(o) for o in p.get("owners", []) or []],
+                "about_html": render_md(p.get("about", "") or ""),
+                "status": p.get("status", "") or "",
+                "next": p.get("next", "") or "",
+            })
+        themes.append({"title": t["title"], "about": t.get("about", ""), "projects": items})
+    return themes
 
 
 def rules_html() -> str:

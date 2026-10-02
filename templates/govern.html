@@ -3,6 +3,8 @@
 <h1>Govern</h1>
 <p>Ask for any change to this site, or to its rules. Requests are decided
 before each lab meeting. To back someone else's request, say so ("+1 on #12").</p>
+<p class="muted">Deployed commit <code>{{ commit }}</code>{% if latest_round is not none %},
+from <a href="#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}.</p>
 
 {% if result %}
 <p class="{{ 'ok' if result.ok else 'error' }}">{{ result.message }}</p>

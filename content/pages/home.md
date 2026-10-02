@@ -9,60 +9,11 @@ cooperative AI, game theory, and combinatorial optimization.
 Methodologically, we build, analyze, and simulate mathematical models
 towards collective decision-making mechanisms that are efficient and fair.
 
-The work is organized by who cooperates with whom:
+Our current work is organized by who cooperates with whom. Work already
+published is on [DBLP](https://dblp.org/pid/53/11268) and
+[Google Scholar](https://scholar.google.com/citations?user=dSfOjCQAAAAJ).
 
-## Humans and their AI agents
-
-- Grassroots federation formation
-
-### AI-Agora
-
-Each person has a personal AI agent that finds others, negotiates, and
-forms groups on their behalf. People keep the last word: a hard veto over
-what their agent agrees to.
-
-### Collective control of AI agents (lab only)
-
-How a group jointly steers an AI agent it shares: which decisions go to the
-group, through which channels (configuration, shared memory, runtime
-approvals), and how the members' inputs are aggregated. A joint FWF–ISF
-proposal with Martin Lackner (USTP) is in preparation; this site is a small
-test bed.
-
-## AI reviewed by humans and AI
-
-- Token-based peer review
-
-## Humans with humans
-
-- Topic-based liquid democracy
-- Delegation with voter commitment
-- Liquid democracy vs. lot
-
-## Humans with code
-
-Governance that is executed by protocols rather than by people, as in DAOs.
-
-- Simulation-based DAO governance
-- Adaptive supermajority
-
-## Work in progress (lab only)
-
-Where each project stands: stage, and where a paper is submitted or
-accepted. Each project's members keep their own line up to date, with
-Govern, before lab meetings.
-
-| project | where it stands | next |
-|---|---|---|
-| Grassroots federation formation | — | — |
-| AI-Agora | — | — |
-| Collective control of AI agents | — | — |
-| Token-based peer review | — | — |
-| Topic-based liquid democracy | — | — |
-| Delegation with voter commitment | — | — |
-| Liquid democracy vs. lot | — | — |
-| Simulation-based DAO governance | — | — |
-| Adaptive supermajority | — | — |
+[[projects]]
 
 ## Key terms
 
@@ -111,8 +62,3 @@ governed collectively by its members, on a blockchain. An introduction:
 
 - [PERYCLES](https://perycles-project.eu/): Participatory Democracy that
   Scales, EU Horizon Europe, 2025–2027.
-
-## Publications
-
-The full list is on [DBLP](https://dblp.org/pid/53/11268) and
-[Google Scholar](https://scholar.google.com/citations?user=dSfOjCQAAAAJ).

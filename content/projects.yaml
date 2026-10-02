@@ -1,0 +1,53 @@
+# Current projects, shown as boxes on the Research page (one box per theme).
+# Each project: title, owners (full names, as on People), and optionally about, status,
+# next (Markdown). A project's owners keep its entry up to date via Govern.
+# When a project is done (e.g., its paper is out), it leaves this list:
+# published work is on DBLP and Google Scholar.
+
+themes:
+  - title: Humans with humans
+    about: How people decide together, by delegating and by lot.
+    projects:
+      - title: Topic-based liquid democracy
+        owners: [Eyal Briman]
+      - title: Delegation with voter commitment
+        owners: [Joel Van Der Boo]
+      - title: Liquid democracy vs. lot
+        owners: [Eyal Briman]
+      - title: Grassroots federation formation
+        owners: []
+
+  - title: Humans with AI
+    about: People and AI agents deciding, reviewing, and acting together.
+    projects:
+      - title: AI-Agora
+        owners: [Inbar Arbel, Gefen Ben Shoshan]
+        about: |
+          Each person has a personal AI agent that finds others, negotiates,
+          and forms groups on their behalf. People keep the last word: a hard
+          veto over what their agent agrees to.
+      - title: Collective control of AI agents
+        owners: [Nimrod Talmon]
+        about: |
+          How a group jointly steers an AI agent it shares: which decisions
+          go to the group, through which channels (configuration, shared
+          memory, runtime approvals), and how the members' inputs are
+          aggregated. Part of it: social choice for multi-contributor
+          retrieval. A joint FWF–ISF proposal with Martin Lackner (USTP) is
+          in preparation; this site is a small test bed.
+      - title: Token-based peer review
+        owners: []
+        about: |
+          The SSVA paper is to be presented at AI-Native Academia.
+
+  - title: Humans with code
+    about: Governance that is executed by protocols rather than by people, as in DAOs.
+    projects:
+      - title: Adaptive supermajority
+        owners: [Inbar Gerera]
+      - title: SimGov
+        owners: [Berihu Michiale Haileselassie]
+      - title: LLM voting, accuracy and correlation
+        owners: []
+        about: |
+          Motivated by Cardano's Catalyst.

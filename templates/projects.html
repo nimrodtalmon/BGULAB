@@ -1,0 +1,28 @@
+<div class="themes">
+{% for t in themes %}
+<section class="theme">
+  <h2>{{ t.title }}</h2>
+  {% if t.about %}<p class="muted">{{ t.about }}</p>{% endif %}
+  <ul>
+  {% for p in t.projects %}
+    <li><a class="project" href="#{{ p.id }}" data-pop="{{ p.id }}">{{ p.title }}</a>
+      {% if p.owners %}<span class="owners">{{ p.owners | join(", ") }}</span>{% endif %}</li>
+  {% endfor %}
+  </ul>
+</section>
+{% endfor %}
+</div>
+{% for t in themes %}{% for p in t.projects %}
+<dialog class="pop project-pop" id="{{ p.id }}" aria-labelledby="{{ p.id }}-title">
+  <p class="muted">{{ t.title }}</p>
+  <h2 id="{{ p.id }}-title">{{ p.title }}</h2>
+  {% if p.owners %}<p class="owners">{{ p.owners | join(", ") }}</p>{% endif %}
+  {% if p.about_html %}{{ p.about_html | safe }}{% else %}<p class="muted">Details to come.</p>{% endif %}
+  {% if p.status %}<p><b>Where it stands:</b> {{ p.status }}</p>{% endif %}
+  {% if p.next %}<p><b>Next:</b> {{ p.next }}</p>{% endif %}
+  <div class="actions">
+    <button type="button" class="link" data-govern>Request a change</button>
+    <button type="button" class="link" value="close">Close</button>
+  </div>
+</dialog>
+{% endfor %}{% endfor %}
