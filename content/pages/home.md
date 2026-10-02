@@ -4,17 +4,14 @@ title: Digital Cooperation Lab
 # Digital Cooperation Lab
 
 We study how humans and AI agents, in varying combinations, reach good
-collective decisions together. We draw on computational social choice, AI,
-game theory, and combinatorial optimization, with an emphasis on the
-blockchain/DAO ecosystem.
-
-Our method: mathematical models stress-tested in simulation,
-towards a principled environment for tuning governance parameters (partially
-funded by IOG / Cardano).
+collective decisions together. We draw on computational social choice,
+cooperative AI, game theory, and combinatorial optimization.
+Methodologically, we build, analyze, and simulate mathematical models
+towards collective decision-making mechanisms that are efficient and fair.
 
 The work is organized by who cooperates with whom:
 
-## Humans with AI
+## Humans and their AI agents
 
 - Grassroots federation formation
 
@@ -42,6 +39,13 @@ test bed.
 - Delegation with voter commitment
 - Liquid democracy vs. lot
 
+## Humans with code
+
+Governance that is executed by protocols rather than by people, as in DAOs.
+
+- Simulation-based DAO governance
+- Adaptive supermajority
+
 ## Work in progress (lab only)
 
 Where each project stands: stage, and where a paper is submitted or
@@ -57,6 +61,8 @@ Govern, before lab meetings.
 | Topic-based liquid democracy | — | — |
 | Delegation with voter commitment | — | — |
 | Liquid democracy vs. lot | — | — |
+| Simulation-based DAO governance | — | — |
+| Adaptive supermajority | — | — |
 
 ## Key terms
 
