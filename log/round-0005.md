@@ -13,6 +13,10 @@ that are efficient and fair), and no longer singles out blockchain. "Humans
 with AI" is now "Humans and their AI agents", and a new theme, "Humans with
 code", covers governance executed by protocols, as in DAOs.
 
+Also as an admin change, the People page is now grouped by role (PI,
+postdocs, PhD students, MSc students, other), alumni too; within a group,
+people are listed by seniority, earliest first.
+
 ## Lab
 
 | # | name | request | decision | reason | commits |
