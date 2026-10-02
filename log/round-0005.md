@@ -16,7 +16,8 @@ code", covers governance executed by protocols, as in DAOs.
 Also as an admin change, the People page is now grouped by role (PI,
 postdocs, PhD students, MSc students, other), alumni too; within a group,
 people are listed by seniority, earliest first. Alumni are now in that
-order, one MSc student moved to alumni, and RAs have their own group. Three MSc students were added.
+order, one MSc student moved to alumni, RAs have their own group, and
+three MSc students were added.
 
 ## Lab
 
