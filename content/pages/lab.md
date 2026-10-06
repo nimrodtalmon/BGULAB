@@ -38,6 +38,12 @@ New in the lab? Go through this list.
   the rules and what happened are on the same page.
 - **Asking things:** ask early, in the open.
 
+### House style
+
+- **How to write:** to be written.
+- **How to present:** to be written.
+- **How to review:** to be written.
+
 ## Lab meetings
 
 Before each lab meeting, every member adds a line under Next meeting, with
@@ -52,19 +58,3 @@ meetings.
 ### Past meetings
 
 - (none yet)
-
-## House style
-
-To be written.
-
-### How to write
-
-To be written.
-
-### How to present
-
-To be written.
-
-### How to review
-
-To be written.
