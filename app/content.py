@@ -20,8 +20,21 @@ CODE_SKIP_DIRS = {".git", "__pycache__", ".pytest_cache", ".ruff_cache", ".venv"
 CODE_SKIP_FILES = re.compile(r"(\.pyc$|^\.env)")
 
 
+TERM_LINK = re.compile(r'href="term:([a-z0-9-]+)"')
+
+
 def render_md(text: str) -> str:
-    return markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"])
+    html_ = markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"])
+    # [text](term:<id>) opens the key term's popup (templates/terms.html).
+    return TERM_LINK.sub(r'href="#term-\1" class="term" data-pop="term-\1"', html_)
+
+
+def terms() -> list[dict]:
+    """Key terms (content/terms.yaml), each shown in a popup."""
+    path = CONTENT / "terms.yaml"
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    return [{"id": "term-" + t["id"], "title": t["title"], "about_html": render_md(t.get("about", ""))}
+            for t in data.get("terms", []) or []]
 
 
 def read_md(path: Path) -> tuple[dict, str]:
@@ -159,7 +172,7 @@ def projects() -> list[dict]:
                 "status": p.get("status", "") or "",
                 "next": p.get("next", "") or "",
             })
-        themes.append({"title": t["title"], "about": t.get("about", ""), "projects": items})
+        themes.append({"title": t["title"], "about_html": render_md(t.get("about", "")), "projects": items})
     return themes
 
 

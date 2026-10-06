@@ -45,6 +45,7 @@
 <main>
 {% block main %}{% endblock %}
 </main>
+{% include "terms.html" %}
 <script>
 var lastOpen = "";
 // Open the collapsed sections that hold the linked-to part of the page.
@@ -73,7 +74,8 @@ document.querySelectorAll("dialog.project-pop").forEach(function (d) {
   d.addEventListener("close", function () { history.replaceState(null, "", location.pathname); });
   d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
   d.querySelector("[value=close]").addEventListener("click", function () { d.close(); });
-  d.querySelector("[data-govern]").addEventListener("click", function () {
+  var g = d.querySelector("[data-govern]");
+  if (g) g.addEventListener("click", function () {
     d.close(); lastOpen = "#" + d.id;
     document.getElementById("govern-open").click();
   });

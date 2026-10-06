@@ -1,0 +1,8 @@
+{% for t in terms %}
+<dialog class="pop project-pop term-pop" id="{{ t.id }}" aria-labelledby="{{ t.id }}-title">
+  <p class="muted">Key term</p>
+  <h2 id="{{ t.id }}-title">{{ t.title }}</h2>
+  {{ t.about_html | safe }}
+  <div class="actions"><button type="button" class="link" value="close">Close</button></div>
+</dialog>
+{% endfor %}

@@ -47,6 +47,7 @@ def render(request: Request, template: str, status: int = 200, **ctx) -> HTMLRes
         nav=NAV,
         commit=deployed_commit(),
         latest_round=rounds[0]["number"] if rounds else None,
+        terms=content.terms(),
     )
     return templates.TemplateResponse(request, template, ctx, status_code=status)
 
