@@ -27,11 +27,6 @@ header.top {
   max-width: 960px; margin: 0 auto; padding: .7rem 16px;
   display: flex; align-items: center; gap: 1.25rem;
 }
-.brand {
-  font-size: 18px; font-weight: 800; letter-spacing: .1em; color: var(--fg);
-  text-decoration: none; margin-right: .75rem;
-}
-.brand b { color: var(--accent); font-weight: 800; }
 .links { display: flex; align-items: center; gap: .4rem; flex: 1; }
 .links a {
   color: var(--muted); text-decoration: none; font-weight: 500;
