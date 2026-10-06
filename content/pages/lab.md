@@ -18,7 +18,12 @@ New in the lab? Go through this list.
 4. Open your project on [Research](/) and fill in its description and where
    it stands, with Govern. Each project's owners keep it up to date before
    lab meetings.
-5. Read the house style below.
+5. Read the [Handbook of Computational Social
+   Choice](https://www.cambridge.org/9781107060432) (2016) and [Trends in
+   Computational Social
+   Choice](https://archive.illc.uva.nl/COST-IC1205/BookDocs/TrendsCOMSOC.pdf)
+   (2017), and the key terms on [Research](/): the dotted words open a
+   short explanation, each with a first paper to read.
 6. Say hi at the next lab meeting.
 
 ## How we work
@@ -32,27 +37,33 @@ New in the lab? Go through this list.
   the rules and what happened are on the same page.
 - **Asking things:** ask early, in the open.
 
+## Lab meetings
+
+Before each lab meeting, every member adds a line under Next meeting, with
+Govern ("lab meeting: …"): what to show, ask, or decide. The round before
+the meeting files the lines here; after the meeting they move to Past
+meetings.
+
+### Next meeting
+
+- (nothing yet)
+
+### Past meetings
+
+- (none yet)
+
 ## House style
 
-> Pick the fight. Show the wiring. Secure the people.
+To be written.
 
-For papers, talks, and code coming out of the lab:
+### How to write
 
-1. **Pick the fight.** One clear contribution per paper; say what it is in
-   the first paragraph.
-2. **Show the wiring.** Definitions before theorems, mechanisms before
-   simulations; no result the reader can't reconstruct.
-3. **Secure the people.** Credit generously and precisely; data and code
-   released unless there's a reason not to.
-4. Claims match results. "We prove" means a proof; "suggests" is not a
-   theorem.
-5. Notation is a cost. Introduce only what gets used.
+To be written.
 
-## Reading list
+### How to present
 
-- [Handbook of Computational Social Choice](https://www.cambridge.org/9781107060432)
-  (Brandt, Conitzer, Endriss, Lang, Procaccia, eds., 2016)
-- [Trends in Computational Social Choice](https://archive.illc.uva.nl/COST-IC1205/BookDocs/TrendsCOMSOC.pdf)
-  (Endriss, ed., 2017)
-- The key terms on [Research](/): the dotted words open a short
-  explanation, each with a first paper or system to read.
+To be written.
+
+### How to review
+
+To be written.
