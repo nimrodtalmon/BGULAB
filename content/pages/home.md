@@ -16,7 +16,7 @@ published is on [DBLP](https://dblp.org/pid/53/11268) and
 [Google Scholar](https://scholar.google.com/citations?user=dSfOjCQAAAAJ).
 We are funded by [PERYCLES](https://perycles-project.eu/) (Participatory
 Democracy that Scales, EU Horizon Europe) and by the Israel Ministry of
-Innovation, Science and Technology (a blockchain-based platform for food
-security).
+Innovation, Science and Technology ([a blockchain-based platform for food
+security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-blockchain-developing-a-web3-applica/)).
 
 [[projects]]
