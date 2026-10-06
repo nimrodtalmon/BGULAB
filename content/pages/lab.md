@@ -6,7 +6,7 @@ visibility: lab
 
 For lab members: what to do first, how we work, and what to read.
 
-## Start here
+## Getting started
 
 New in the lab? Go through this list.
 
@@ -27,7 +27,7 @@ New in the lab? Go through this list.
    short explanation, each with a first paper to read.
 6. Say hi at the next lab meeting.
 
-## How we work
+### How we work
 
 - **What we do:** mechanisms for collective decisions among humans and AI
   agents. See [Research](/).
