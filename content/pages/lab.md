@@ -31,11 +31,11 @@ New in the lab? Go through this list.
 
 - **What we do:** mechanisms for collective decisions among humans and AI
   agents. See [Research](/).
-- **Before each lab meeting:** write where your project stands, with
-  Govern. One or two lines are enough.
 - **This site:** you can change anything on it by sending a request with
   [Govern](/govern). Requests are decided in rounds before lab meetings;
   the rules and what happened are on the same page.
+- **Before each lab meeting:** write where your project stands, with
+  Govern. One or two lines are enough.
 - **Asking things:** ask early, in the open.
 
 ### House style
