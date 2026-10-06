@@ -46,11 +46,6 @@ New in the lab? Go through this list.
 
 ## Lab meetings
 
-Before each lab meeting, every member adds a line under Next meeting, with
-Govern ("lab meeting: …"): what to show, ask, or decide. The round before
-the meeting files the lines here; after the meeting they move to Past
-meetings.
-
 ### Next meeting
 
 - (nothing yet)
