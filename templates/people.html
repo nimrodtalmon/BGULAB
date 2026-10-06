@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
 <h1>People</h1>
-<p class="muted small">Lab members: to add your photo and links (Scholar, DBLP, LinkedIn, a homepage),
-send them with Govern, e.g. "photo: https://… ; Scholar: https://…".</p>
 {% for heading, group in people.present_groups %}
 <h3 class="people-group">{{ heading }}</h3>
 <ul class="people">
