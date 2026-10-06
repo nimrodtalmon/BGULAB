@@ -40,9 +40,44 @@ New in the lab? Go through this list.
 
 ### House style
 
-- **How to write:** to be written.
-- **How to present:** to be written.
-- **How to review:** to be written.
+For writing and presenting alike:
+
+- Your readers (or audience) did **not** read the paper. See it from their
+  side: explain what needs to be explained, and only that.
+- They, like you, want to [have
+  fun](https://www.youtube.com/watch?v=PIb6AZdTr-A)!
+- They want **the gist** first: the bottom line, easy to catch even when
+  they don't pay full attention. Some also want to **really understand**,
+  so don't only handwave: intuition first, then the real stuff.
+- Recall Aristotle: "A whole [story] is what has a beginning and middle and
+  end."
+
+**How to write.**
+
+1. Introduction: what is this about, and why is it interesting?
+2. The structure: what are we going to read?
+3. Related work: what similar things exist, and what is special here?
+4. The interesting, serious stuff.
+5. End with the bottom line (what we learned), then avenues for future
+   research.
+
+**How to present.**
+
+1. Introduction: the title, the general field (economics? algorithms? a
+   DAO? a DeFi protocol?), and some context (where it was published, how
+   many citations; for a platform, how many users).
+2. The structure: what are we going to discuss?
+3. An overview of the whole content; no need to go into everything.
+4. Preliminaries, only if the audience needs them, and only what is really
+   relevant.
+5. The general technical content: e.g., the mechanism, the tokenomics, the
+   consensus, the governance.
+6. Pick one or two things that are important and technically challenging,
+   and really explain them, proofs included.
+7. End with the bottom line (what we learned), then future work: how would
+   you take it further with, say, 5 million dollars?
+
+**How to review.** To be written, together.
 
 ## Lab meetings
 
