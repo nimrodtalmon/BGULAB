@@ -15,7 +15,7 @@ from app import github
 from app.gate import clean_name, password_ok
 
 MAX_TEXT = 3000
-RATE = (5, 600)  # at most 5 submissions per 10 minutes per address
+RATE = (5, 600)  # not signed in: at most 5 submissions per 10 minutes per address
 DEDUPE = 300  # seconds: same name + same text is filed once
 _recent: dict[str, list[float]] = {}
 _sent: dict[tuple, tuple[float, int | None]] = {}  # None: being filed right now
@@ -55,7 +55,7 @@ def submit(name: str, password: str, text: str, addr: str, signed_in: bool,
             number = _sent[key][1]
             return {"ok": True, "counted": counted, "number": number,
                     "message": f"Already filed as #{number}." if number else "Already being filed."}
-        if not _rate_ok(addr):
+        if not signed_in and not _rate_ok(addr):  # signed-in members are not limited
             return {"ok": False, "message": "Too many submissions; try again in a few minutes."}
         _sent[key] = (now, None)
     label = "govern" if counted else "wrong-pass"

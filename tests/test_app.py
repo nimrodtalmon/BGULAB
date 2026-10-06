@@ -103,9 +103,16 @@ def test_folding_and_lab_only_sections():
 
 
 def test_govern_rate_limit(client, env):
-    for i in range(7):
-        client.post("/govern", data={"name": "A", "password": "shnitzel", "text": f"x{i}"})
+    for i in range(7):  # not signed in (wrong password): limited
+        client.post("/govern", data={"name": "A", "password": "nope", "text": f"x{i}"})
     assert len(env) == govern.RATE[0]
+
+
+def test_govern_signed_in_not_rate_limited(client, env):
+    member(client)
+    for i in range(8):
+        client.post("/govern", data={"text": f"y{i}"})
+    assert len(env) == 8
 
 
 def test_code_view_members_only_and_no_traversal(client):
