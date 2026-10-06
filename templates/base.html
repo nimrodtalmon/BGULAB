@@ -22,7 +22,7 @@
         <a class="auth" href="/login?next={{ request.url.path }}">Sign in</a>
       {% endif %}
     </nav>
-    <a class="govern{% if request.url.path == '/govern' %} here{% endif %}" href="/govern" id="govern-open">Govern</a>
+    <a class="govern{% if request.url.path == '/govern' %} here{% endif %}" href="/govern" id="govern-open" title="Govern (shortcut: g)">Govern</a>
   </div>
 </header>
 <dialog id="govern-pop" class="pop" aria-labelledby="govern-pop-title">
@@ -117,6 +117,13 @@ if (pop && pop.showModal) {
     (first && !first.value ? first : form.elements.text).focus();
   }
   document.getElementById("govern-open").addEventListener("click", function (e) {
+    e.preventDefault(); openGovern();
+  });
+  // "g" opens Govern, unless typing somewhere or a modifier key is held.
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "g" || e.ctrlKey || e.metaKey || e.altKey || e.isComposing || pop.open) return;
+    var t = e.target;
+    if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
     e.preventDefault(); openGovern();
   });
   pop.querySelector("[value=close]").addEventListener("click", function () { pop.close(); });
