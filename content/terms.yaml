@@ -8,12 +8,22 @@ terms:
       How groups decide (voting, allocating, choosing committees), studied with
       the tools of computer science: algorithms, complexity, simulation. See also the [Handbook of Computational Social
       Choice](https://www.cambridge.org/9781107060432) (Cambridge, 2016).
+      Ours: [Participatory Budgeting: Data, Tools and
+      Analysis](https://doi.org/10.24963/ijcai.2023/297) (IJCAI 2023), [Drawing a Map of
+      Elections](https://doi.org/10.1016/j.artint.2025.104332) (Artificial Intelligence, 2025).
+      Ours: [Participatory Budgeting: Data, Tools and
+      Analysis](https://www.ijcai.org/proceedings/2023/297) (IJCAI 2023).
   - id: digital-democracy
     title: Digital democracy
     about: |
       Democratic decision-making designed for online communities from the ground
       up, rather than paper-ballot procedures moved online. See also [Foundations of e-Democracy](https://arxiv.org/abs/1710.02873) (Shapiro,
       Communications of the ACM, 2018).
+      Ours: [Foundations for Grassroots Democratic
+      Metaverse](https://dl.acm.org/doi/10.5555/3535850.3536104) (Shapiro and Talmon, AAMAS 2022, Blue Sky track),
+      [Federated Assemblies](https://doi.org/10.1609/aaai.v39i13.33521) (AAAI 2025).
+      Ours: [Foundations for Grassroots Democratic
+      Metaverse](https://www.ifaamas.org/Proceedings/aamas2022/pdfs/p1814.pdf) (Shapiro and Talmon, AAMAS 2022, Blue Sky track).
   - id: liquid-democracy
     title: Liquid democracy
     about: |
@@ -25,6 +35,12 @@ terms:
       design is explained in [The Principles of
       LiquidFeedback](https://liquidfeedback.com/pub/The_Principles_of_LiquidFeedback_1st_edition_online_version.pdf)
       (Behrens et al., 2014).
+      Ours: [Pairwise Liquid Democracy](https://doi.org/10.24963/ijcai.2018/19) (Brill and
+      Talmon, IJCAI 2018), [Controlling Delegations in Liquid
+      Democracy](https://dl.acm.org/doi/10.5555/3635637.3663249) (AAMAS 2024).
+      Ours: [Pairwise Liquid Democracy](https://www.ijcai.org/proceedings/2018/19) (Brill and
+      Talmon, IJCAI 2018), [Controlling Delegations in Liquid
+      Democracy](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p2624.pdf) (AAMAS 2024).
   - id: sortition
     title: Sortition (lot)
     about: |
@@ -37,6 +53,8 @@ terms:
     about: |
       A decentralized autonomous organization: an organization owned and
       governed collectively by its members, on a blockchain. See also [ethereum.org on DAOs](https://ethereum.org/en/dao/).
+      Ours: [Social Choice Around Decentralized Autonomous
+      Organizations](https://www.ifaamas.org/Proceedings/aamas2023/pdfs/p1768.pdf) (Talmon, AAMAS 2023, Blue Sky track).
   - id: cooperative-ai
     title: Cooperative AI
     about: |
@@ -44,12 +62,19 @@ terms:
       communicating, committing, and building institutions, rather than only
       winning games. See also [Open Problems in Cooperative
       AI](https://arxiv.org/abs/2012.08630) (Dafoe et al., 2020).
+      Ours: [AI-Generated Compromises for Coalition
+      Formation](https://arxiv.org/abs/2506.06837) (Briman, Shapiro, Talmon, 2025).
+      Ours: [AI-Generated Compromises for Coalition
+      Formation](https://arxiv.org/abs/2506.06837) (Briman, Shapiro, Talmon, 2025).
   - id: game-theory
     title: Game theory
     about: |
       The mathematics of strategic interaction: what rational agents do when
       each one's outcome depends on what the others do. See also [A Course in Game Theory](https://mitpress.mit.edu/9780262650403/)
       (Osborne and Rubinstein, 1994).
+      Ours: [Teams in Online Scheduling Polls: Game-Theoretic
+      Aspects](https://doi.org/10.1609/aaai.v31i1.10594) (AAAI 2017).
+
   - id: combinatorial-optimization
     title: Combinatorial optimization
     about: |
@@ -57,3 +82,7 @@ terms:
       the best committee or the best allocation. See also [Combinatorial Optimization: Algorithms and
       Complexity](https://store.doverpublications.com/products/9780486402581)
       (Papadimitriou and Steiglitz, 1982).
+      Ours: [Optimization-Based Voting Rule Design: The Closer to Utopia the
+      Better](https://dl.acm.org/doi/10.5555/3237383.3237391) (AAMAS 2018).
+      Ours: [Optimization-Based Voting Rule Design: The Closer to Utopia the
+      Better](https://www.ifaamas.org/Proceedings/aamas2018/pdfs/p32.pdf) (Faliszewski, Szufa, Talmon, AAMAS 2018).
