@@ -6,21 +6,19 @@ terms:
     title: Computational social choice
     about: |
       How groups decide (voting, allocating, choosing committees), studied with
-      the tools of computer science: algorithms, complexity, simulation. Start
-      with the [Handbook of Computational Social
+      the tools of computer science: algorithms, complexity, simulation. See also the [Handbook of Computational Social
       Choice](https://www.cambridge.org/9781107060432) (Cambridge, 2016).
   - id: digital-democracy
     title: Digital democracy
     about: |
       Democratic decision-making designed for online communities from the ground
-      up, rather than paper-ballot procedures moved online. A position paper:
-      [Foundations of e-Democracy](https://arxiv.org/abs/1710.02873) (Shapiro,
+      up, rather than paper-ballot procedures moved online. See also [Foundations of e-Democracy](https://arxiv.org/abs/1710.02873) (Shapiro,
       Communications of the ACM, 2018).
   - id: liquid-democracy
     title: Liquid democracy
     about: |
       Each voter votes directly or delegates their vote, possibly per topic, to
-      someone they trust; delegates can delegate further. A survey: [An Overview
+      someone they trust; delegates can delegate further. See also [An Overview
       of Ten Years of Liquid Democracy
       Research](https://doi.org/10.1145/3396956.3396963) (Paulin, 2020). The
       best-known system is [LiquidFeedback](https://liquidfeedback.com/en/); its
@@ -30,36 +28,32 @@ terms:
   - id: sortition
     title: Sortition (lot)
     about: |
-      Choosing decision-makers at random, as in citizens' assemblies. The
-      algorithmic question is how to draw a panel that is representative and
-      still gives every volunteer a fair chance: [Fair algorithms for selecting
+      Choosing decision-makers at random, as in citizens' assemblies. The algorithmic question is how to draw a panel that is
+      representative and still gives every volunteer a fair chance. See also [Fair algorithms for selecting
       citizens' assemblies](https://www.nature.com/articles/s41586-021-03788-6)
       (Flanigan et al., Nature, 2021).
   - id: dao
     title: DAO
     about: |
       A decentralized autonomous organization: an organization owned and
-      governed collectively by its members, on a blockchain. An introduction:
-      [ethereum.org on DAOs](https://ethereum.org/en/dao/).
+      governed collectively by its members, on a blockchain. See also [ethereum.org on DAOs](https://ethereum.org/en/dao/).
   - id: cooperative-ai
     title: Cooperative AI
     about: |
       Making AI agents that cooperate well with people and with each other:
       communicating, committing, and building institutions, rather than only
-      winning games. A research agenda: [Open Problems in Cooperative
+      winning games. See also [Open Problems in Cooperative
       AI](https://arxiv.org/abs/2012.08630) (Dafoe et al., 2020).
   - id: game-theory
     title: Game theory
     about: |
       The mathematics of strategic interaction: what rational agents do when
-      each one's outcome depends on what the others do. A standard textbook:
-      [A Course in Game Theory](https://mitpress.mit.edu/9780262650403/)
+      each one's outcome depends on what the others do. See also [A Course in Game Theory](https://mitpress.mit.edu/9780262650403/)
       (Osborne and Rubinstein, 1994).
   - id: combinatorial-optimization
     title: Combinatorial optimization
     about: |
       Finding the best choice among a finite but huge set of options, such as
-      the best committee or the best allocation. A standard reference:
-      [Combinatorial Optimization: Algorithms and
+      the best committee or the best allocation. See also [Combinatorial Optimization: Algorithms and
       Complexity](https://store.doverpublications.com/products/9780486402581)
       (Papadimitriou and Steiglitz, 1982).
