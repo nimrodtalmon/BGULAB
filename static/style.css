@@ -154,7 +154,6 @@ dialog.pop {
 dialog.pop::backdrop { background: rgba(0, 0, 0, .35); }
 dialog.pop h2 { margin: 0; font-size: 20px; }
 dialog.pop p { margin: 0; font-size: 14px; }
-dialog.pop .result:empty { display: none; }
 .govern-form .actions { display: flex; align-items: center; gap: 1rem; }
 .govern-form button:disabled { opacity: .5; cursor: default; }
 .govern-form button.link { background: none; color: var(--muted); padding: 0; font-weight: 400; }
@@ -180,3 +179,15 @@ dialog.project-pop p { margin: .5rem 0; line-height: 1.5; font-size: 15px; }
 dialog.project-pop > p.muted:first-child { margin: 0; font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; }
 dialog.project-pop .owners { font-size: 13.5px; margin-top: 0; }
 dialog.project-pop .actions { display: flex; gap: 1rem; margin-top: 1rem; font-size: 14px; }
+.govern-form .hint { font-size: 12.5px; flex: 1; }
+@media (hover: none) { .govern-form .hint { display: none; } }
+#toast {
+  position: fixed; left: 50%; bottom: 1.5rem; transform: translate(-50%, 1rem); z-index: 20;
+  max-width: calc(100vw - 32px); padding: .55rem 1rem; border-radius: 999px;
+  background: var(--fg); color: var(--bg); font: 500 14px/1.4 system-ui, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .2); opacity: 0; pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+#toast.error { background: var(--err); color: #fff; border-radius: 12px; }
+#toast button.link { color: inherit; margin-left: .5rem; }

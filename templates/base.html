@@ -25,21 +25,20 @@
 <dialog id="govern-pop" class="pop" aria-labelledby="govern-pop-title">
   <form method="post" action="/govern" class="govern-form">
     <h2 id="govern-pop-title">Govern</h2>
-    <p class="muted">Ask for any change to this site or its rules. Decided before the next lab meeting.
-      Sent from <code class="from"></code>. <a href="/govern">More</a></p>
-    {% if lab %}
-      <p class="muted">Sending as {{ lab_name }}.</p>
-    {% else %}
+    <p class="muted">Any change to this site or its rules. From <code class="from"></code>. <a href="/govern">More</a></p>
+    {% if not lab %}
       <label>Your name <input name="name" required maxlength="60" autocomplete="name"></label>
       <label>Lab password <input name="password" type="password" autocomplete="current-password"></label>
     {% endif %}
-    <label>Request <textarea name="text" required maxlength="3000" rows="5"></textarea></label>
+    <textarea name="text" required maxlength="3000" rows="4" aria-label="Request"
+      placeholder="What should change?"></textarea>
     <input type="hidden" name="page">
-    <p class="result" role="status"></p>
     <div class="actions"><button type="submit">Send</button>
+      <span class="muted hint">Enter sends · Shift+Enter for a new line</span>
       <button type="button" class="link" value="close">Close</button></div>
   </form>
 </dialog>
+<div id="toast" role="status" aria-live="polite"></div>
 <main>
 {% block main %}{% endblock %}
 </main>
@@ -84,7 +83,7 @@ document.addEventListener("toggle", function (e) {
 function here() { return location.pathname + (lastOpen || location.hash); }
 
 // Every Govern form: one click sends once, and says where it was sent from.
-document.querySelectorAll("form.govern-form").forEach(function (f) {
+document.querySelectorAll("main form.govern-form").forEach(function (f) {
   f.addEventListener("submit", function () {
     f.elements.page && (f.elements.page.value = here());
     f.querySelector("button[type=submit]").disabled = true;
@@ -93,31 +92,50 @@ document.querySelectorAll("form.govern-form").forEach(function (f) {
 
 // The Govern button opens a popup; without JavaScript it is a plain link.
 var pop = document.getElementById("govern-pop");
+var toast = document.getElementById("toast"), toastTimer;
+function say(html, error, keep) {
+  clearTimeout(toastTimer);
+  toast.innerHTML = html; toast.className = "show" + (error ? " error" : "");
+  if (!keep) toastTimer = setTimeout(function () { toast.className = ""; }, 2500);
+}
 if (pop && pop.showModal) {
-  var form = pop.querySelector("form"), out = pop.querySelector(".result"),
-      send = form.querySelector("button[type=submit]");
-  document.getElementById("govern-open").addEventListener("click", function (e) {
-    e.preventDefault();
+  var form = pop.querySelector("form");
+  function openGovern(text) {
     pop.querySelector(".from").textContent = here();
-    out.textContent = ""; out.className = "result"; send.disabled = false;
+    if (text) form.elements.text.value = text;
     pop.showModal();
-    form.elements.text.focus();
+    var first = form.querySelector("input[name=name]");
+    (first && !first.value ? first : form.elements.text).focus();
+  }
+  document.getElementById("govern-open").addEventListener("click", function (e) {
+    e.preventDefault(); openGovern();
   });
   pop.querySelector("[value=close]").addEventListener("click", function () { pop.close(); });
   pop.addEventListener("click", function (e) { if (e.target === pop) pop.close(); });
+  // Enter sends; Shift+Enter is a new line.
+  form.elements.text.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); }
+  });
+  // Send in the background: the popup closes at once, a short note confirms.
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     form.elements.page.value = here();
-    send.disabled = true;
-    fetch("/govern", {method: "POST", body: new FormData(form), headers: {Accept: "application/json"}})
+    var data = new FormData(form), text = form.elements.text.value;
+    form.elements.text.value = "";
+    pop.close();
+    say("Sending…", false, true);
+    fetch("/govern", {method: "POST", body: data, headers: {Accept: "application/json"}})
       .then(function (r) { return r.json(); })
       .then(function (r) {
-        out.textContent = r.message; out.className = "result " + (r.ok ? "ok" : "error");
-        if (r.ok) form.elements.text.value = ""; else send.disabled = false;
+        if (!r.ok) throw r.message;
+        if (!r.counted) say("Password not recognized: recorded, but not counted.", true);
+        else say("Sent ✓");
+        if (r.counted) form.querySelectorAll("label").forEach(function (l) { l.remove(); });  // signed in now
       })
-      .catch(function () {
-        out.textContent = "Could not send. Nothing was saved; please try again.";
-        out.className = "result error"; send.disabled = false;
+      .catch(function (msg) {
+        say((typeof msg === "string" ? msg : "Could not send.") +
+            ' <button type="button" class="link">Edit and resend</button>', true, true);
+        toast.querySelector("button").onclick = function () { toast.className = ""; openGovern(text); };
       });
   });
 }
