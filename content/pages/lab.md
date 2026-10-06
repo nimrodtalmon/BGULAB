@@ -11,8 +11,9 @@ For lab members: what to do first, how we work, and what to read.
 New in the lab? Go through this list.
 
 1. Make sure you are on the lab WhatsApp group (ask Nimrod).
-2. Make sure you are on the lab Google Calendar: weekly meeting, project
-   meetings, lab events (ask Nimrod).
+2. Make sure you are on the lab Google Group,
+   [bgu-lab@googlegroups.com](mailto:bgu-lab@googlegroups.com): mail to the
+   whole lab, and the invites to lab meetings and events (ask Nimrod).
 3. Play with this site. Add your photo and links on [People](/people) by
    sending them with Govern, e.g. "photo: https://… ; Scholar: https://…".
 4. Open your project on [Research](/) and fill in its description and where
