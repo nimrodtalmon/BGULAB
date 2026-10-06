@@ -77,7 +77,23 @@ For writing and presenting alike:
 7. End with the bottom line (what we learned), then future work: how would
    you take it further with, say, 5 million dollars?
 
-**How to review.** To be written, together.
+**How to review.**
+
+1. Skim: the title, the abstract, a bit of the introduction; flip through
+   the pages; read the discussion.
+2. Think: what is this about? The overall picture: the problem, the
+   question, the methodology, the bottom line.
+3. Go over it again: abstract and introduction, then the results and the
+   discussion. Get *what* they do; don't read proofs or study plots yet.
+4. Ask: is the problem interesting? Well motivated? Can you explain it to a
+   five-year-old? Are the methods good? Any holes you feel?
+5. Sleep a bit. :)
+6. Now read **all** of the paper, in detail, looking for problems too.
+7. Write the review:
+   - First, high level: what is it? Is the writing good? Understandable?
+     Fun to read (very important!)?
+   - Then comments, from big (order, structure, weak methods, bugs) to
+     small (typos, suggestions).
 
 ## Lab meetings
 
