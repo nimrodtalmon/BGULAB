@@ -51,7 +51,11 @@ var lastOpen = "";
 // Open the collapsed sections that hold the linked-to part of the page.
 function openTarget() {
   var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-  if (el && el.tagName === "DIALOG") { openProject(el); return; }
+  if (el && el.tagName === "DIALOG") {
+    var link = document.querySelector('[data-pop="' + el.id + '"]');
+    for (var d = link; d; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true;
+    openProject(el); return;
+  }
   var target = el;
   for (; el; el = el.parentElement) if (el.tagName === "DETAILS") el.open = true;
   if (target) target.scrollIntoView();

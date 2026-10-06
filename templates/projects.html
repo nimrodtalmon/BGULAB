@@ -3,11 +3,15 @@
 <section class="theme">
   <h2>{{ t.title }}</h2>
   {% if t.about_html %}<div class="muted about">{{ t.about_html | safe }}</div>{% endif %}
+  <details class="theme-projects">
+  <summary>Projects ({{ t.projects | length }})</summary>
   <ul>
   {% for p in t.projects %}
-    <li><a class="project" href="#{{ p.id }}" data-pop="{{ p.id }}">{{ p.title }}</a></li>
+    <li><a class="project" href="#{{ p.id }}" data-pop="{{ p.id }}">{{ p.title }}</a>
+      {% if p.owners %}<span class="owners">{{ p.owners | join(", ") }}</span>{% endif %}</li>
   {% endfor %}
   </ul>
+  </details>
 </section>
 {% endfor %}
 </div>

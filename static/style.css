@@ -215,3 +215,7 @@ dialog.project-pop .actions { display: flex; gap: 1rem; margin-top: 1rem; font-s
 #toast button.link { color: inherit; margin-left: .5rem; }
 a.term { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--accent); }
 a.term:hover { color: var(--accent); }
+.theme-projects { border: 0; padding: 0; margin: 0; }
+.theme-projects > summary { font: 600 14px/1.4 var(--sans); color: var(--tc); padding: .2rem 0; }
+.theme-projects > :not(summary) { margin-left: 0; }
+.theme-projects ul { margin-top: .3rem; }
