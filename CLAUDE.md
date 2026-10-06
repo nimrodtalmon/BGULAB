@@ -47,6 +47,7 @@ content/pages/*.md        site pages (YAML frontmatter: title, visibility),
                           its "[[projects]]" line becomes the project boxes),
                           lab.md is Lab
 content/projects.yaml     current projects, one box per theme on Research
+content/terms.yaml        key terms; [text](term:<id>) in any page opens a popup
 content/people.yaml       lab members, past and present
 content/footer.md         contact details (kept; not shown for now)
 log/round-NNNN.md         one file per round (see §7)
@@ -55,7 +56,7 @@ app/                      FastAPI server
   gate.py                 sign-in: shared password, signed cookie with name
   govern.py               Govern form → GitHub issue
   github.py               issues and commits (read/write via GITHUB_TOKEN)
-  content.py              reads pages, projects, people, rules, log, code
+  content.py              reads pages, projects, terms, people, rules, log, code
 templates/, static/       Jinja2 + one CSS file, no JS build
 tests/                    offline tests (GitHub faked)
 render.yaml               deploy blueprint
