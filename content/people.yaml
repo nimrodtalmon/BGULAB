@@ -1,5 +1,7 @@
 # People of the Digital Cooperation Lab (shown on /people, grouped by role).
 # Within a role, list order is seniority: earliest first; append new people.
+# Optional per person: photo (an image URL) and links (label: URL), sent by
+# each member via Govern.
 present:
   - name: Nimrod Talmon
     slug: nimrod-talmon
