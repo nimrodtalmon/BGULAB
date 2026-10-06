@@ -4,21 +4,32 @@ visibility: lab
 ---
 # Lab
 
-What you need to work here.
+For lab members: what to do first, how we work, and what to read.
 
-## Onboarding
+## Start here
 
-Welcome to the lab. The short version:
+New in the lab? Go through this list.
+
+1. Make sure you are on the lab WhatsApp group (ask Nimrod).
+2. Make sure you are on the lab Google Calendar: weekly meeting, project
+   meetings, lab events (ask Nimrod).
+3. Play with this site. Add your photo and links on [People](/people) by
+   sending them with Govern, e.g. "photo: https://… ; Scholar: https://…".
+4. Open your project on [Research](/) and fill in its description and where
+   it stands, with Govern. Each project's owners keep it up to date before
+   lab meetings.
+5. Read the house style below.
+6. Say hi at the next lab meeting.
+
+## How we work
 
 - **What we do:** mechanisms for collective decisions among humans and AI
-  agents, under bounded attention. See [Research](/).
-- **How we work:** before each lab meeting, write where your project
-  stands. If your project has no description yet, ask for one with
-  [Govern](/govern).
+  agents. See [Research](/).
+- **Before each lab meeting:** write where your project stands, with
+  Govern. One or two lines are enough.
 - **This site:** you can change anything on it by sending a request with
   [Govern](/govern). Requests are decided in rounds before lab meetings;
   the rules and what happened are on the same page.
-- **Writing:** see the house style below. Claims must match results.
 - **Asking things:** ask early, in the open.
 
 ## House style
@@ -43,6 +54,5 @@ For papers, talks, and code coming out of the lab:
   (Brandt, Conitzer, Endriss, Lang, Procaccia, eds., 2016)
 - [Trends in Computational Social Choice](https://archive.illc.uva.nl/COST-IC1205/BookDocs/TrendsCOMSOC.pdf)
   (Endriss, ed., 2017)
-- Key terms, with a first paper or system for each: [Research](/#key-terms)
-- On science communication
-- On how to present
+- The key terms on [Research](/): the dotted words open a short
+  explanation, each with a first paper or system to read.
