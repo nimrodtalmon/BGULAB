@@ -6,7 +6,7 @@
 
 themes:
   - title: Humans with humans
-    about: How people decide together, by delegating and by lot.
+    about: How people decide together, by [delegating](term:liquid-democracy) and by [lot](term:sortition).
     projects:
       - title: Topic-based liquid democracy
         owners: [Eyal Briman]
@@ -15,10 +15,10 @@ themes:
       - title: Liquid democracy vs. lot
         owners: [Eyal Briman]
       - title: Grassroots federation formation
-        owners: []
+        owners: [Inbar Arbel, Gefen Ben Shoshan]
 
   - title: Humans with AI
-    about: People and AI agents deciding, reviewing, and acting together.
+    about: People and AI agents deciding, reviewing, and acting together; [digital democracy](term:digital-democracy) with agents in the loop.
     projects:
       - title: AI-Agora
         owners: [Inbar Arbel, Gefen Ben Shoshan]
@@ -33,21 +33,20 @@ themes:
           go to the group, through which channels (configuration, shared
           memory, runtime approvals), and how the members' inputs are
           aggregated. Part of it: social choice for multi-contributor
-          retrieval. A joint FWF–ISF proposal with Martin Lackner (USTP) is
-          in preparation; this site is a small test bed.
+          retrieval. This site is a small test bed.
       - title: Token-based peer review
-        owners: []
+        owners: [Nimrod Talmon]
         about: |
           The SSVA paper is to be presented at AI-Native Academia.
 
   - title: Humans with code
-    about: Governance that is executed by protocols rather than by people, as in DAOs.
+    about: Governance that is executed by protocols rather than by people, as in [DAOs](term:dao).
     projects:
       - title: Adaptive supermajority
         owners: [Inbar Gerera]
       - title: SimGov
         owners: [Berihu Michiale Haileselassie]
       - title: LLM voting, accuracy and correlation
-        owners: []
+        owners: [Nimrod Talmon]
         about: |
           Motivated by Cardano's Catalyst.
