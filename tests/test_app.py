@@ -52,7 +52,7 @@ def test_old_addresses_redirect(client):
 
 def test_members_page_is_gated(client):
     assert "Lab password" in client.get("/pages/lab").text
-    assert "Start here" in member(client).get("/pages/lab").text
+    assert "Getting started" in member(client).get("/pages/lab").text
 
 
 def test_wrong_login(client):
