@@ -95,10 +95,6 @@ main { max-width: 760px; margin: 2rem auto; padding: 0 16px; }
 a { color: var(--accent); }
 h1, h2, h3 { line-height: 1.25; }
 h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -.01em; margin: .5rem 0 1.2rem; }
-h1::after {
-  content: ""; display: block; width: 3.2rem; height: 4px; margin-top: .55rem; border-radius: 2px;
-  background: linear-gradient(90deg, var(--t1), var(--t2), var(--t3));
-}
 code, pre { font: 14px/1.5 ui-monospace, Menlo, Consolas, monospace; }
 code { background: var(--code-bg); padding: 0 .25em; border-radius: 3px; }
 pre { background: var(--code-bg); padding: 1rem; overflow-x: auto; border-radius: 4px; }
@@ -190,7 +186,8 @@ dialog.pop p { margin: 0; font-size: 14px; }
 .theme:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
 .theme h2 { color: var(--tc); }
 .theme h2 { margin: 0 0 .3rem; font-size: 17px; }
-.theme > p { margin: 0 0 .7rem; font-size: 13px; line-height: 1.4; }
+.theme .about { margin: 0 0 .7rem; font-size: 13px; line-height: 1.4; }
+.theme .about p { margin: 0; }
 .theme ul { list-style: none; margin: 0; padding: 0; }
 .theme li { padding: .35rem 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.35; }
 .theme a.project { color: var(--fg); text-decoration: none; font-weight: 500; }
@@ -216,3 +213,5 @@ dialog.project-pop .actions { display: flex; gap: 1rem; margin-top: 1rem; font-s
 #toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 #toast.error { background: var(--err); color: #fff; border-radius: 12px; }
 #toast button.link { color: inherit; margin-left: .5rem; }
+a.term { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+a.term:hover { color: var(--accent); }
