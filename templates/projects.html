@@ -2,11 +2,10 @@
 {% for t in themes %}
 <section class="theme">
   <h2>{{ t.title }}</h2>
-  {% if t.about %}<p class="muted">{{ t.about }}</p>{% endif %}
+  {% if t.about_html %}<div class="muted about">{{ t.about_html | safe }}</div>{% endif %}
   <ul>
   {% for p in t.projects %}
-    <li><a class="project" href="#{{ p.id }}" data-pop="{{ p.id }}">{{ p.title }}</a>
-      {% if p.owners %}<span class="owners">{{ p.owners | join(", ") }}</span>{% endif %}</li>
+    <li><a class="project" href="#{{ p.id }}" data-pop="{{ p.id }}">{{ p.title }}</a></li>
   {% endfor %}
   </ul>
 </section>
@@ -21,7 +20,7 @@
   {% if p.status %}<p><b>Where it stands:</b> {{ p.status }}</p>{% endif %}
   {% if p.next %}<p><b>Next:</b> {{ p.next }}</p>{% endif %}
   <div class="actions">
-    <button type="button" class="link" data-govern>Request a change</button>
+    <button type="button" class="link" data-govern>Govern</button>
     <button type="button" class="link" value="close">Close</button>
   </div>
 </dialog>
