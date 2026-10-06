@@ -156,3 +156,20 @@ def test_research_shows_project_boxes_and_popups(client):
 def test_commit_shown_on_govern_not_in_footer(client):
     assert "<footer>" not in client.get("/").text
     assert "Deployed commit" in client.get("/govern").text
+
+
+def test_govern_concurrent_sends_file_once(client, env, monkeypatch):
+    import threading, time as _t
+    slow = govern.github.create_issue
+
+    def slow_create(title, body, label):
+        _t.sleep(0.2)
+        return slow(title, body, label)
+
+    monkeypatch.setattr(govern.github, "create_issue", slow_create)
+    results = []
+    ts = [threading.Thread(target=lambda: results.append(
+        govern.submit("Dana", "shnitzel", "same text", "1.2.3.4", False))) for _ in range(2)]
+    for t in ts: t.start()
+    for t in ts: t.join()
+    assert len(env) == 1 and all(r["ok"] for r in results)

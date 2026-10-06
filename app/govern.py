@@ -7,6 +7,7 @@ was sent from. The same text from the same name within a few minutes is
 filed once (double clicks).
 """
 
+import threading
 import time
 from datetime import datetime, timezone
 
@@ -17,7 +18,8 @@ MAX_TEXT = 3000
 RATE = (5, 600)  # at most 5 submissions per 10 minutes per address
 DEDUPE = 300  # seconds: same name + same text is filed once
 _recent: dict[str, list[float]] = {}
-_sent: dict[tuple, tuple[float, int]] = {}
+_sent: dict[tuple, tuple[float, int | None]] = {}  # None: being filed right now
+_lock = threading.Lock()
 
 
 def _rate_ok(addr: str) -> bool:
@@ -47,12 +49,15 @@ def submit(name: str, password: str, text: str, addr: str, signed_in: bool,
     counted = signed_in or password_ok(password)
     key = (name.lower(), text, counted)
     now = time.time()
-    if key in _sent and now - _sent[key][0] < DEDUPE:
-        number = _sent[key][1]
-        return {"ok": True, "counted": counted, "number": number,
-                "message": f"Already filed as #{number}."}
-    if not _rate_ok(addr):
-        return {"ok": False, "message": "Too many submissions; try again in a few minutes."}
+    # Claim the request before filing it, so two sends at the same moment file it once.
+    with _lock:
+        if key in _sent and now - _sent[key][0] < DEDUPE:
+            number = _sent[key][1]
+            return {"ok": True, "counted": counted, "number": number,
+                    "message": f"Already filed as #{number}." if number else "Already being filed."}
+        if not _rate_ok(addr):
+            return {"ok": False, "message": "Too many submissions; try again in a few minutes."}
+        _sent[key] = (now, None)
     label = "govern" if counted else "wrong-pass"
     first_line = text.splitlines()[0]
     title = first_line[:70] + ("…" if len(first_line) > 70 else "")
@@ -62,9 +67,12 @@ def submit(name: str, password: str, text: str, addr: str, signed_in: bool,
             + (f"page: {page}\n" if page else "") + "via: Govern form\n")
     number = github.create_issue(title, body, label)
     if number is None:
+        with _lock:
+            _sent.pop(key, None)  # not filed: let a retry through
         return {"ok": False, "message": "Could not file the request (GitHub unreachable). "
                                         "Nothing was saved; please try again later."}
-    _sent[key] = (now, number)
+    with _lock:
+        _sent[key] = (now, number)
     if counted:
         return {"ok": True, "counted": True, "number": number,
                 "message": f"Filed as request #{number}. It will be decided in the next round."}
