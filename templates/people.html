@@ -20,9 +20,15 @@
 <summary>Alumni ({{ people.past | length }})</summary>
 {% for heading, group in people.past_groups %}
 <h4 class="people-group">{{ heading }}</h4>
-<ul class="past">
+<ul class="people">
 {% for p in group %}
-  <li>{{ p.name }}{% if heading == "Other" %} — {{ p.role }}{% endif %}{% if p.now %} (now: {{ p.now }}){% endif %}</li>
+  <li class="person">
+    {% if p.photo %}<img class="avatar" src="{{ p.photo }}" alt="" loading="lazy">
+    {% else %}<span class="avatar initials" aria-hidden="true">{{ p.name.split()[0][0] }}{{ p.name.split()[-1][0] }}</span>{% endif %}
+    <span><strong>{{ p.name }}</strong>{% if heading == "Other" %} — {{ p.role }}{% endif %}
+      {% if p.now %}<span class="person-links">now: {{ p.now }}</span>{% endif %}
+    </span>
+  </li>
 {% endfor %}
 </ul>
 {% endfor %}

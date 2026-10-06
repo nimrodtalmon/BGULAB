@@ -139,7 +139,6 @@ section { margin-top: 2.5rem; }
 .person:nth-child(3n) .avatar.initials { --ac: var(--t3); }
 .person-links { display: block; font-size: 13px; }
 .person-links a + a::before { content: "·"; color: var(--muted); margin: 0 .35em; }
-.past li { margin-bottom: .2rem; }
 .small { font-size: 14px; }
 .people-group { margin: 1rem 0 .3rem; }
 details { border-top: 1px solid var(--line); padding: .4rem 0; }
