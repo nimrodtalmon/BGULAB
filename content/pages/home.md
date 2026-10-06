@@ -5,8 +5,9 @@ title: Digital Cooperation Lab
 
 **We study** how humans and AI agents, in varying combinations, reach good
 collective decisions together. **We draw on** [computational social
-choice](term:computational-social-choice), cooperative AI, game theory, and
-combinatorial optimization. **Methodologically**, we build, analyze, and
+choice](term:computational-social-choice), [cooperative AI](term:cooperative-ai),
+[game theory](term:game-theory), and [combinatorial
+optimization](term:combinatorial-optimization). **Methodologically**, we build, analyze, and
 simulate mathematical models towards collective decision-making mechanisms
 that are efficient and fair.
 
