@@ -37,7 +37,9 @@ themes:
       - title: Token-based peer review
         owners: [Nimrod Talmon]
         about: |
-          The SSVA paper is to be presented at AI-Native Academia.
+          Tokens that limit how many papers each author can submit, so
+          reviewing load stays manageable. To be presented at the NeurIPS
+          2026 AI-Native Academia workshop.
 
   - title: Humans with code
     about: Governance that is executed by protocols rather than by people, as in [DAOs](term:dao).
