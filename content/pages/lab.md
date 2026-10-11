@@ -10,18 +10,18 @@ For lab members: what to do first, how we work, and what to read.
 
 New in the lab? Go through this list.
 
-1. Make sure you are on the lab WhatsApp group (ask Nimrod).
-2. Play with this site. Add your photo and links on [People](/people) by
+1. Play with this site. Add your photo and links on [People](/people) by
    sending them with Govern, e.g. "photo: https://… ; Scholar: https://…".
-3. Open your project on [Research](/) and fill in its description and where
+2. Open your project on [Research](/) and fill in its description and where
    it stands, with Govern. Each project's owners keep it up to date before
    lab meetings.
-4. Read the [Handbook of Computational Social
+3. Read the [Handbook of Computational Social
    Choice](https://www.cambridge.org/9781107060432) (2016) and [Trends in
    Computational Social
    Choice](https://archive.illc.uva.nl/COST-IC1205/BookDocs/TrendsCOMSOC.pdf)
    (2017), and the key terms on [Research](/): the dotted words open a
    short explanation, each with a first paper to read.
+4. Make sure you are on the lab WhatsApp group (ask Nimrod).
 5. Say hi at the next lab meeting.
 
 ### How we work
