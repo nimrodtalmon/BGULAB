@@ -26,7 +26,7 @@
     {% if p.photo %}<img class="avatar" src="{{ p.photo }}" alt="" loading="lazy">
     {% else %}<span class="avatar initials" aria-hidden="true">{{ p.name.split()[0][0] }}{{ p.name.split()[-1][0] }}</span>{% endif %}
     <span><strong>{{ p.name }}</strong>{% if heading == "Other" %} — {{ p.role }}{% endif %}
-      {% if p.now %}<span class="person-links">now: {{ p.now }}</span>{% endif %}
+      {% if p.now %}<span class="person-links">now: {% if p.now_url %}<a href="{{ p.now_url }}">{{ p.now }}</a>{% else %}{{ p.now }}{% endif %}</span>{% endif %}
     </span>
   </li>
 {% endfor %}

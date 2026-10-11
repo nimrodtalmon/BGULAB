@@ -43,11 +43,15 @@ past:
   - name: Pallavi Jain
     role: Postdoc
     now: IIT Jodhpur
+    now_url: https://www.iitj.ac.in/
   - name: Krzysztof Sornat
     role: Postdoc
     now: AGH Krakow
+    now_url: https://www.agh.edu.pl/en/
   - name: Ouri Poupku
     role: Postdoc
+    now: Western Galilee College
+    now_url: https://www.wgalil.ac.il/
   - name: Shiri Hefetz
     role: PhD
   - name: Lior Ashkenazy
