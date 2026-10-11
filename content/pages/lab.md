@@ -4,18 +4,19 @@ visibility: lab
 ---
 # Lab
 
-For lab members: what to do first, how we work, and what to read.
+For lab members: how to start, what we keep in mind, and the lab meetings.
 
-## Getting started
+## Onboarding
 
-New in the lab? Go through this list.
+We study mechanisms for collective decisions among humans and AI agents
+(see [Research](/)). New in the lab? Go through this list.
 
 1. Play with this site ([how it works](/govern#how-this-works)). Add your
    photo and links on [People](/people) by sending them with Govern, e.g.
    "photo: https://… ; Scholar: https://…".
 2. Open your project on [Research](/) and fill in its description and where
    it stands, with Govern. Each project's owners keep it up to date before
-   lab meetings.
+   lab meetings; one or two lines are enough.
 3. Read the [Handbook of Computational Social
    Choice](https://www.cambridge.org/9781107060432) (2016) and [Trends in
    Computational Social
@@ -25,16 +26,30 @@ New in the lab? Go through this list.
 4. Make sure you are on the lab WhatsApp group (ask Nimrod).
 5. Say hi at the next lab meeting.
 
-### How we work
+And always: ask early, in the open.
 
-- **What we do:** mechanisms for collective decisions among humans and AI
-  agents. See [Research](/).
-- **This site:** you can change anything on it by sending a request with
-  [Govern](/govern). Requests are decided in rounds before lab meetings;
-  the rules and what happened are on the same page.
-- **Before each lab meeting:** write where your project stands, with
-  Govern. One or two lines are enough.
-- **Asking things:** ask early, in the open.
+## Mantras
+
+What we keep in mind, in research and in writing.
+
+### How to be a great student
+
+AI agents can now prove lemmas, write code, and draft papers faster than
+most of us. So in our lab, being a great student is less about technical
+speed and more about judgment. A great student:
+
+- **picks problems** worth solving, and drops ones that are not, even
+  elegant ones;
+- **checks everything**, their own work and the agents' work, and can
+  explain *why* a result is true, not only that it went through;
+- **reads papers like a referee**, asking what a result actually buys and
+  who should care;
+- **uses AI tools heavily, as a supervisor**: setting the question,
+  directing the work, and owning what comes out.
+
+Technical skill still matters, since you cannot judge what you do not
+understand. But the real goal is taste, and taste is built by doing,
+questioning, and arguing about what matters.
 
 ### House style
 
