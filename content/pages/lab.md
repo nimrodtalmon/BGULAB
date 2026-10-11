@@ -112,7 +112,13 @@ For writing and presenting alike:
 
 ### Next meeting
 
-- (nothing yet)
+**Monday, October 19.** Agenda, from Nimrod:
+
+1. This site, and governing it until the meeting.
+2. Our calendar:
+   - weekly meeting: round robin, and schnitzel;
+   - project meetings: by project;
+   - semester meeting: somewhere nice (ideas?).
 
 ### Past meetings
 
