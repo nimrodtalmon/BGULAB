@@ -10,8 +10,9 @@ For lab members: what to do first, how we work, and what to read.
 
 New in the lab? Go through this list.
 
-1. Play with this site. Add your photo and links on [People](/people) by
-   sending them with Govern, e.g. "photo: https://… ; Scholar: https://…".
+1. Play with this site ([how it works](/govern#how-this-works)). Add your
+   photo and links on [People](/people) by sending them with Govern, e.g.
+   "photo: https://… ; Scholar: https://…".
 2. Open your project on [Research](/) and fill in its description and where
    it stands, with Govern. Each project's owners keep it up to date before
    lab meetings.
