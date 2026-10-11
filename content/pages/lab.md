@@ -117,3 +117,14 @@ For writing and presenting alike:
 ### Past meetings
 
 - (none yet)
+
+## Ideas
+
+Things we may add to this site. Requests welcome, with Govern.
+
+- **An onboarding agent** that walks new members through the list above.
+- **A lab helper agent**, e.g. for reviewing drafts. It would need an LLM
+  API key, which this site avoids for now, or a loop like the Govern rounds.
+- **A progress widget:** everyone's timelines and progress, maybe projects
+  too; seeing people help each other; and one place for the questions that
+  keep coming up and for the lab's knowledge, to cut load.
