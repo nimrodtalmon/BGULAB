@@ -20,3 +20,9 @@ Innovation, Science and Technology ([a blockchain-based platform for food
 security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-blockchain-developing-a-web3-applica/)).
 
 [[projects]]
+
+## News
+
+- *Who Gets to Submit? Regulating Submission Volume Through Token
+  Mechanisms* is accepted at the [NeurIPS 2026 workshop on AI-Native
+  Academia](https://neurips.cc/virtual/2026/workshop/137580).
