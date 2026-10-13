@@ -103,10 +103,10 @@ For writing and presenting alike:
 5. Sleep a bit. :)
 6. Now read **all** of the paper, in detail, looking for problems too.
 7. Write the review:
-   - First, high level: what is it? Is the writing good? Understandable?
-     Fun to read (very important!)?
-   - Then comments, from big (order, structure, weak methods, bugs) to
-     small (typos, suggestions).
+    - First, high level: what is it? Is the writing good? Understandable?
+      Fun to read (very important!)?
+    - Then comments, from big (order, structure, weak methods, bugs) to
+      small (typos, suggestions).
 
 ## Ideas
 
