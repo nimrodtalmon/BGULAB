@@ -239,3 +239,8 @@ details.card details.sub > summary:hover { color: var(--tc); }
 details.card + details:not(.card) { border-top: 0; }
 u.key { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 details > summary > .tag { margin-right: auto; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+dialog.keys-pop { font-family: var(--sans); width: min(420px, calc(100vw - 32px)); }
+dialog.keys-pop table { display: table; margin: .8rem 0; font-size: 14px; }
+dialog.keys-pop td:first-child { width: 4.5rem; white-space: nowrap; }
+kbd { font: 600 12.5px var(--sans); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: .05rem .35rem; background: var(--code-bg); }

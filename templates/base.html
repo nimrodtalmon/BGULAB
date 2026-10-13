@@ -158,11 +158,19 @@ if (pop && pop.showModal) {
 window.addEventListener("hashchange", openTarget);
 openTarget();
 
-// Section shortcuts: each top-level section gets the first free letter of its
-// title (underlined); pressing it opens or closes the section. "g" stays Govern.
+// Keyboard. Tabs: their first letter (r, p, l) or the left/right arrows.
+// Sections: j / k move between headings (Enter opens), and each top-level
+// section gets the first free letter of its title, underlined. "g" opens
+// Govern; "?" lists all of this. Off while typing or while a popup is open.
 (function () {
-  var keys = {}, used = { g: 1 };
-  document.querySelectorAll("main details[id]:not(.sub):not(.more):not(.theme-projects)").forEach(function (d) {
+  var tabs = [].slice.call(document.querySelectorAll("nav.links a:not(.auth)")),
+      keys = {}, used = { g: 1, j: 1, k: 1 }, help = [["g", "Govern"]];
+  tabs.forEach(function (a) {
+    var k = a.textContent.trim()[0].toLowerCase();
+    if (!used[k]) { used[k] = 1; keys[k] = a; help.push([k, a.textContent.trim()]); }
+  });
+  help.push(["← →", "previous / next tab"], ["j k", "next / previous heading; Enter opens"]);
+  document.querySelectorAll("main details[id]:not(.sub):not(.theme-projects)").forEach(function (d) {
     var s = d.querySelector(":scope > summary"), node = s && s.firstChild;
     if (!node || node.nodeType !== 3) return;
     var text = node.textContent, i, k;
@@ -171,21 +179,56 @@ openTarget();
       if (/[a-z]/.test(k) && !used[k]) break;
     }
     if (i === text.length) return;
-    used[k] = 1; keys[k] = d;
+    used[k] = 1; keys[k] = d; help.push([k, text.trim()]);
     var span = document.createElement("span"), u = document.createElement("u");
     u.className = "key"; u.textContent = text[i];
     span.append(text.slice(0, i), u, text.slice(i + 1));
     s.replaceChild(span, node);
     s.title = "shortcut: " + k;
   });
+  help.push(["?", "this list"]);
+
+  var box = document.createElement("dialog");
+  box.className = "pop keys-pop";
+  box.innerHTML = "<h2>Shortcuts</h2><table></table><p class='muted'>Esc closes.</p>";
+  help.forEach(function (h) {
+    var tr = box.querySelector("table").insertRow(), a = tr.insertCell(), b = tr.insertCell();
+    a.innerHTML = "<kbd></kbd>"; a.firstChild.textContent = h[0]; b.textContent = h[1];
+  });
+  box.addEventListener("click", function (e) { if (e.target === box) box.close(); });
+  document.body.appendChild(box);
+
+  function headings() {
+    return [].slice.call(document.querySelectorAll("main summary")).filter(function (s) {
+      return s.offsetParent !== null;
+    });
+  }
+  function moveHeading(step) {
+    var hs = headings(), i = hs.indexOf(document.activeElement);
+    var next = hs[i < 0 ? (step > 0 ? 0 : hs.length - 1) : Math.min(Math.max(i + step, 0), hs.length - 1)];
+    if (next) { next.focus(); next.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
+  }
+  function moveTab(step) {
+    if (!tabs.length) return;
+    var i = tabs.findIndex(function (a) { return a.classList.contains("here"); });
+    i = i < 0 ? (step > 0 ? 0 : tabs.length - 1) : (i + step + tabs.length) % tabs.length;
+    location.href = tabs[i].href;
+  }
   document.addEventListener("keydown", function (e) {
-    var d = keys[e.key];
-    if (!d || e.ctrlKey || e.metaKey || e.altKey || e.isComposing || document.querySelector("dialog[open]")) return;
+    if (e.ctrlKey || e.metaKey || e.altKey || e.isComposing || document.querySelector("dialog[open]")) return;
     var t = e.target;
     if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
-    e.preventDefault();
-    d.open = !d.open;
-    if (d.open) d.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    var k = e.key, d = keys[k];
+    if (k === "?") { e.preventDefault(); box.showModal(); }
+    else if (k === "ArrowRight" || k === "ArrowLeft") { e.preventDefault(); moveTab(k === "ArrowRight" ? 1 : -1); }
+    else if (k === "j" || k === "k") { e.preventDefault(); moveHeading(k === "j" ? 1 : -1); }
+    else if (d && d.tagName === "A") { e.preventDefault(); location.href = d.href; }
+    else if (d) {
+      e.preventDefault();
+      d.open = !d.open;
+      d.querySelector(":scope > summary").focus();
+      if (d.open) d.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
   });
 })();
 </script>
