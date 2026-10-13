@@ -157,7 +157,7 @@ dialog.pop p { margin: 0; font-size: 14px; }
 .govern-form button.link { background: none; color: var(--muted); padding: 0; font-weight: 400; }
 
 /* Research: one box per theme; each project opens in a popup. */
-.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; align-items: start; }
 @media (max-width: 760px) { .themes { grid-template-columns: 1fr; } }
 .theme {
   --tc: var(--t1);
