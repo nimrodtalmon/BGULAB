@@ -237,8 +237,5 @@ details.card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
 details.card > summary { color: var(--tc); }
 details.card details.sub > summary:hover { color: var(--tc); }
 details.card + details:not(.card) { border-top: 0; }
-/* "More" inside running text: a quiet inline fold, no rules. */
-details.more, details.more:last-of-type { border: 0; padding: 0; margin: -.4rem 0 1rem; }
-details.more > summary { justify-content: flex-start; font: 500 15px/1.4 var(--sans); color: var(--muted); }
 u.key { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 details > summary > .tag { margin-right: auto; }
