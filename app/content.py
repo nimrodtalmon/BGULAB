@@ -24,7 +24,7 @@ TERM_LINK = re.compile(r'href="term:([a-z0-9-]+)"')
 
 
 def render_md(text: str) -> str:
-    html_ = markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"])
+    html_ = markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists", "md_in_html"])
     # [text](term:<id>) opens the key term's popup (templates/terms.html).
     return TERM_LINK.sub(r'href="#term-\1" class="term" data-pop="term-\1"', html_)
 
