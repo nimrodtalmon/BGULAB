@@ -22,8 +22,8 @@ from <a href="#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}
   <button type="submit">Send</button>
 </form>
 
-<section class="folds">
-<details id="pending">
+<section class="folds cards">
+<details class="card" id="pending">
 <summary>Pending{% if pending %} ({{ pending | length }}){% endif %}</summary>
 {% if pending is none %}
   <p class="muted">Pending requests cannot be loaded right now.</p>
@@ -43,12 +43,12 @@ from <a href="#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}
 {% endif %}
 </details>
 
-<details id="rules">
+<details class="card" id="rules">
 <summary>Rules</summary>
 {{ rules | safe }}
 </details>
 
-<details id="rounds">
+<details class="card" id="rounds">
 <summary>Rounds</summary>
 {% for r in rounds %}
 <details class="sub" id="round-{{ r.number }}">
@@ -66,7 +66,7 @@ from <a href="#round-{{ latest_round }}">round {{ latest_round }}</a>{% endif %}
 {% if not lab and rounds %}<p class="muted">Names, request texts and diffs are shown to signed-in lab members.</p>{% endif %}
 </details>
 
-<details id="how-this-works">
+<details class="card" id="how-this-works">
 <summary>How this works</summary>
 <p>The site changes only through requests, decided in rounds under the rules
 above. Claude does the work in each round, following the procedure below

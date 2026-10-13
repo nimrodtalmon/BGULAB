@@ -218,3 +218,31 @@ a.term:hover { color: var(--accent); }
 .theme-projects > summary { font: 600 14px/1.4 var(--sans); color: var(--tc); padding: .2rem 0; }
 .theme-projects > :not(summary) { margin-left: 0; }
 .theme-projects ul { margin-top: .3rem; }
+
+/* Sections as cards, like the Research boxes: collapsed cards sit in a grid;
+   an open card takes the full width. No nested indentation. */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; align-items: start; }
+@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+details.card {
+  --tc: var(--t1);
+  margin: 0; border: 1px solid var(--line); border-top: 4px solid var(--tc);
+  border-radius: 12px; padding: .75rem 1rem;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 9%, var(--bg)), var(--bg) 70%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  transition: box-shadow .18s;
+}
+.cards > details.card:nth-child(3n+2) { --tc: var(--t2); }
+.cards > details.card:nth-child(3n) { --tc: var(--t3); }
+details.card:last-of-type { border-bottom: 1px solid var(--line); }
+details.card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
+details.card[open] { grid-column: 1 / -1; }
+details.card > summary { color: var(--tc); display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; }
+details.card > summary::before, details.card details.sub > summary::before { content: none; }
+details.card summary::after { content: "+"; color: var(--muted); font-weight: 400; }
+details.card[open] > summary::after, details.card details.sub[open] > summary::after { content: "–"; }
+details.card > :not(summary), details.card details.sub > :not(summary) { margin-left: 0; }
+details.card ul, details.card ol { padding-left: 1.3em; }
+details.card details.sub { border-top: 1px solid var(--line); padding: .35rem 0; }
+details.card details.sub > summary { display: flex; justify-content: space-between; font: 600 15px/1.4 var(--sans); color: var(--fg); }
+details.card details.sub > summary:hover { color: var(--tc); }
+details.card > p:first-of-type { margin-top: .5rem; }

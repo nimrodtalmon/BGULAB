@@ -84,7 +84,7 @@ def fold(body: str, lab: bool) -> str:
     """
     body = re.sub(r"\A\s*# .*\n", "", body)
     intro, sections = _split(body, 2)
-    out = [render_md(intro)]
+    cards = []
     for title, text in sections:
         hidden = bool(LAB_ONLY.search(title))
         if hidden and not lab:
@@ -99,8 +99,11 @@ def fold(body: str, lab: bool) -> str:
             sub_title = LAB_ONLY.sub("", sub_title)
             inner.append(f'<details class="sub" id="{anchor(sub_title)}">'
                          f"{_summary(sub_title, sub_hidden)}{render_md(sub_text)}</details>")
-        out.append(f'<details id="{anchor(title)}">{_summary(title, hidden)}'
-                   f'{"".join(inner)}</details>')
+        cards.append(f'<details class="card" id="{anchor(title)}">{_summary(title, hidden)}'
+                     f'{"".join(inner)}</details>')
+    out = [render_md(intro)]
+    if cards:
+        out.append('<div class="cards">' + "\n".join(cards) + "</div>")
     return "\n".join(out)
 
 
