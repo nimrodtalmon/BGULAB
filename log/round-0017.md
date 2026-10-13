@@ -2,7 +2,7 @@
 round: 17
 date: 2026-10-13
 title: Keyboard, About fold
-commits: [460c575e2c6283409e2b4f3313ae7a9a8640da19, 2c5d56d790fa9f0a4ea994e41d2d7473ff8bc257, 22b857e0619fccdc4b16d704820f29b2b016301b, 399152d60f805cd5e67e35a8f06d9bcf2f18932a]
+commits: [460c575e2c6283409e2b4f3313ae7a9a8640da19, 2c5d56d790fa9f0a4ea994e41d2d7473ff8bc257, 22b857e0619fccdc4b16d704820f29b2b016301b, 399152d60f805cd5e67e35a8f06d9bcf2f18932a, 5b752ead8a83cbc2e3dbe0770eeb3b60e5c14a38]
 ---
 ## Public
 
@@ -10,7 +10,8 @@ The Research intro is now one "About" fold, open by default, and opening a
 research box no longer stretches the other two. The site can be driven from
 the keyboard: r, p, l or the left/right arrows switch tabs, j and k move
 between headings, and "?" lists every shortcut. News announces an upcoming
-talk on metric-based voting.
+talk on metric-based voting. People has a new group for high-school
+students and guests.
 
 ## Lab
 
@@ -21,6 +22,7 @@ talk on metric-based voting.
 | 73 | Nimrod | arrow keys for tabs and sections; "?" for a shortcut menu | applied, merged with 74 | rule 1; left/right for tabs; j/k instead of up/down, so arrow keys still scroll the page | 22b857e |
 | 74 | Nimrod | r / p / l for Research / People / Lab | applied, merged with 73 | rule 1; tab letters win; sections take their next free letter | 22b857e |
 | 70 | Nimrod | news: my metric-based voting talk | applied | rule 1; MidChain DeFi Conference, BGU, Oct 26 | 399152d |
+| — | Nimrod | admin change: People group "Students and guests"; added high-school students Tani Idan and Ori Ben Zion | done | Nimrod's OK in chat; a place for non-degree members | 5b752ea |
 
 Wrong-pass submissions: none.
 
