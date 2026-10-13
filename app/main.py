@@ -69,7 +69,7 @@ def show_page(request: Request, slug: str) -> HTMLResponse:
     lab = lab_name(request) is not None
     if doc["lab_only"] and not lab:
         return sign_in_page(request, doc["title"])
-    body = content.fold(doc["body"], lab)
+    body = content.fold(doc["body"], lab, doc["boxed"])
     if PROJECTS_MARK in body:
         boxes = templates.get_template("projects.html").render(themes=content.projects())
         body = body.replace(PROJECTS_MARK, boxes)

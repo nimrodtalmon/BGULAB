@@ -1,6 +1,7 @@
 ---
 title: Lab
 visibility: lab
+boxed: [Onboarding, Mantras]
 ---
 # Lab
 

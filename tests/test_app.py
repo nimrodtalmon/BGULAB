@@ -97,8 +97,9 @@ def test_govern_with_right_password_signs_in(client, env):
 
 def test_folding_and_lab_only_sections():
     body = "# T\n\nintro\n\n## A\n\ntext\n\n### Sub\n\ns\n\n## B (lab only)\n\nhidden\n"
-    public, lab = content.fold(body, False), content.fold(body, True)
-    assert '<details class="card" id="a">' in public and '<details class="sub" id="sub">' in public
+    public, lab = content.fold(body, False), content.fold(body, True, ("A",))
+    assert '<details id="a">' in public and '<details class="sub" id="sub">' in public
+    assert '<details class="card" id="a">' in lab
     assert "hidden" not in public and "hidden" in lab and "lab only" in lab
 
 

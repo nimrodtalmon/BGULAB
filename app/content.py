@@ -76,15 +76,17 @@ def _summary(title: str, lab: bool) -> str:
     return f"<summary>{html.escape(title)}{tag}</summary>"
 
 
-def fold(body: str, lab: bool) -> str:
+def fold(body: str, lab: bool, boxed=()) -> str:
     """Render a page with every `##` (and nested `###`) section collapsed.
 
     A heading ending in "(lab only)" is shown only to signed-in lab members.
+    Sections named in `boxed` (the page's `boxed:` frontmatter) are boxes;
+    the others are plain collapsibles.
     The top `#` heading becomes the page title and is dropped here.
     """
     body = re.sub(r"\A\s*# .*\n", "", body)
     intro, sections = _split(body, 2)
-    cards = []
+    out = [render_md(intro)]
     for title, text in sections:
         hidden = bool(LAB_ONLY.search(title))
         if hidden and not lab:
@@ -99,11 +101,9 @@ def fold(body: str, lab: bool) -> str:
             sub_title = LAB_ONLY.sub("", sub_title)
             inner.append(f'<details class="sub" id="{anchor(sub_title)}">'
                          f"{_summary(sub_title, sub_hidden)}{render_md(sub_text)}</details>")
-        cards.append(f'<details class="card" id="{anchor(title)}">{_summary(title, hidden)}'
-                     f'{"".join(inner)}</details>')
-    out = [render_md(intro)]
-    if cards:
-        out.append('<div class="cards">' + "\n".join(cards) + "</div>")
+        cls = ' class="card"' if title.strip() in boxed else ""
+        out.append(f'<details{cls} id="{anchor(title)}">{_summary(title, hidden)}'
+                   f'{"".join(inner)}</details>')
     return "\n".join(out)
 
 
@@ -119,6 +119,7 @@ def page(slug: str) -> dict | None:
         "slug": slug,
         "title": meta.get("title", slug),
         "lab_only": visibility in ("lab", "members"),
+        "boxed": tuple(meta.get("boxed") or ()),
         "body": body,
     }
 

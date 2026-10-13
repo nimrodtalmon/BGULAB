@@ -141,19 +141,6 @@ section { margin-top: 2.5rem; }
 .person-links a + a::before { content: "·"; color: var(--muted); margin: 0 .35em; }
 .small { font-size: 14px; }
 .people-group { margin: 1rem 0 .3rem; }
-details { border-top: 1px solid var(--line); padding: .4rem 0; }
-details:last-of-type { border-bottom: 1px solid var(--line); }
-details > summary {
-  cursor: pointer; list-style: none; font: 600 17px/1.4 var(--sans);
-  padding: .2rem 0;
-}
-details > summary::-webkit-details-marker { display: none; }
-details > summary:hover { color: var(--accent); }
-details > summary::before { content: "▸"; display: inline-block; width: 1.1em; color: var(--muted); }
-details[open] > summary::before { content: "▾"; }
-details > :not(summary) { margin-left: 1.1em; }
-details.sub { border: 0; padding: .1rem 0; }
-details.sub > summary { font-weight: 500; font-size: 16px; }
 .folds { margin-top: 2rem; }
 blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); font-style: italic; }
 
@@ -214,35 +201,39 @@ dialog.project-pop .actions { display: flex; gap: 1rem; margin-top: 1rem; font-s
 #toast button.link { color: inherit; margin-left: .5rem; }
 a.term { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--accent); }
 a.term:hover { color: var(--accent); }
-.theme-projects { border: 0; padding: 0; margin: 0; }
+.theme details.theme-projects { border: 0; padding: 0; margin: 0; }
 .theme-projects > summary { font: 600 14px/1.4 var(--sans); color: var(--tc); padding: .2rem 0; }
 .theme-projects > :not(summary) { margin-left: 0; }
 .theme-projects ul { margin-top: .3rem; }
 
-/* Sections as cards, like the Research boxes: collapsed cards sit in a grid;
-   an open card takes the full width. No nested indentation. */
-.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; align-items: start; }
-@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+/* Collapsible sections: a plain row with +/– on the right, no indentation.
+   Sections a page lists under `boxed:` are boxes, like the Research boxes,
+   one per row; they open downward. */
+details { border-top: 1px solid var(--line); padding: .4rem 0; }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+details > summary {
+  cursor: pointer; list-style: none; font: 600 17px/1.4 var(--sans); padding: .2rem 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: .5rem;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary:hover { color: var(--accent); }
+details > summary::after { content: "+"; color: var(--muted); font-weight: 400; }
+details[open] > summary::after { content: "–"; }
+details.sub { border-bottom: 0; }
+details.sub > summary { font: 600 15px/1.4 var(--sans); }
+details ul, details ol { padding-left: 1.3em; }
+
 details.card {
   --tc: var(--t1);
-  margin: 0; border: 1px solid var(--line); border-top: 4px solid var(--tc);
+  margin: 1rem 0; border: 1px solid var(--line); border-top: 4px solid var(--tc);
   border-radius: 12px; padding: .75rem 1rem;
   background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 9%, var(--bg)), var(--bg) 70%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
-  transition: box-shadow .18s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04); transition: box-shadow .18s;
 }
-.cards > details.card:nth-child(3n+2) { --tc: var(--t2); }
-.cards > details.card:nth-child(3n) { --tc: var(--t3); }
+details.card + details.card { --tc: var(--t2); }
+details.card + details.card + details.card { --tc: var(--t3); }
 details.card:last-of-type { border-bottom: 1px solid var(--line); }
 details.card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
-details.card[open] { grid-column: 1 / -1; }
-details.card > summary { color: var(--tc); display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; }
-details.card > summary::before, details.card details.sub > summary::before { content: none; }
-details.card summary::after { content: "+"; color: var(--muted); font-weight: 400; }
-details.card[open] > summary::after, details.card details.sub[open] > summary::after { content: "–"; }
-details.card > :not(summary), details.card details.sub > :not(summary) { margin-left: 0; }
-details.card ul, details.card ol { padding-left: 1.3em; }
-details.card details.sub { border-top: 1px solid var(--line); padding: .35rem 0; }
-details.card details.sub > summary { display: flex; justify-content: space-between; font: 600 15px/1.4 var(--sans); color: var(--fg); }
+details.card > summary { color: var(--tc); }
 details.card details.sub > summary:hover { color: var(--tc); }
-details.card > p:first-of-type { margin-top: .5rem; }
+details.card + details:not(.card) { border-top: 0; }
