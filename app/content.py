@@ -132,8 +132,11 @@ ROLE_GROUPS = [
     ("PhD students", ("phd student", "phd")),
     ("MSc students", ("msc student", "msc")),
     ("RAs", ("ra",)),
+    ("Students and guests", ("high-school student", "guest", "visitor", "visiting student")),
 ]
 OTHER_GROUP = "Other"
+# Groups whose members are shown with their role next to the name.
+MIXED_GROUPS = ("Students and guests", OTHER_GROUP)
 
 
 def group_people(people: list) -> list:
@@ -157,6 +160,7 @@ def people() -> dict:
         "past": past,
         "present_groups": group_people(present),
         "past_groups": group_people(past),
+        "mixed_groups": MIXED_GROUPS,
     }
 
 

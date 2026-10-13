@@ -39,6 +39,14 @@ present:
     slug: gefen-ben-shoshan
     role: MSc student
     links: {}
+  - name: Tani Idan
+    slug: tani-idan
+    role: High-school student
+    links: {}
+  - name: Ori Ben Zion
+    slug: ori-ben-zion
+    role: High-school student
+    links: {}
 
 past:
   - name: Pallavi Jain
