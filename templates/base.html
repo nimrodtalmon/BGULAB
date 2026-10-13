@@ -157,6 +157,37 @@ if (pop && pop.showModal) {
 }
 window.addEventListener("hashchange", openTarget);
 openTarget();
+
+// Section shortcuts: each top-level section gets the first free letter of its
+// title (underlined); pressing it opens or closes the section. "g" stays Govern.
+(function () {
+  var keys = {}, used = { g: 1 };
+  document.querySelectorAll("main details[id]:not(.sub):not(.more):not(.theme-projects)").forEach(function (d) {
+    var s = d.querySelector(":scope > summary"), node = s && s.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var text = node.textContent, i, k;
+    for (i = 0; i < text.length; i++) {
+      k = text[i].toLowerCase();
+      if (/[a-z]/.test(k) && !used[k]) break;
+    }
+    if (i === text.length) return;
+    used[k] = 1; keys[k] = d;
+    var span = document.createElement("span"), u = document.createElement("u");
+    u.className = "key"; u.textContent = text[i];
+    span.append(text.slice(0, i), u, text.slice(i + 1));
+    s.replaceChild(span, node);
+    s.title = "shortcut: " + k;
+  });
+  document.addEventListener("keydown", function (e) {
+    var d = keys[e.key];
+    if (!d || e.ctrlKey || e.metaKey || e.altKey || e.isComposing || document.querySelector("dialog[open]")) return;
+    var t = e.target;
+    if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    e.preventDefault();
+    d.open = !d.open;
+    if (d.open) d.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+})();
 </script>
 </body>
 </html>
