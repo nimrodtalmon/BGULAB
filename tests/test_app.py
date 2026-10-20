@@ -181,3 +181,13 @@ def test_govern_concurrent_sends_file_once(client, env, monkeypatch):
     for t in ts: t.start()
     for t in ts: t.join()
     assert len(env) == 1 and all(r["ok"] for r in results)
+
+
+def test_people_bio_popup_and_local_photos(client):
+    html = client.get("/people").text
+    for p in content.people()["present"]:
+        if p.get("bio"):
+            assert f'data-pop="{p["slug"]}"' in html and f'id="{p["slug"]}"' in html
+        photo = p.get("photo", "")
+        if photo.startswith("/static/"):
+            assert client.get(photo).status_code == 200

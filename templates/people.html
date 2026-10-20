@@ -8,12 +8,26 @@
   <li class="person">
     {% if p.photo %}<img class="avatar" src="{{ p.photo }}" alt="" loading="lazy">
     {% else %}<span class="avatar initials" aria-hidden="true">{{ p.name.split()[0][0] }}{{ p.name.split()[-1][0] }}</span>{% endif %}
-    <span><strong>{{ p.name }}</strong>{% if heading in people.mixed_groups %} — {{ p.role }}{% endif %}
+    <span>{% if p.bio %}<a class="bio" href="#{{ p.slug }}" data-pop="{{ p.slug }}"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}{% if heading in people.mixed_groups %} — {{ p.role }}{% endif %}
       {% if p.links %}<span class="person-links">{% for label, url in p.links.items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</span>{% endif %}
     </span>
   </li>
 {% endfor %}
 </ul>
+{% endfor %}
+{# A one-line bio opens in a popup from the name, so the grid stays compact. #}
+{% for p in people.present if p.bio %}
+<dialog class="pop project-pop person-pop" id="{{ p.slug }}" aria-labelledby="{{ p.slug }}-title">
+  <p class="muted">{{ p.role }}</p>
+  {% if p.photo %}<img class="pop-avatar" src="{{ p.photo }}" alt="">{% endif %}
+  <h2 id="{{ p.slug }}-title">{{ p.name }}</h2>
+  <p>{{ p.bio }}</p>
+  {% if p.links %}<p class="person-links">{% for label, url in p.links.items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</p>{% endif %}
+  <div class="actions">
+    <button type="button" class="link" data-govern>Govern</button>
+    <button type="button" class="link" value="close">Close</button>
+  </div>
+</dialog>
 {% endfor %}
 {% if people.past %}
 <details id="alumni">
