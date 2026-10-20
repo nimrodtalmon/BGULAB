@@ -12,6 +12,8 @@ themes:
         owners: [Eyal Briman]
       - title: Delegation with voter commitment
         owners: [Joel van der Boom]
+        about: |
+          We study the effect of commitment—the real-world tendency of DAO voters to stick with their chosen representatives for long periods rather than re-delegating when better alternatives exist—focusing not on why this stickiness happens, but on whether it ultimately helps or harms system quality.
       - title: Liquid democracy vs. lot
         owners: [Eyal Briman]
       - title: Grassroots federation formation
