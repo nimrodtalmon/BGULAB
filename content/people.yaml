@@ -18,6 +18,7 @@ present:
     links: {}
   - name: Berihu Michiale Haileselassie
     slug: berihu-michiale-haileselassie
+    photo: /static/people/berihu-michiale-haileselassie.jpg
     role: PhD student
     links: {}
   - name: Nir Soffer
