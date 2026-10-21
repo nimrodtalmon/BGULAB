@@ -14,8 +14,10 @@ present:
       Personal: https://nimrodtalmon.github.io/zutot/
   - name: Eyal Briman
     slug: eyal-briman
+    photo: /static/people/eyal-briman.jpg
     role: PhD student
-    links: {}
+    links:
+      Personal: https://sites.google.com/view/eyalbriman
   - name: Berihu Michiale Haileselassie
     slug: berihu-michiale-haileselassie
     photo: /static/people/berihu-michiale-haileselassie.jpg
