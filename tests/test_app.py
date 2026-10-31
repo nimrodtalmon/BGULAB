@@ -191,3 +191,15 @@ def test_people_bio_popup_and_local_photos(client):
         photo = p.get("photo", "")
         if photo.startswith("/static/"):
             assert client.get(photo).status_code == 200
+
+
+def test_base_path(client, monkeypatch):
+    import app.main as main
+    monkeypatch.setattr(main, "BASE_PATH", "/lab")
+    html = client.get("/").text
+    assert 'href="/lab/static/style.css"' in html and 'href="/static/' not in html
+    assert 'fetch("/lab/govern"' in html
+    r = client.post("/login", data={"name": "Dana", "password": "shnitzel", "next": "/people"},
+                    follow_redirects=False)
+    assert r.headers["location"] == "/lab/people" and "set-cookie" in r.headers
+    assert client.get("/pages/home", follow_redirects=False).headers["location"] == "/lab/"

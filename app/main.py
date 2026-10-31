@@ -4,16 +4,47 @@ Stateless: nothing here is written to disk or kept beyond a short cache.
 """
 
 import os
+import re
 
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from starlette.responses import Response
 
 from app import content, github, govern
 from app.gate import COOKIE, MAX_AGE, clean_name, lab_cookie, lab_name, password_ok
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+
+# When the site is served under a sub-path (e.g. BASE_PATH=/lab behind a proxy
+# that strips it), the app keeps working with root-relative paths internally;
+# this rewrites them on the way out: links, forms and fetches in HTML pages,
+# and redirect targets.
+BASE_PATH = os.environ.get("BASE_PATH", "").rstrip("/")
+_LINK = re.compile(r"""((?:href|src|action)=["']|fetch\(["'])/(?!/)""")
+
+
+def with_base(html: str) -> str:
+    return _LINK.sub(lambda m: m.group(1) + BASE_PATH + "/", html) if BASE_PATH else html
+
+
+@app.middleware("http")
+async def base_path(request: Request, call_next):
+    resp = await call_next(request)
+    if not BASE_PATH:
+        return resp
+    loc = resp.headers.get("location", "")
+    if loc.startswith("/") and not loc.startswith("//"):
+        resp.headers["location"] = BASE_PATH + loc
+    if not resp.headers.get("content-type", "").startswith("text/html"):
+        return resp
+    body = b"".join([chunk async for chunk in resp.body_iterator])
+    data = with_base(body.decode()).encode()
+    out = Response(data, status_code=resp.status_code)
+    out.raw_headers = [(k, v) for k, v in resp.raw_headers if k.lower() != b"content-length"]
+    out.raw_headers.append((b"content-length", str(len(data)).encode()))
+    return out
 app.mount("/static", StaticFiles(directory=content.ROOT / "static"), name="static")
 templates = Jinja2Templates(directory=content.ROOT / "templates")
 
