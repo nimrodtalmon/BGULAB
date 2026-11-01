@@ -123,14 +123,13 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
-**Monday, October 19.** Agenda, from Nimrod:
+**Monday, November 2.** Agenda, from Nimrod:
 
-1. This site, and governing it until the meeting.
-2. Our calendar:
-   - weekly meeting: round robin, and schnitzel;
-   - project meetings: by project;
-   - semester meeting: somewhere nice (ideas?).
+1. Roundtable.
+2. This site, again: let's make something good out of it (everyone's
+   photos, all projects filled in, and new things).
+3. Our calendar: fix who presents when.
 
 ### Past meetings
 
-- (none yet)
+- **Monday, October 19:** this site, and governing it; our calendar.
