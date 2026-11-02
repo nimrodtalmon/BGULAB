@@ -129,6 +129,7 @@ Possible additions to this site. Send yours with Govern.
 2. This site, again: let's make something good out of it (everyone's
    photos, all projects filled in, and new things).
 3. Our calendar: fix who presents when.
+4. GLP (Grassroots Logic Programs).
 
 ### Past meetings
 
