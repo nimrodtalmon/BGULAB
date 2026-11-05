@@ -28,6 +28,7 @@ security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-b
 
 ## News
 
+- GLP (Grassroots Logic Programs) is up and running in the lab.
 - Nimrod spoke on metric-based voting at the MidChain DeFi Conference
   (BGU, Oct 26).
 - *Who Gets to Submit? Regulating Submission Volume Through Token
