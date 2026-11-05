@@ -126,6 +126,7 @@ Possible additions to this site. Send yours with Govern.
 **Monday, November 9.** Agenda, from Nimrod:
 
 1. Joel van der Boom presents.
+2. A timer to keep lab meetings on time: do we want one?
 
 ### Upcoming
 
