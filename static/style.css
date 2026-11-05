@@ -1,33 +1,30 @@
 :root {
-  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e2dfd8;
-  --accent: #2f5d50; --accent-fg: #ffffff; --code-bg: #f1efe9;
-  --add: #e3f1e6; --del: #f6e1df; --ok: #2f5d50; --err: #9b2c2c;
-  --t1: #2f7a64; --t2: #c27a1e; --t3: #6a5acd;  /* one color per research theme */
-  --serif: "Source Serif 4", Georgia, serif;
+  /* palette and type borrowed from Nimrod's homepage (zutot) */
+  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e4e1da;
+  --accent: #b4520f; --accent-fg: #ffffff; --code-bg: #f1eee7;
+  --add: #e3f1e6; --del: #f6e1df; --ok: #2f7a64; --err: #9b2c2c;
+  --t1: #b4520f; --t2: #2f7a64; --t3: #6a5acd;  /* one color per research theme */
+  --serif: Georgia, "Times New Roman", serif;
   --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #171716; --fg: #e8e6e1; --muted: #9a978f; --line: #2f2e2b;
-    --accent: #7fb8a4; --accent-fg: #10201b; --code-bg: #22211f;
-    --add: #1e3326; --del: #3a2220; --ok: #7fb8a4; --err: #e08a8a;
-    --t1: #6cc4a8; --t2: #e8a95a; --t3: #a99cf0;
+    --bg: #161615; --fg: #e9e7e2; --muted: #9b9890; --line: #2e2d2a;
+    --accent: #f08a3e; --accent-fg: #1d1209; --code-bg: #232220;
+    --add: #1e3326; --del: #3a2220; --ok: #6cc4a8; --err: #e08a8a;
+    --t1: #f08a3e; --t2: #6cc4a8; --t3: #a99cf0;
   }
 }
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
-  font: 17px/1.65 var(--serif);
-  background-image: radial-gradient(1200px 380px at 15% -120px, color-mix(in srgb, var(--t1) 13%, transparent), transparent),
-                    radial-gradient(900px 320px at 95% -140px, color-mix(in srgb, var(--t3) 10%, transparent), transparent);
-  background-repeat: no-repeat;
+  font: 16px/1.6 var(--serif);
 }
 header.top {
   position: sticky; top: 0; z-index: 10;
   background: color-mix(in srgb, var(--bg) 85%, transparent);
   -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 14px rgba(0, 0, 0, .05);
   font: 15px/1.4 var(--sans);
 }
 .bar {
@@ -92,9 +89,10 @@ button.link {
   font: inherit; cursor: pointer; text-decoration: underline;
 }
 main { max-width: 760px; margin: 2rem auto; padding: 0 16px; }
-a { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 h1, h2, h3 { line-height: 1.25; }
-h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: -.01em; margin: .5rem 0 1.2rem; }
+h1 { font-size: 1.9rem; font-weight: normal; margin: .5rem 0 1.2rem; }
 code, pre { font: 14px/1.5 ui-monospace, Menlo, Consolas, monospace; }
 code { background: var(--code-bg); padding: 0 .25em; border-radius: 3px; }
 pre { background: var(--code-bg); padding: 1rem; overflow-x: auto; border-radius: 4px; }
@@ -166,13 +164,10 @@ dialog.pop p { margin: 0; font-size: 14px; }
   --tc: var(--t1);
   margin: 0; border: 1px solid var(--line); border-top: 4px solid var(--tc);
   border-radius: 12px; padding: .95rem 1rem 1rem; font-family: var(--sans);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 9%, var(--bg)), var(--bg) 70%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
-  transition: transform .18s, box-shadow .18s;
+  background: var(--bg);
 }
 .theme:nth-child(2) { --tc: var(--t2); }
 .theme:nth-child(3) { --tc: var(--t3); }
-.theme:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
 .theme h2 { color: var(--tc); }
 .theme h2 { margin: 0 0 .3rem; font-size: 17px; }
 .theme .about { margin: 0 0 .7rem; font-size: 13px; line-height: 1.4; }
@@ -230,13 +225,11 @@ details.card {
   --tc: var(--t1);
   margin: 1rem 0; border: 1px solid var(--line); border-top: 4px solid var(--tc);
   border-radius: 12px; padding: .75rem 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--tc) 9%, var(--bg)), var(--bg) 70%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .04); transition: box-shadow .18s;
+  background: var(--bg);
 }
 details.card + details.card { --tc: var(--t2); }
 details.card + details.card + details.card { --tc: var(--t3); }
 details.card:last-of-type { border-bottom: 1px solid var(--line); }
-details.card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .08); }
 details.card > summary { color: var(--tc); }
 details.card details.sub > summary:hover { color: var(--tc); }
 details.card + details:not(.card) { border-top: 0; }
