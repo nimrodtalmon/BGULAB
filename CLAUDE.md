@@ -59,7 +59,7 @@ app/                      FastAPI server
   content.py              reads pages, projects, terms, people, rules, log, code
 templates/, static/       Jinja2 + one CSS file, no JS build
 tests/                    offline tests (GitHub faked)
-render.yaml               deploy blueprint
+render.yaml               old Render deploy blueprint (being retired)
 ```
 
 Tabs: Research (/), People, Lab, Govern. Every
@@ -103,7 +103,9 @@ changes only by request.
 4. Implement approved requests, one commit per request:
    `round N: #12 <short summary>`.
 5. Write `log/round-NNNN.md` (§7). Run `pytest -q`.
-6. `git pull --rebase`, push. Check the Govern page shows the new commit.
+6. `git pull --rebase`, push. Within about 5 minutes, check
+   https://talmonlab.bgu.ac.il/status/ shows the new commit for `/lab`, and
+   the Govern page shows it too.
 7. Close every handled issue with its decision, reason, and round number.
    Close `wrong-pass` issues as "not counted".
 
@@ -156,8 +158,12 @@ Diffs are fetched from GitHub by commit and shown to signed-in lab members.
 
 ## 9. Deploy and secrets
 
-- Host: Render free web service, auto-deploy on push to `main`. It sleeps
-  when idle (about a minute to wake); nothing depends on it staying up.
+- Host: Nimrod's BGU server, https://talmonlab.bgu.ac.il/lab/ (repo
+  `nimrodtalmon/talmonlab`, app `/lab`, `BASE_PATH=/lab`). It pulls `main`
+  every 5 minutes and redeploys; status at https://talmonlab.bgu.ac.il/status/.
+  Secrets live in the server's secrets file, set by Nimrod.
+- The old Render copy (`render.yaml`) still auto-deploys on push but is being
+  retired; check talmonlab, not Render.
 - Server environment variables: `GOVERN_PASS` (the shared password),
   `GITHUB_TOKEN` (fine-grained, this repo only: Issues read/write, Contents
   read), `GITHUB_REPO=nimrodtalmon/BGULAB`, `SESSION_SECRET` (generated).
