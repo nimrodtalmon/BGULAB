@@ -5,6 +5,31 @@
 # published work is on DBLP and Google Scholar.
 
 themes:
+  - title: Humans with AI
+    about: People and AI agents deciding, reviewing, and acting together; [digital democracy](term:digital-democracy) with agents in the loop.
+    projects:
+      - title: "corrAI: collective control of AI agents"
+        owners: [Nimrod Talmon]
+        about: |
+          How a group jointly steers an AI agent it shares: which decisions
+          go to the group, through which channels (configuration, shared
+          memory, runtime approvals), and how the members' inputs are
+          aggregated. Part of it: social choice for multi-contributor
+          retrieval. This site is a small test bed.
+      - title: AI-Agora
+        owners: [Inbar Arbel, Gefen Ben Shoshan]
+        about: |
+          Each person has a personal AI agent that finds others, negotiates,
+          and forms groups on their behalf, and groups of groups (grassroots
+          federations). People keep the last word: a hard veto over what
+          their agent agrees to.
+      - title: Token-based peer review
+        owners: [Nimrod Talmon]
+        about: |
+          Tokens that limit how many papers each author can submit, so
+          reviewing load stays manageable. To be presented at the NeurIPS
+          2026 AI-Native Academia workshop.
+
   - title: Humans with humans
     about: How people decide together, by [delegating](term:liquid-democracy) and by [lot](term:sortition).
     projects:
@@ -22,32 +47,6 @@ themes:
           Per issue, decide by a small panel sampled from the delegates in
           liquid democracy; how much should a delegate's trust count in the
           sampling?
-      - title: Grassroots federation formation
-        owners: [Inbar Arbel, Gefen Ben Shoshan]
-
-  - title: Humans with AI
-    about: People and AI agents deciding, reviewing, and acting together; [digital democracy](term:digital-democracy) with agents in the loop.
-    projects:
-      - title: AI-Agora
-        owners: [Inbar Arbel, Gefen Ben Shoshan]
-        about: |
-          Each person has a personal AI agent that finds others, negotiates,
-          and forms groups on their behalf. People keep the last word: a hard
-          veto over what their agent agrees to.
-      - title: Collective control of AI agents
-        owners: [Nimrod Talmon]
-        about: |
-          How a group jointly steers an AI agent it shares: which decisions
-          go to the group, through which channels (configuration, shared
-          memory, runtime approvals), and how the members' inputs are
-          aggregated. Part of it: social choice for multi-contributor
-          retrieval. This site is a small test bed.
-      - title: Token-based peer review
-        owners: [Nimrod Talmon]
-        about: |
-          Tokens that limit how many papers each author can submit, so
-          reviewing load stays manageable. To be presented at the NeurIPS
-          2026 AI-Native Academia workshop.
 
   - title: Humans with code
     about: Governance that is executed by protocols rather than by people, as in [DAOs](term:dao).
