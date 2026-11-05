@@ -123,14 +123,16 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
-**Monday, November 2.** Agenda, from Nimrod:
+**Monday, November 9.** Agenda, from Nimrod:
 
-1. Roundtable.
-2. This site, again: let's make something good out of it (everyone's
-   photos, all projects filled in, and new things).
-3. Our calendar: fix who presents when.
-4. GLP (Grassroots Logic Programs).
+1. Joel van der Boom presents.
+
+### Upcoming
+
+- **Monday, November 16:** Inbar Gerera presents.
 
 ### Past meetings
 
+- **Monday, November 2:** roundtable; this site, again; our calendar; GLP
+  (Grassroots Logic Programs).
 - **Monday, October 19:** this site, and governing it; our calendar.
