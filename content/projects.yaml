@@ -23,7 +23,7 @@ themes:
           and forms groups on their behalf, and groups of groups (grassroots
           federations). People keep the last word: a hard veto over what
           their agent agrees to.
-      - title: Token-based peer review
+      - title: Submission Tokens
         owners: [Nimrod Talmon]
         about: |
           Tokens that limit how many papers each author can submit, so
