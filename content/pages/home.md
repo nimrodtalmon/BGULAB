@@ -28,6 +28,8 @@ security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-b
 
 ## News
 
+- Nimrod speaks on Submission Tokens at the yearly seminar of ISAC
+  (Israeli Scientometrics), Shenkar, Nov 11.
 - GLP (Grassroots Logic Programs) is up and running in the lab.
 - Nimrod spoke on metric-based voting at the MidChain DeFi Conference
   (BGU, Oct 26).
