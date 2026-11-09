@@ -140,4 +140,7 @@ Possible additions to this site. Send yours with Govern.
 
 - **Monday, November 2:** roundtable; this site, again; our calendar; GLP
   (Grassroots Logic Programs).
+    - Since then, Inbar Gerera: organized and documented her research so
+      far; made simulations, graphs and terms consistent; listed open
+      questions for the next steps.
 - **Monday, October 19:** this site, and governing it; our calendar.
