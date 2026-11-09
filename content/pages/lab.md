@@ -123,7 +123,7 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
-**Monday, November 9.** Agenda:
+**Monday, November 9.** Today is Sigd: happy Sigd! Agenda:
 
 1. Joel van der Boom presents his delegator–representative commitment
    paper and his next steps: mainly explaining, through explainability,
