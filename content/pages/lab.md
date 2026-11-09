@@ -123,10 +123,14 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
-**Monday, November 9.** Agenda, from Nimrod:
+**Monday, November 9.** Agenda:
 
-1. Joel van der Boom presents.
-2. A timer to keep lab meetings on time: do we want one?
+1. Joel van der Boom presents his delegator–representative commitment
+   paper and his next steps: mainly explaining, through explainability,
+   whom delegators redelegate to.
+2. Joel: should Briman, Nimrod and Joel meet on the paper (LS+S)? What
+   are Joel's next steps?
+3. A timer to keep lab meetings on time: do we want one?
 
 ### Upcoming
 
