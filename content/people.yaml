@@ -39,6 +39,7 @@ present:
     links: {}
   - name: Inbar Gerera
     slug: inbar-gerera
+    photo: /static/people/inbar-gerera.jpg
     role: MSc student
     links: {}
   - name: Gefen Ben Shoshan
