@@ -34,11 +34,11 @@ security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-b
 
 ### Past
 
-- Nimrod spoke on Submission Tokens at the yearly seminar of ISAC
-  (Israeli Scientometrics), Shenkar, Nov 11.
-- GLP (Grassroots Logic Programs) is up and running in the lab.
-- Nimrod spoke on metric-based voting at the MidChain DeFi Conference
-  (BGU, Oct 26).
+- Nimrod spoke on Submission Tokens at the [yearly seminar of ISAC
+  (Israeli Scientometrics)](https://israelscientometrics.com/event_6.html), Shenkar, Nov 11.
+- [GLP](https://arxiv.org/abs/2510.15747) (Grassroots Logic Programs) is up and running in the lab.
+- Nimrod spoke on metric-based voting at the [MidChain DeFi
+  Conference](https://luma.com/rzaklefv) (BGU, Oct 26).
 - *Who Gets to Submit? Regulating Submission Volume Through Token
   Mechanisms* is accepted at the [NeurIPS 2026 workshop on AI-Native
   Academia](https://neurips.cc/virtual/2026/workshop/137580).
