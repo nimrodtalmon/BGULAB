@@ -9,10 +9,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161615; --fg: #e9e7e2; --muted: #9b9890; --line: #2e2d2a;
-    --accent: #f08a3e; --accent-fg: #1d1209; --code-bg: #232220;
-    --add: #1e3326; --del: #3a2220; --ok: #6cc4a8; --err: #e08a8a;
-    --t1: #f08a3e; --t2: #6cc4a8; --t3: #a99cf0;
+    /* a soft charcoal, not black; muted accents */
+    --bg: #2a2927; --fg: #ecebe6; --muted: #aaa79f; --line: #42403c;
+    --accent: #d9935f; --accent-fg: #221a12; --code-bg: #353431;
+    --add: #2c4234; --del: #4a302d; --ok: #8cbfad; --err: #e0a0a0;
+    --t1: #d9935f; --t2: #8cbfad; --t3: #b2a8e6;
   }
 }
 * { box-sizing: border-box; }
@@ -50,6 +51,9 @@ a.govern {
   transition: filter .15s, box-shadow .15s;
 }
 a.govern:hover, a.govern.here { filter: brightness(1.1); box-shadow: 0 2px 8px rgba(0, 0, 0, .16); }
+a.logo { display: flex; line-height: 0; margin-right: -.25rem; }
+a.logo svg { transition: transform .3s; }
+a.logo:hover svg { transform: rotate(120deg); }
 .menu-toggle { display: none; }
 .burger { display: none; }
 @media (max-width: 640px) {

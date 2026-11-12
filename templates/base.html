@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<link rel="icon" href="/static/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -14,6 +15,13 @@
   <div class="bar">
     <input type="checkbox" id="menu" class="menu-toggle">
     <label for="menu" class="burger" aria-label="Menu"><span></span></label>
+    <a class="logo" href="/" title="Digital Cooperation Lab" aria-label="Digital Cooperation Lab, home">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><g fill-opacity=".28" stroke-width="2">
+        <circle cx="11" cy="13.1" r="7.5" style="fill:var(--t1);stroke:var(--t1)"/>
+        <circle cx="21" cy="13.1" r="7.5" style="fill:var(--t2);stroke:var(--t2)"/>
+        <circle cx="16" cy="21.8" r="7.5" style="fill:var(--t3);stroke:var(--t3)"/>
+      </g></svg>
+    </a>
     <nav class="links">
       {% for href, label in nav %}<a href="{{ href }}"{% if request.url.path == href %} class="here"{% endif %}>{{ label }}</a>{% endfor %}
       {% if lab %}

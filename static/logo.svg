@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- three agents, overlapping: the lab's three research themes -->
+  <g fill-opacity=".28" stroke-width="2">
+    <circle cx="11" cy="13.1" r="7.5" fill="#b4520f" stroke="#b4520f"/>
+    <circle cx="21" cy="13.1" r="7.5" fill="#2f7a64" stroke="#2f7a64"/>
+    <circle cx="16" cy="21.8" r="7.5" fill="#6a5acd" stroke="#6a5acd"/>
+  </g>
+</svg>
