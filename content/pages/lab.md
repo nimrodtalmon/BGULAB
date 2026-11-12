@@ -121,6 +121,10 @@ Possible additions to this site. Send yours with Govern.
 
 ## Lab meetings
 
+### Upcoming
+
+- **Monday, November 16:** Inbar Gerera presents.
+
 ### Next meeting
 
 **Monday, November 9.** Today is Sigd: happy Sigd! Agenda:
@@ -131,10 +135,6 @@ Possible additions to this site. Send yours with Govern.
 2. Joel: should Briman, Nimrod and Joel meet on the paper (LS+S)? What
    are Joel's next steps?
 3. A timer to keep lab meetings on time: do we want one?
-
-### Upcoming
-
-- **Monday, November 16:** Inbar Gerera presents.
 
 ### Past meetings
 
