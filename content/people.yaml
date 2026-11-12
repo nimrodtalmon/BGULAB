@@ -60,14 +60,20 @@ past:
     role: Postdoc
     now: IIT Jodhpur
     now_url: https://www.iitj.ac.in/
+    links:
+      Profile: https://research.iitj.ac.in/researcher/pallavi-jain
   - name: Krzysztof Sornat
     role: Postdoc
     now: AGH Krakow
     now_url: https://www.agh.edu.pl/en/
+    links:
+      DBLP: https://dblp.org/pid/149/2313
   - name: Ouri Poupku
     role: Postdoc
     now: Western Galilee College
     now_url: https://www.wgalil.ac.il/
+    links:
+      DBLP: https://dblp.org/pid/234/6110
   - name: Shiri Hefetz
     role: PhD
   - name: Lior Ashkenazy
