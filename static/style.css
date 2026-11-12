@@ -233,7 +233,6 @@ details.card:last-of-type { border-bottom: 1px solid var(--line); }
 details.card > summary { color: var(--tc); }
 details.card details.sub > summary:hover { color: var(--tc); }
 details.card + details:not(.card) { border-top: 0; }
-u.key { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 details > summary > .tag { margin-right: auto; }
 summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 dialog.keys-pop { font-family: var(--sans); width: min(420px, calc(100vw - 32px)); }
