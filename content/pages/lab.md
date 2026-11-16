@@ -133,6 +133,10 @@ Possible additions to this site. Send yours with Govern.
 2. Gefen Ben Shoshan: the AAAI paper is revised according to the
    reviews; the new paper is being modeled, starting from a simple problem
    and expanding from there.
+3. Joel van der Boom: the commitment paper now uses log-likelihood and
+   features to calculate probabilities for sampling redelegations; LD+S
+   uses DAO data for the agreement error bound; simulations to find the
+   accuracy.
 
 ### Past meetings
 
