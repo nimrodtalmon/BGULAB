@@ -123,21 +123,18 @@ Possible additions to this site. Send yours with Govern.
 
 ### Upcoming
 
-- **Monday, November 16:** Inbar Gerera presents.
+- Nothing scheduled yet.
 
 ### Next meeting
 
-**Monday, November 9.** Today is Sigd: happy Sigd! Agenda:
+**Monday, November 16.** Agenda:
 
-1. Joel van der Boom presents his delegator–representative commitment
-   paper and his next steps: mainly explaining, through explainability,
-   whom delegators redelegate to.
-2. Joel: should Briman, Nimrod and Joel meet on the paper (LS+S)? What
-   are Joel's next steps?
-3. A timer to keep lab meetings on time: do we want one?
+1. Eyal Briman presents.
 
 ### Past meetings
 
+- **Monday, November 9:** Joel van der Boom's delegator–representative
+  commitment paper and next steps; a timer for lab meetings.
 - **Monday, November 2:** roundtable; this site, again; our calendar; GLP
   (Grassroots Logic Programs).
     - Since then, Inbar Gerera: organized and documented her research so
