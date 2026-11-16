@@ -44,6 +44,7 @@ present:
     links: {}
   - name: Gefen Ben Shoshan
     slug: gefen-ben-shoshan
+    photo: /static/people/gefen-ben-shoshan.jpg
     role: MSc student
     links: {}
   - name: Tani Idan
