@@ -35,6 +35,7 @@ present:
     links: {}
   - name: Inbar Arbel
     slug: inbar-arbel
+    photo: /static/people/inbar-arbel.jpg
     role: MSc student
     links: {}
   - name: Inbar Gerera
