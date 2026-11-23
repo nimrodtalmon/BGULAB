@@ -24,10 +24,6 @@ present:
     role: PhD student
     bio: Governance simulation (SimGov). Lecturer at Mekelle University, Ethiopia.
     links: {}
-  - name: Nir Soffer
-    slug: nir-soffer
-    role: MSc student
-    links: {}
   - name: Joel van der Boom
     slug: joel-van-der-boom
     photo: /static/people/joel-van-der-boom.jpg
@@ -85,6 +81,8 @@ past:
   - name: Eyal Leizerovich
     role: MSc
   - name: Avital Finanser
+    role: MSc
+  - name: Nir Soffer
     role: MSc
   - name: Rutvik Page
     role: RA
