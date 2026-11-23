@@ -124,7 +124,7 @@ Possible additions to this site. Send yours with Govern.
 
 ### Upcoming
 
-- Nothing scheduled yet.
+- **Monday, November 30:** Inbar Gerera presents.
 
 ### Next meeting
 
