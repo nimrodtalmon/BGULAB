@@ -8,14 +8,15 @@
   <li class="person">
     {% if p.photo %}<img class="avatar" src="{{ p.photo }}" alt="" loading="lazy">
     {% else %}<span class="avatar initials" aria-hidden="true">{{ p.name.split()[0][0] }}{{ p.name.split()[-1][0] }}</span>{% endif %}
-    <span>{% if p.bio %}<a class="bio" href="#{{ p.slug }}" data-pop="{{ p.slug }}"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}{% if heading in people.mixed_groups %} — {{ p.role }}{% endif %}
-      {% if p.links %}<span class="person-links">{% for label, url in p.links.items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</span>{% endif %}
+    <span><strong>{{ p.name }}</strong>{% if heading in people.mixed_groups %} — {{ p.role }}{% endif %}
+      {# A bio opens in a popup from a "Personal" link ("Bio" if there is a personal site). #}
+      {% if p.links or p.bio %}<span class="person-links">{% if p.bio %}<a class="bio" href="#{{ p.slug }}" data-pop="{{ p.slug }}">{{ "Bio" if "Personal" in (p.links or {}) else "Personal" }}</a>{% endif %}{% for label, url in (p.links or {}).items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</span>{% endif %}
     </span>
   </li>
 {% endfor %}
 </ul>
 {% endfor %}
-{# A one-line bio opens in a popup from the name, so the grid stays compact. #}
+{# A one-line bio opens in a popup, so the grid stays compact. #}
 {% for p in people.present if p.bio %}
 <dialog class="pop project-pop person-pop" id="{{ p.slug }}" aria-labelledby="{{ p.slug }}-title">
   <p class="muted">{{ p.role }}</p>
