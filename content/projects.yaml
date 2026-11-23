@@ -55,6 +55,11 @@ themes:
         owners: [Inbar Gerera]
       - title: SimGov
         owners: [Berihu Michiale Haileselassie]
+        about: |
+          Communities change, but their voting rules usually don't. SimGov
+          asks how a community should adjust its approval threshold as it
+          changes, and shows a formal trade-off between blocking bad
+          proposals and passing good ones.
       - title: LLM voting, accuracy and correlation
         owners: [Nimrod Talmon]
         about: |
