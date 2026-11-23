@@ -10,7 +10,7 @@
     {% else %}<span class="avatar initials" aria-hidden="true">{{ p.name.split()[0][0] }}{{ p.name.split()[-1][0] }}</span>{% endif %}
     <span><strong>{{ p.name }}</strong>{% if heading in people.mixed_groups %} — {{ p.role }}{% endif %}
       {# A bio opens in a popup from a "Personal" link ("Bio" if there is a personal site). #}
-      {% if p.links or p.bio %}<span class="person-links">{% if p.bio %}<a class="bio" href="#{{ p.slug }}" data-pop="{{ p.slug }}">{{ "Bio" if "Personal" in (p.links or {}) else "Personal" }}</a>{% endif %}{% for label, url in (p.links or {}).items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</span>{% endif %}
+      {% if p.links or p.bio %}<span class="person-links">{% if p.bio %}<a href="#{{ p.slug }}" data-pop="{{ p.slug }}">{{ "Bio" if "Personal" in (p.links or {}) else "Personal" }}</a>{% endif %}{% for label, url in (p.links or {}).items() %}<a href="{{ url }}">{{ label }}</a>{% endfor %}</span>{% endif %}
     </span>
   </li>
 {% endfor %}
