@@ -28,12 +28,6 @@ security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-b
 
 ## News
 
-### Upcoming
-
-- Nothing announced yet.
-
-### Past
-
 - Nimrod spoke on Submission Tokens at the [yearly seminar of ISAC
   (Israeli Scientometrics)](https://israelscientometrics.com/event_6.html), Shenkar, Nov 11.
 - [GLP](https://arxiv.org/abs/2510.15747) (Grassroots Logic Programs) is up and running in the lab.
