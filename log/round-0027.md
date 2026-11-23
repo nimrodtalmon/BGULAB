@@ -2,7 +2,7 @@
 round: 27
 date: 2026-11-23
 title: Rings no more
-commits: [dfec669157f0ce158e3d8d0f625eca640511b6b9, da47bca83c73285ceb50557726e2cdd61aa1b494, c1a20c24b42a1614afe087d94d6f0a6c04b33193, fafc8bfebdae2b73c009f7df19b503cce5cbcfb8, 29b62cb9e96ee99a8f4265744fc3fb1e8cf5ec56, f2d7510a015d36fd9c8bc6a4858b4898ecdd4303, dc5e4467b04f691b03143433e1844de36b33abee, 9fe54c4c047e3f8b9133a6dde97ebed48da14230, 886aa2cf0eab6b5a5e490777b7055fd1fc8ee6cd, 7466ff4b978b9be53fa8a11e6b6b479742b50c2a, 9a9e52465fed184a0fa5ace5092f99ed39235e95, e5d49b9d581130f04286be1d519c9b336a6ed518, 00eb8aa31e8b74429367ef963206707434703739, f693f8f3fea79ba96f4acf183e1b11bdf58a5a43, 3c1747107f4d56658a24ab7f08f874607e3d05d1]
+commits: [dfec669157f0ce158e3d8d0f625eca640511b6b9, da47bca83c73285ceb50557726e2cdd61aa1b494, c1a20c24b42a1614afe087d94d6f0a6c04b33193, fafc8bfebdae2b73c009f7df19b503cce5cbcfb8, 29b62cb9e96ee99a8f4265744fc3fb1e8cf5ec56, f2d7510a015d36fd9c8bc6a4858b4898ecdd4303, dc5e4467b04f691b03143433e1844de36b33abee, 9fe54c4c047e3f8b9133a6dde97ebed48da14230, 886aa2cf0eab6b5a5e490777b7055fd1fc8ee6cd, 7466ff4b978b9be53fa8a11e6b6b479742b50c2a, 9a9e52465fed184a0fa5ace5092f99ed39235e95, e5d49b9d581130f04286be1d519c9b336a6ed518, 00eb8aa31e8b74429367ef963206707434703739, f693f8f3fea79ba96f4acf183e1b11bdf58a5a43, 3c1747107f4d56658a24ab7f08f874607e3d05d1, f048f11901d983fe5280b29975d92af9d88713e7]
 ---
 ## Public
 
@@ -29,6 +29,7 @@ more, and a bio opens from a "Personal" link.
 | 119 | Nimrod | Inbar to present next week | applied: Upcoming, Nov 30, Inbar Gerera (Nimrod confirmed which Inbar) | rule 1 | e5d49b9 |
 | 117 | Nimrod | remind all to update for the next meeting | applied: a standing reminder line under Next meeting | rule 1; rule 4 (Lab page) | 00eb8aa |
 | admin | Nimrod | CLAUDE.md: `open:` frontmatter (§3); bios open from a "Personal" link (§8) | applied | admin change: brings CLAUDE.md in line with #114 and #115; Nimrod OK'd the protected file in session | 3c17471 |
+| admin | Nimrod | Govern showed "Deployed commit local" on talmonlab | applied: the app reads the commit from its git clone when RENDER_GIT_COMMIT is unset | admin change: Nimrod in session | f048f11 |
 
 Wrong-pass submissions: none.
 
