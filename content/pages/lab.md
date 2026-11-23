@@ -128,19 +128,16 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
-**Monday, November 16.** Agenda:
+**Monday, November 23.** Agenda:
 
-1. Eyal Briman presents.
-2. Gefen Ben Shoshan: the AAAI paper is revised according to the
-   reviews; the new paper is being modeled, starting from a simple problem
-   and expanding from there.
-3. Joel van der Boom: the commitment paper now uses log-likelihood and
-   features to calculate probabilities for sampling redelegations; LD+S
-   uses DAO data for the agreement error bound; simulations to find the
-   accuracy.
+1. Berihu Michiale Haileselassie presents.
 
 ### Past meetings
 
+- **Monday, November 16:** Eyal Briman presented; updates from Gefen Ben
+  Shoshan (the AAAI paper revised per the reviews; modeling the new paper)
+  and Joel van der Boom (the commitment paper's redelegation sampling; LD+S
+  on DAO data).
 - **Monday, November 9:** Joel van der Boom's delegator–representative
   commitment paper and next steps; a timer for lab meetings.
 - **Monday, November 2:** roundtable; this site, again; our calendar; GLP
