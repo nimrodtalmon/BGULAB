@@ -64,7 +64,8 @@ render.yaml               old Render deploy blueprint (being retired)
 
 Tabs: Research (/), People, Lab, Govern. Every
 page shows its `##` sections collapsed and its `###` sections nested inside them, so a page
-fits on one screen until the reader opens something.
+fits on one screen until the reader opens something. Sections (or
+subsections) named in a page's `open:` frontmatter start open.
 
 Visitors see the public site; signed-in lab members also see lab-only parts.
 A whole page is lab-only with `visibility: lab` in its frontmatter; a single
@@ -146,7 +147,7 @@ Diffs are fetched from GitHub by commit and shown to signed-in lab members.
   (`public` or `lab`). Prefer a new section in an existing page.
 - **Add a person:** append to `content/people.yaml`. Optional: `photo`
   (stored in `static/people/<slug>.jpg`, not hotlinked), `bio` (one line,
-  shown in a popup from the name), `links`.
+  shown in a popup from a "Personal" link), `links`.
 - **Add a project:** an entry under its theme in `content/projects.yaml`
   (title, owners; about, status, next once known). It opens in a popup on
   Research. When it is done (e.g., the paper is out), remove it: published
