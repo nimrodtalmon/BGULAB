@@ -101,6 +101,8 @@ def test_folding_and_lab_only_sections():
     assert '<details id="a">' in public and '<details class="sub" id="sub">' in public
     assert '<details class="card" id="a">' in lab
     assert "hidden" not in public and "hidden" in lab and "lab only" in lab
+    opened = content.fold(body, False, (), ("A", "Sub"))
+    assert '<details id="a" open>' in opened and '<details class="sub" id="sub" open>' in opened
 
 
 def test_govern_rate_limit(client, env):

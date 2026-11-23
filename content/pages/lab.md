@@ -2,6 +2,7 @@
 title: Lab
 visibility: lab
 boxed: [Onboarding, Mantras]
+open: [Lab meetings, Next meeting]
 ---
 # Lab
 
