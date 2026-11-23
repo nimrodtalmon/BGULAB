@@ -128,6 +128,9 @@ Possible additions to this site. Send yours with Govern.
 
 ### Next meeting
 
+Before each meeting, everyone (Nimrod too): update your project on
+[Research](/) and send your agenda item with Govern.
+
 **Monday, November 23.** Agenda:
 
 1. Berihu Michiale Haileselassie presents.
