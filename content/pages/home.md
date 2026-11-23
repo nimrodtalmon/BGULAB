@@ -3,7 +3,7 @@ title: Digital Cooperation Lab
 ---
 # Digital Cooperation Lab
 
-<details id="about" open markdown="1">
+<details id="about" markdown="1">
 <summary>About</summary>
 
 **We study** how humans and AI agents, in varying combinations, reach good
