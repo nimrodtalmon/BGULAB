@@ -205,3 +205,15 @@ def test_base_path(client, monkeypatch):
                     follow_redirects=False)
     assert r.headers["location"] == "/lab/people" and "set-cookie" in r.headers
     assert client.get("/pages/home", follow_redirects=False).headers["location"] == "/lab/"
+
+
+def test_git_head_reads_loose_and_packed_refs(tmp_path):
+    from app.main import git_head
+    git = tmp_path / ".git"
+    (git / "refs" / "heads").mkdir(parents=True)
+    (git / "HEAD").write_text("ref: refs/heads/main\n")
+    (git / "packed-refs").write_text("# pack-refs\nabc1234def refs/heads/main\n")
+    assert git_head(tmp_path) == "abc1234def"
+    (git / "refs" / "heads" / "main").write_text("0123456789\n")
+    assert git_head(tmp_path) == "0123456789"
+    assert git_head(tmp_path / "nowhere") == ""

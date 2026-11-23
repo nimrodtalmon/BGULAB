@@ -4,6 +4,7 @@ Stateless: nothing here is written to disk or kept beyond a short cache.
 """
 
 import os
+from pathlib import Path
 import re
 
 from fastapi import FastAPI, Form, Request
@@ -64,8 +65,28 @@ MOVED = {
 PROJECTS_MARK = "<p>[[projects]]</p>"
 
 
+def git_head(repo: Path) -> str:
+    """The commit checked out in `repo`, read from .git (no git binary needed)."""
+    git = repo / ".git"
+    try:
+        head = (git / "HEAD").read_text().strip()
+        if not head.startswith("ref: "):
+            return head
+        ref = head[5:]
+        if (git / ref).is_file():
+            return (git / ref).read_text().strip()
+        for line in (git / "packed-refs").read_text().splitlines():
+            if line.endswith(" " + ref):
+                return line.split()[0]
+    except OSError:
+        pass
+    return ""
+
+
 def deployed_commit() -> str:
-    return os.environ.get("RENDER_GIT_COMMIT", "")[:7] or "local"
+    # Render sets RENDER_GIT_COMMIT; on talmonlab the app runs from a git clone.
+    sha = os.environ.get("RENDER_GIT_COMMIT", "") or git_head(Path(__file__).resolve().parent.parent)
+    return sha[:7] or "local"
 
 
 def render(request: Request, template: str, status: int = 200, **ctx) -> HTMLResponse:
