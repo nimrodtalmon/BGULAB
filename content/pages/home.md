@@ -28,6 +28,8 @@ security](https://cris.iucc.ac.il/en/publications/enhancing-food-security-with-b
 
 ## News
 
+- Nimrod and Ehud Shapiro presented *Constitutional Governance in Metric
+  Spaces* at [ADT 2026](https://adt2026.sciencesconf.org/) (Paris, Nov 16).
 - Nimrod spoke on Submission Tokens at the [yearly seminar of ISAC
   (Israeli Scientometrics)](https://israelscientometrics.com/event_6.html), Shenkar, Nov 11.
 - [GLP](https://arxiv.org/abs/2510.15747) (Grassroots Logic Programs) is up and running in the lab.
