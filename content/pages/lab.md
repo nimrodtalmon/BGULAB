@@ -131,6 +131,9 @@ Possible additions to this site. Send yours with Govern.
 **Monday, November 23.** Agenda:
 
 1. Berihu Michiale Haileselassie presents.
+2. Joel van der Boom: thoughts on the AAMAS reviews; LD+S next steps,
+   generating synthetic data on the relationship between competence and
+   voting weight.
 
 ### Past meetings
 
