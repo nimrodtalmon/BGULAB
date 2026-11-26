@@ -134,6 +134,8 @@ Before each meeting, everyone (Nimrod too): update your project on
 **Monday, November 30.** Agenda:
 
 1. Inbar Gerera presents.
+2. Nimrod: grant proposals: BSF with Lirong Xia submitted; ISF–FWF with
+   Martin Lackner soon.
 
 ### Past meetings
 
