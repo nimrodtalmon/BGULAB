@@ -124,22 +124,22 @@ Possible additions to this site. Send yours with Govern.
 
 ### Upcoming
 
-- **Monday, November 30:** Inbar Gerera presents.
+Nothing scheduled yet.
 
 ### Next meeting
 
 Before each meeting, everyone (Nimrod too): update your project on
 [Research](/) and send your agenda item with Govern.
 
-**Monday, November 23.** Agenda:
+**Monday, November 30.** Agenda:
 
-1. Berihu Michiale Haileselassie presents.
-2. Joel van der Boom: thoughts on the AAMAS reviews; LD+S next steps,
-   generating synthetic data on the relationship between competence and
-   voting weight.
+1. Inbar Gerera presents.
 
 ### Past meetings
 
+- **Monday, November 23:** Berihu Michiale Haileselassie presented; Joel
+  van der Boom on the AAMAS reviews and LD+S next steps (synthetic data on
+  competence and voting weight).
 - **Monday, November 16:** Eyal Briman presented; updates from Gefen Ben
   Shoshan (the AAAI paper revised per the reviews; modeling the new paper)
   and Joel van der Boom (the commitment paper's redelegation sampling; LD+S
